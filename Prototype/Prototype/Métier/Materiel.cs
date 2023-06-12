@@ -7,19 +7,21 @@ namespace Prototype.Métier
     public class Materiel : Crud<Materiel>
     {
         public int IdMateriel { get; set; }
-        public int IdCategorie { get; set; }
-        public string Nom { get; set; }
+        public int FK_IdCategorie { get; set; }
+        public string NomMateriel { get; set; }
         public string CodeBarre { get; set; }
         public string Refconstructeur { get; set; }
+        public Categorie UneCategorie { get; set; }
+        public ObservableCollection<Attribution> LesAttributions { get; set; }
 
    
         public Materiel()
         { }
-        public Materiel(int idMateriel, int idCategorie, string nom, string codeBarre, string refconstructeur)
+        public Materiel(int idMateriel, int fk_idCategorie, string nomMateriel, string codeBarre, string refconstructeur)
         {
             this.IdMateriel = idMateriel;
-            this.IdCategorie = idCategorie;
-            this.Nom = nom;
+            this.FK_IdCategorie = fk_idCategorie;
+            this.NomMateriel = nomMateriel;
             this.CodeBarre = codeBarre;
             this.Refconstructeur = refconstructeur;
         }

@@ -10,6 +10,7 @@ namespace Prototype.Métier
     {
         public int IdCategorie { get; set; }
         public string NomCategorie { get; set; }
+        public ObservableCollection<Materiel> LesMateriels { get; set; }
 
 
         public Categorie()

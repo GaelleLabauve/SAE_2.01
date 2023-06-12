@@ -11,7 +11,7 @@ namespace Prototype.Métier
         public string Email { get; set; }
         public string NomPersonnel { get; set; }
         public string PrenomPersonnel { get; set; }
-        public ObservableCollection<Attribution> LesAttributions;
+        public ObservableCollection<Attribution> LesAttributions { get; set; }
 
         public Enseignant()
         { }

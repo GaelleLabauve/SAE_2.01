@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 
 namespace Prototype.Métier
 {
@@ -42,6 +43,31 @@ namespace Prototype.Métier
         public void setcommentaire(String newCommentaire)
         {
             this.commentaire = newCommentaire;
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Attribution> FindAll()
+        {
+            throw new NotImplementedException();
         }
 
         public Attribution()

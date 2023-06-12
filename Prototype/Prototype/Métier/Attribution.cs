@@ -9,6 +9,8 @@ namespace Prototype.Métier
         public int FK_IdPersonnel { get; set; }
         public DateTime DateAttribution { get; set; }
         public string Commentaire { get; set; }
+        public Enseignant UnEnseignant { get; set; }
+        public Materiel UnMateriel { get; set; }
 
         public void Create()
         {

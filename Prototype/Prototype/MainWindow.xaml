@@ -31,7 +31,7 @@
                         Header="Catégorie" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=UnMateriel}"
+                        Binding="{Binding Path=NomMateriel}"
                         Header="Matériel" />
                     <DataGridTextColumn
                         Width="*"

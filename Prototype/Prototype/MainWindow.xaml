@@ -44,7 +44,10 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Sélectionnez une catégorie de matériel :" />
-                <ListView x:Name="lv_cateChoix" Height="100" />
+                <ListView
+                    x:Name="lv_cateChoix"
+                    Height="100"
+                    ItemsSource="{Binding Path=LesCategories}" />
 
                 <Label
                     x:Name="lb_selectMateriel"
@@ -53,7 +56,10 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Choisir un materiel :" />
-                <ListView x:Name="lv_MaterielChoix" Height="100" />
+                <ListView
+                    x:Name="lv_MaterielChoix"
+                    Height="100"
+                    ItemsSource="{Binding Path=LesMateriels}" />
 
                 <Button
                     x:Name="bt_tousMateriel"

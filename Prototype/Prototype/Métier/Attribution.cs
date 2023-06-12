@@ -47,30 +47,5 @@ namespace Prototype.Métier
             this.DateAttribution = dateAttribution;
             this.Commentaire = commentaire;
         }
-
-        public void Create()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Read()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ObservableCollection<Attribution> FindAll()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

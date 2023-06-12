@@ -9,11 +9,17 @@ public class Materiel : CRUD
 
    
    public Materiel()
-   {
-      // TODO: implement
-   }
+   { }
 
-   public System.Collections.ArrayList attribution;
+    public Materiel(int idMateriel, int idCategorie, string codeBarre, string refconstructeur)
+    {
+        this.IdMateriel = idMateriel;
+        this.IdCategorie = idCategorie;
+        this.CodeBarre = codeBarre;
+        this.Refconstructeur = refconstructeur;
+    }
+/*
+    public System.Collections.ArrayList attribution;
    
    /// <pdGenerated>default getter</pdGenerated>
    public System.Collections.ArrayList GetAttribution()
@@ -57,11 +63,7 @@ public class Materiel : CRUD
    {
       if (attribution != null)
          attribution.Clear();
-   }
+   }*/
 
-   private int idMateriel;
-   private int idCategorie;
-   private String codeBarre;
-   private String refConstructeur;
 
 }

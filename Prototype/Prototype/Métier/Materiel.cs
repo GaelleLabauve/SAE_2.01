@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace Prototype.Métier
 {
@@ -43,7 +44,21 @@ namespace Prototype.Métier
 
         public ObservableCollection<Materiel> FindAll()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
+
+            DataAccess accesBD = new DataAccess();
+            String requete = "SELECT * FROM Materiel";
+            DataTable datas = accesBD.GetData(requete);
+
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["codeBarre"], (String)row["refConstructeur"]);
+                    lesMateriels.Add(m);
+                }
+            }
+            return lesMateriels;
         }        
     }
 }

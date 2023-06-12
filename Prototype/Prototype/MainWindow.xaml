@@ -25,10 +25,22 @@
             </Grid.ColumnDefinitions>
             <DataGrid AutoGenerateColumns="False" DataContext="{Binding Source=LesAttributions}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Catégorie" />
-                    <DataGridTextColumn Width="*" Header="Matériel" />
-                    <DataGridTextColumn Width="*" Header="Nom enseignant" />
-                    <DataGridTextColumn Width="*" Header="Prénom enseignant" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Path=NomCategorie}"
+                        Header="Catégorie" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Path=UnMateriel}"
+                        Header="Matériel" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Path=NomPersonnel}"
+                        Header="Nom enseignant" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Path=PrenomPersonnel}"
+                        Header="Prénom enseignant" />
                     <DataGridTextColumn
                         Width="0.7*"
                         Binding="{Binding Path=DateAttribution}"

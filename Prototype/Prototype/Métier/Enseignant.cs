@@ -55,7 +55,7 @@ namespace Prototype.Métier
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Enseignant e = new Enseignant(int.Parse(row["idPersonnel"].ToString()), (String)row["email"], (String)row["nomPersonnel"], (String)row["prenomPersonnel"]);
+                    Enseignant e = new Enseignant(int.Parse(row["idPersonnel"].ToString()), (String)row["mail"], (String)row["nomPersonnel"], (String)row["prenomPersonnel"]);
                     lesEnseignants.Add(e);
                 }
             }

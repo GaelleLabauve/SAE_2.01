@@ -14,7 +14,9 @@
         <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nom}" Header="Nom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=CodeBarre}" Header="Code Barre" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=RefConstructeur}" Header="Référence Constructeur" />
                 </GridView>
             </ListView.View>
         </ListView>

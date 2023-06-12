@@ -7,7 +7,8 @@ namespace Prototype.Métier
     public class Materiel : Crud<Materiel>
     {
         public int IdMateriel { get; set; }
-        public int FK_IdCategorie { get; set; }
+        public int IdCategorie { get; set; }
+        public string Nom { get; set; }
         public string CodeBarre { get; set; }
         public string Refconstructeur { get; set; }
         public Categorie UneCategorie { get; set; }
@@ -15,10 +16,11 @@ namespace Prototype.Métier
    
         public Materiel()
         { }
-        public Materiel(int idMateriel, int fk_idCategorie, string codeBarre, string refconstructeur)
+        public Materiel(int idMateriel, int idCategorie, string nom, string codeBarre, string refconstructeur)
         {
             this.IdMateriel = idMateriel;
-            this.FK_IdCategorie = fk_idCategorie;
+            this.IdCategorie = idCategorie;
+            this.Nom = nom;
             this.CodeBarre = codeBarre;
             this.Refconstructeur = refconstructeur;
         }
@@ -55,7 +57,7 @@ namespace Prototype.Métier
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["codeBarre"], (String)row["refConstructeur"]);
+                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["nom"], (String)row["codeBarre"], (String)row["refConstructeur"]);
                     lesMateriels.Add(m);
                 }
             }

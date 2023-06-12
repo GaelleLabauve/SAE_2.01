@@ -14,7 +14,7 @@
         <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nom}" Header="Nom" />
                 </GridView>
             </ListView.View>
         </ListView>

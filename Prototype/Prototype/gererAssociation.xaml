@@ -14,7 +14,10 @@
         <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Commentaire}" Header="Commentaire" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant}" Header="Enseignant" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnMateriel}" Header="Materiel" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -29,7 +32,8 @@
                 Grid.Column="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="Ajouter" Click="bt_ajout_Click" />
+                Click="bt_ajout_Click"
+                Content="Ajouter" />
             <Button
                 x:Name="bt_modif"
                 Grid.Column="1"

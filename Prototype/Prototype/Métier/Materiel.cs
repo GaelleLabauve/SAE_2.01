@@ -12,6 +12,7 @@ namespace Prototype.Métier
         public string CodeBarre { get; set; }
         public string Refconstructeur { get; set; }
         public Categorie UneCategorie { get; set; }
+        public ObservableCollection<Attribution> LesAttributions { get; set; }
 
    
         public Materiel()

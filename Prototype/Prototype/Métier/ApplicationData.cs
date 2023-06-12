@@ -11,6 +11,14 @@ namespace Prototype.Métier
         public ObservableCollection<Attribution> LesAttributions;
         public ApplicationData()
         {
+            Enseignant e = new Enseignant();
+            LesEnseignants = e.FindAll();
+            Categorie c = new Categorie();
+            LesCategories = c.FindAll();
+            Materiel m = new Materiel();
+            LesMateriel = m.FindAll();
+            Attribution a = new    Attribution();
+            LesCategories = c.FindAll();
         }
     }
 }

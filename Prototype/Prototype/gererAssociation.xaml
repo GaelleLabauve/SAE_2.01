@@ -11,7 +11,10 @@
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
         <Label x:Name="lb_selectAsso" Content="Sélectionner une attribution :" />
-        <ListView Height="100" d:ItemsSource="{Binding Path=LesAttributions}">
+        <ListView
+            x:Name="lv_Attribution"
+            Height="100"
+            d:ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" />

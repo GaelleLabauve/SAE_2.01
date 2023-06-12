@@ -10,11 +10,14 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
-        <Label x:Name="lb_selectAsso" Content="Sélectionner un matériel :" />
-        <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <Label x:Name="lb_selectMateriel" Content="Sélectionner un matériel :" />
+        <ListView
+            x:Name="lv_materiel"
+            Height="100"
+            d:ItemsSource="{Binding Path=LesMateriels}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nom}" Header="Nom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=NomMateriel}" Header="Nom" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=CodeBarre}" Header="Code Barre" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=RefConstructeur}" Header="Référence Constructeur" />
                 </GridView>

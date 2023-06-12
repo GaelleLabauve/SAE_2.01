@@ -33,25 +33,29 @@ namespace Prototype
 
         private void mi_gererAsso_Click(object sender, RoutedEventArgs e)
         {
-            Window gererAsso = new gererAssociation();
+            gererAssociation gererAsso = new gererAssociation();
+            gererAsso.DataContext= this.DataContext;
             gererAsso.ShowDialog();
         }
 
         private void mi_gererCate_Click(object sender, RoutedEventArgs e)
         {
-            Window gererCate = new gererCategorie();
+            gererCategorie gererCate = new gererCategorie();
+            gererCate.DataContext = this.DataContext;
             gererCate.ShowDialog();
         }
 
         private void mi_gererEnseinant_Click(object sender, RoutedEventArgs e)
         {
-            Window gererEns = new gererEnseignant();
+            gererEnseignant gererEns = new gererEnseignant();
+            gererEns.DataContext = this.DataContext;
             gererEns.ShowDialog();
         }
 
         private void mi_gererMateriel_Click(object sender, RoutedEventArgs e)
         {
-            Window gererMate= new gererMateriel();
+            gererMateriel gererMate= new gererMateriel();
+            gererMate.DataContext = this.DataContext;
             gererMate.ShowDialog();
         }
 

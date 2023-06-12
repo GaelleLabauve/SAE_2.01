@@ -10,8 +10,11 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
-        <Label x:Name="lb_selectAsso" Content="Sélectionner un enseignant :" />
-        <ListView Height="100" ItemsSource="{Binding Path=LesEnseignants}">
+        <Label x:Name="lb_selectEnseignant" Content="Sélectionner un enseignant :" />
+        <ListView
+            x:Name="lv_enseignant"
+            Height="100"
+            ItemsSource="{Binding Path=LesEnseignants}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Nom" />

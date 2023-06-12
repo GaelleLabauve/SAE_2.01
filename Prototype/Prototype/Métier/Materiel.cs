@@ -2,45 +2,11 @@ using System;
 
 public class Materiel : CRUD
 {
-   public int getidMateriel()
-   {
-      return idMateriel;
-   }
-   
-   public void setidMateriel(int newIdMateriel)
-   {
-      this.idMateriel = newIdMateriel;
-   }
-   
-   public int getidCategorie()
-   {
-      return idCategorie;
-   }
-   
-   public void setidCategorie(int newIdCategorie)
-   {
-      this.idCategorie = newIdCategorie;
-   }
-   
-   public String getcodeBarre()
-   {
-      return codeBarre;
-   }
-   
-   public void setcodeBarre(String newCodeBarre)
-   {
-      this.codeBarre = newCodeBarre;
-   }
-   
-   public String getrefConstructeur()
-   {
-      return refConstructeur;
-   }
-   
-   public void setrefConstructeur(String newRefConstructeur)
-   {
-      this.refConstructeur = newRefConstructeur;
-   }
+    public int IdMateriel { get; set; }
+    public int IdCategorie { get; set; }
+    public string CodeBarre { get; set; }
+    public string Refconstructeur { get; set; }
+
    
    public Materiel()
    {

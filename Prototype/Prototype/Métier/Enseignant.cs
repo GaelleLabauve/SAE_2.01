@@ -14,8 +14,7 @@ namespace Prototype.Métier
         public ObservableCollection<Attribution> LesAttributions;
 
         public Enseignant()
-        {
-        }
+        { }
         public Enseignant(int idPersonnel, string email, string nomPersonnel, string prenomPersonnel)
         {
             this.IdPersonnel = idPersonnel;

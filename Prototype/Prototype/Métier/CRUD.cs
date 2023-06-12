@@ -1,35 +1,21 @@
 using System;
+using System.Collections.ObjectModel;
 
-public abstract class CRUD
+namespace Prototype.Métier
 {
-   public Create()
-   {
-      // TODO: implement
-   }
-   
-   public Update()
-   {
-      // TODO: implement
-   }
-   
-   public Remove()
-   {
-      // TODO: implement
-   }
-   
-   public Delete()
-   {
-      // TODO: implement
-   }
-   
-   public Find()
-   {
-      // TODO: implement
-   }
-   
-   public FindAll()
-   {
-      // TODO: implement
-   }
+    public interface Crud<T>
+    {
+        void Create();
 
+        void Read();
+
+        void Update();
+
+        void Delete();
+
+        ObservableCollection<T> FindAll();
+
+        ObservableCollection<T> FindBySelection(string criteres);
+
+    }
 }

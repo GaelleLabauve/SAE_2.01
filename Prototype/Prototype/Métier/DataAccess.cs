@@ -25,7 +25,7 @@ namespace Prototype.Métier
             {
                 NpgSQLConnect = new NpgsqlConnection
                 {
-                    ConnectionString = "Server=postgresql-emericsauthier.alwaysdata.net;port=5433;Database=emericsauthier_sae-2.01;Search Path=public;uid=emericsauthier_user;password=user_04;" // ACCES A BD
+                    ConnectionString = "Server=postgresql-emericsauthier.alwaysdata.net;Database=emericsauthier_sae-2.01;uid=emericsauthier_user;password=user_04;" // ACCES A BD
                 };
                 NpgSQLConnect.Open();
 

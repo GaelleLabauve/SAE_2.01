@@ -23,13 +23,16 @@
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Catégorie" />
                     <DataGridTextColumn Width="*" Header="Matériel" />
                     <DataGridTextColumn Width="*" Header="Nom enseignant" />
                     <DataGridTextColumn Width="*" Header="Prénom enseignant" />
-                    <DataGridTextColumn Width="0.7*" Header="Date" />
+                    <DataGridTextColumn
+                        Width="0.7*"
+                        Binding="{Binding DateAttribution}"
+                        Header="Date" />
                     <DataGridTextColumn Width="*" Header="Commentaire" />
                 </DataGrid.Columns>
             </DataGrid>

@@ -1,8 +1,8 @@
 using System;
 
-public class Application
+public class ApplicationData
 {
-   public Application()
+   public ApplicationData()
    {
       // TODO: implement
    }

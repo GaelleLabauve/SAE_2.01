@@ -3,25 +3,23 @@ using System.Collections.ObjectModel;
 
 namespace Prototype.Métier
 {
-
-public class Materiel : Crud<Materiel>
-{
-    public int IdMateriel { get; set; }
-    public int IdCategorie { get; set; }
-    public string CodeBarre { get; set; }
-    public string Refconstructeur { get; set; }
+    public class Materiel : Crud<Materiel>
+    {
+        public int IdMateriel { get; set; }
+        public int IdCategorie { get; set; }
+        public string CodeBarre { get; set; }
+        public string Refconstructeur { get; set; }
 
    
-   public Materiel()
-   { }
-
-    public Materiel(int idMateriel, int idCategorie, string codeBarre, string refconstructeur)
-    {
-        this.IdMateriel = idMateriel;
-        this.IdCategorie = idCategorie;
-        this.CodeBarre = codeBarre;
-        this.Refconstructeur = refconstructeur;
-    }
+        public Materiel()
+        { }
+        public Materiel(int idMateriel, int idCategorie, string codeBarre, string refconstructeur)
+        {
+            this.IdMateriel = idMateriel;
+            this.IdCategorie = idCategorie;
+            this.CodeBarre = codeBarre;
+            this.Refconstructeur = refconstructeur;
+        }
 
         public void Create()
         {

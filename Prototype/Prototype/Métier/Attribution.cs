@@ -1,58 +1,49 @@
 using System;
+using System.Collections.ObjectModel;
 
 namespace Prototype.Métier
 {
     public class Attribution : Crud<Attribution>
     {
-        public int getidMateriel()
-        {
-            return idMateriel;
-        }
-
-        public void setidMateriel(int newIdMateriel)
-        {
-            this.idMateriel = newIdMateriel;
-        }
-
-        public int getidPersonnel()
-        {
-            return idPersonnel;
-        }
-
-        public void setidPersonnel(int newIdPersonnel)
-        {
-            this.idPersonnel = newIdPersonnel;
-        }
-
-        public DateTime get_dateAttribution()
-        {
-            return dateAttribution;
-        }
-
-        public void setdateAttribution(DateTime newDateAttribution)
-        {
-            this.dateAttribution = newDateAttribution;
-        }
-
-        public String getcommentaire()
-        {
-            return commentaire;
-        }
-
-        public void setcommentaire(String newCommentaire)
-        {
-            this.commentaire = newCommentaire;
-        }
+        public int FK_IdMateriel { get; set; }
+        public int FK_IdPersonnel { get; set; }
+        public DateTime DateAttribution { get; set; }
+        public string Commentaire { get; set; }
 
         public Attribution()
         {
-            // TODO: implement
+        }
+        public Attribution(int fK_IdMateriel, int fK_IdPersonnel, DateTime dateAttribution, string commentaire)
+        {
+            this.FK_IdMateriel = fK_IdMateriel;
+            this.FK_IdPersonnel = fK_IdPersonnel;
+            this.DateAttribution = dateAttribution;
+            this.Commentaire = commentaire;
         }
 
-        private int idMateriel;
-        private int idPersonnel;
-        private DateTime dateAttribution;
-        private String commentaire;
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Attribution> FindAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

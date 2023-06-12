@@ -56,7 +56,7 @@ namespace Prototype.Métier
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["nom"], (String)row["codeBarre"], (String)row["refConstructeur"]);
+                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["nommateriel"], (String)row["codeBarre"], (String)row["refConstructeur"]);
                     lesMateriels.Add(m);
                 }
             }

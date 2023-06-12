@@ -1,5 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Prototype.Métier
 {
@@ -44,7 +46,21 @@ namespace Prototype.Métier
 
         public ObservableCollection<Enseignant> FindAll()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Enseignant> lesEnseignants = new ObservableCollection<Enseignant>();
+
+            DataAccess accesBD = new DataAccess();
+            String requete = "SELECT * FROM Enseignant";
+            DataTable datas = accesBD.GetData(requete);
+
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Enseignant e = new Enseignant(int.Parse(row["idPersonnel"].ToString()), (String)row["email"], (String)row["nomPersonnel"], (String)row["prenomPersonnel"]);
+                    lesEnseignants.Add(e);
+                }
+            }
+            return lesEnseignants;
         }
     }
 }

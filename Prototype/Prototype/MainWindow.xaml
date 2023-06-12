@@ -62,7 +62,7 @@
                     ItemsSource="{Binding Path=LesCategories}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding NomCategorie}" Header="Nom catégorie" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom catégorie" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -80,7 +80,7 @@
                     ItemsSource="{Binding Path=LesMateriels}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding NomMateriel}" Header="Nom materiel" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=NomMateriel}" Header="Nom materiel" />
                         </GridView>
                     </ListView.View>
                 </ListView>

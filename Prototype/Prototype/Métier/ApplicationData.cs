@@ -22,8 +22,8 @@ namespace Prototype.Métier
             Materiel m = new Materiel();
             LesMateriels = m.FindAll();
 
-            Attribution a = new    Attribution();
-            LesCategories = c.FindAll();
+            Attribution a = new Attribution();
+            LesAttributions = a.FindAll();
 
             // Catégorie et attributions d'un matériel
             foreach (Materiel unMateriel in LesMateriels.ToList<Materiel>())

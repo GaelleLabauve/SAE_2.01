@@ -54,5 +54,9 @@ namespace Prototype
             Window gererMate= new gererMateriel();
             gererMate.ShowDialog();
         }
+
+        private void bt_tousMateriel_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

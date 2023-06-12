@@ -91,6 +91,7 @@
                     Margin="10,10,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    Click="bt_tousMateriel_Click"
                     Content="Voir tous les matériels" />
             </StackPanel>
 

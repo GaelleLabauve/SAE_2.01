@@ -12,6 +12,31 @@ namespace Prototype.Métier
         public Enseignant UnEnseignant { get; set; }
         public Materiel UnMateriel { get; set; }
 
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Attribution> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Attribution()
         {
         }

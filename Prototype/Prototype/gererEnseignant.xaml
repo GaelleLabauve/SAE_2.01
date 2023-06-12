@@ -1,0 +1,67 @@
+﻿<Window
+    x:Class="Prototype.gererEnseignant"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Prototype"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="gérer les enseignants"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <StackPanel Margin="10,20,10,10">
+        <Label x:Name="lb_selectAsso" Content="Sélectionner un enseignant :" />
+        <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Ajouter" />
+            <Button
+                Grid.Column="1"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Modifier" />
+            <Button
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Supprimer" />
+        </Grid>
+        <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+            <Label Content="Nom de l'enseignant :" />
+            <TextBox
+                Width="120"
+                Text=""
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+            <Label Content="Prénom de l'enseignant :" />
+            <TextBox
+                Width="120"
+                Text=""
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+            <Label Content="Mail :" />
+            <TextBox
+                Width="120"
+                Text=""
+                TextWrapping="Wrap" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>

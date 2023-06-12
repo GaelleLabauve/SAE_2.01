@@ -14,8 +14,5 @@ namespace Prototype.Métier
         void Delete();
 
         ObservableCollection<T> FindAll();
-
-        ObservableCollection<T> FindBySelection(string criteres);
-
     }
 }

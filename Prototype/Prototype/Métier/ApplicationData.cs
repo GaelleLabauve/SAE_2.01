@@ -1,5 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Prototype.Métier
 {
@@ -7,7 +9,7 @@ namespace Prototype.Métier
     {
         public ObservableCollection<Enseignant> LesEnseignants;
         public ObservableCollection<Categorie> LesCategories;
-        public ObservableCollection<Materiel> LesMateriel;
+        public ObservableCollection<Materiel> LesMateriels;
         public ObservableCollection<Attribution> LesAttributions;
         public ApplicationData()
         {
@@ -16,9 +18,11 @@ namespace Prototype.Métier
             Categorie c = new Categorie();
             LesCategories = c.FindAll();
             Materiel m = new Materiel();
-            LesMateriel = m.FindAll();
-            Attribution a = new    Attribution();
+            LesMateriels = m.FindAll();
+            Attribution a = new Attribution();
             LesCategories = c.FindAll();
+
+         
         }
     }
 }

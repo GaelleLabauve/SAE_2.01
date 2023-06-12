@@ -1,42 +1,50 @@
 using System;
 using System.Collections.ObjectModel;
 
-public class Enseignant : CRUD
+namespace Prototype.Métier
 {
-    public int IdPersonnel { get; set; }
-    public string Email { get; set; }
-    public string NomPersonnel { get; set; }
-    public string PrenomPersonnel { get; set; }
-    public ObservableCollection<Attribution> LesAttributions;
-
-    public Enseignant()
+    public class Enseignant : Crud<Enseignant>
     {
-    }
-    public Enseignant(int idPersonnel, string email, string nomPersonnel, string prenomPersonnel)
-    {
-        this.IdPersonnel = idPersonnel;
-        this.Email = email;
-        this.NomPersonnel = nomPersonnel;
-        this.PrenomPersonnel = prenomPersonnel;
-    }
+        public int IdPersonnel { get; set; }
+        public string Email { get; set; }
+        public string NomPersonnel { get; set; }
+        public string PrenomPersonnel { get; set; }
+        public ObservableCollection<Attribution> LesAttributions;
 
-    public override void Create()
-    {
+        public Enseignant()
+        {
+        }
+        public Enseignant(int idPersonnel, string email, string nomPersonnel, string prenomPersonnel)
+        {
+            this.IdPersonnel = idPersonnel;
+            this.Email = email;
+            this.NomPersonnel = nomPersonnel;
+            this.PrenomPersonnel = prenomPersonnel;
+        }
 
-    }
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
 
-    public override void Remove()
-    {
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
 
-    }
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
 
-    public override void Update()
-    {
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
 
-    }
-
-    public override void Delete()
-    {
-
+        public ObservableCollection<Enseignant> FindAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

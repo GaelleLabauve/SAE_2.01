@@ -1,6 +1,10 @@
 using System;
+using System.Collections.ObjectModel;
 
-public class Materiel : CRUD
+namespace Prototype.Métier
+{
+
+public class Materiel : Crud<Materiel>
 {
     public int IdMateriel { get; set; }
     public int IdCategorie { get; set; }
@@ -18,52 +22,30 @@ public class Materiel : CRUD
         this.CodeBarre = codeBarre;
         this.Refconstructeur = refconstructeur;
     }
-/*
-    public System.Collections.ArrayList attribution;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetAttribution()
-   {
-      if (attribution == null)
-         attribution = new System.Collections.ArrayList();
-      return attribution;
-   }
-   
-   /// <pdGenerated>default setter</pdGenerated>
-   public void SetAttribution(System.Collections.ArrayList newAttribution)
-   {
-      RemoveAllAttribution();
-      foreach (Attribution oAttribution in newAttribution)
-         AddAttribution(oAttribution);
-   }
-   
-   /// <pdGenerated>default Add</pdGenerated>
-   public void AddAttribution(Attribution newAttribution)
-   {
-      if (newAttribution == null)
-         return;
-      if (this.attribution == null)
-         this.attribution = new System.Collections.ArrayList();
-      if (!this.attribution.Contains(newAttribution))
-         this.attribution.Add(newAttribution);
-   }
-   
-   /// <pdGenerated>default Remove</pdGenerated>
-   public void RemoveAttribution(Attribution oldAttribution)
-   {
-      if (oldAttribution == null)
-         return;
-      if (this.attribution != null)
-         if (this.attribution.Contains(oldAttribution))
-            this.attribution.Remove(oldAttribution);
-   }
-   
-   /// <pdGenerated>default removeAll</pdGenerated>
-   public void RemoveAllAttribution()
-   {
-      if (attribution != null)
-         attribution.Clear();
-   }*/
 
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Materiel> FindAll()
+        {
+            throw new NotImplementedException();
+        }        
+    }
 }

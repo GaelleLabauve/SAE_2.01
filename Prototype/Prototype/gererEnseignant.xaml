@@ -11,10 +11,12 @@
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
         <Label x:Name="lb_selectAsso" Content="Sélectionner un enseignant :" />
-        <ListView Height="100" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListView Height="100" ItemsSource="{Binding Path=LesEnseignants}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Nom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding PrenomPersonnel}" Header="Prénom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="email" />
                 </GridView>
             </ListView.View>
         </ListView>

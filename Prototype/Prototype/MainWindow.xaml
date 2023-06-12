@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}">
+            <DataGrid AutoGenerateColumns="False" DataContext="{Binding Source=LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Catégorie" />
                     <DataGridTextColumn Width="*" Header="Matériel" />
@@ -31,7 +31,7 @@
                     <DataGridTextColumn Width="*" Header="Prénom enseignant" />
                     <DataGridTextColumn
                         Width="0.7*"
-                        Binding="{Binding DateAttribution}"
+                        Binding="{Binding Path=DateAttribution}"
                         Header="Date" />
                     <DataGridTextColumn Width="*" Header="Commentaire" />
                 </DataGrid.Columns>
@@ -47,7 +47,13 @@
                 <ListView
                     x:Name="lv_cateChoix"
                     Height="100"
-                    ItemsSource="{Binding Path=LesCategories}" />
+                    ItemsSource="{Binding Path=LesCategories}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding NomCategorie}" Header="Nom catégorie" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
                 <Label
                     x:Name="lb_selectMateriel"
@@ -59,7 +65,13 @@
                 <ListView
                     x:Name="lv_MaterielChoix"
                     Height="100"
-                    ItemsSource="{Binding Path=LesMateriels}" />
+                    ItemsSource="{Binding Path=LesMateriels}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding NomMateriel}" Header="Nom materiel" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
                 <Button
                     x:Name="bt_tousMateriel"

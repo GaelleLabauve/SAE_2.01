@@ -1,6 +1,10 @@
+using Prototype.Métier;
 using System;
+using System.Collections.ObjectModel;
 
-public class Categorie : CRUD
+namespace Prototype.Métier
+{
+public class Categorie : Crud<Categorie>
 {
    public int getidCategorie()
    {
@@ -73,7 +77,33 @@ public class Categorie : CRUD
          materiel.Clear();
    }
 
-   private int idCategorie;
+    public void Create()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Read()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete()
+    {
+        throw new NotImplementedException();
+    }
+
+    public ObservableCollection<Categorie> FindAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    private int idCategorie;
    private String nomCategorie;
 
+}
 }

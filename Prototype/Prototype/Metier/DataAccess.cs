@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Windows;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public class DataAccess
     {

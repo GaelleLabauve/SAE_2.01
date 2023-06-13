@@ -1,7 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public interface Crud<T>
     {

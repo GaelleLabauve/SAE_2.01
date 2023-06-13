@@ -2,7 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public class Materiel : Crud<Materiel>
     {

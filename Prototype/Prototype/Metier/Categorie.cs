@@ -1,10 +1,10 @@
-using Prototype.Métier;
+using Prototype.Metier;
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Runtime.CompilerServices;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public class Categorie : Crud<Categorie>
     {

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Text.RegularExpressions;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public class Enseignant : Crud<Enseignant>
     {

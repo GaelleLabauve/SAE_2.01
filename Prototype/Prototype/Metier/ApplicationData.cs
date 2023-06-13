@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 
-namespace Prototype.Métier
+namespace Prototype.Metier
 {
     public class ApplicationData
     {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -30,9 +31,19 @@ namespace Prototype
         {
             if (!(Verif_TextBoxVide() || Verif_Style()))
             {
-                DataAccess accessDB = new DataAccess();
-                accessDB.SetData($"INSERT INTO ENSEIGNANT(nomPersonnel,prenomPersonnel,mail) VALUES ('{tbNom.Text}','{tbPrenom.Text}','{tbMail.Text}')");
+                // Initialisation du nouvel enseignant et ajout des informations
+                Enseignant enseignant = new Enseignant();
+                enseignant.NomPersonnel = tbNom.Text;
+                enseignant.PrenomPersonnel = tbPrenom.Text;
+                enseignant.Email = tbMail.Text;
+
+                // Création de l'enseignant dans la base de données
+                enseignant.Create();
+
+                // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
+
+                // Reset des champs de saisie
                 Reset();
             }
         }
@@ -42,7 +53,10 @@ namespace Prototype
             TextBox tb = (TextBox)sender;
             if (tb.Text.Length > 50)
             {
+                // Application du style avec bordures rouges
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
                 if (tb == tbNom)
                 {
                     lbNomError.Content = "Trop long ( > 50 caractères)";
@@ -52,7 +66,10 @@ namespace Prototype
                 }
             } else
             {
+                // Suppression du style (remplacement par un style par défaut)
                 tb.Style = new Style();
+
+                // Réinitialisation du label
                 if (tb == tbNom)
                 {
                     lbNomError.Content = "";
@@ -66,22 +83,27 @@ namespace Prototype
 
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
+            // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
             if (tbMail.Text.Length > 100)
             {
                 tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                 lbMailError.Content = "Trop long";
 
             }
+            // Si le mail ne contient pas de @ alors il n'est pas valide
             if (!tbMail.Text.Contains('@'))
             {
                 tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                 String content = lbMailError.Content.ToString();
+
+                // Ajout du message s'il n'est pas déjà affiché
                 if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
                 {
                     lbMailError.Content += "\tInvalide (manque @)";
                 }
             }
 
+            // Si tout est en ordre l'email est valide
             if (tbMail.Text.Length <= 100 && tbMail.Text.Contains('@'))
             {
                 tbMail.Style = new Style();
@@ -89,6 +111,10 @@ namespace Prototype
             }
         }
 
+        /// <summary>
+        /// Vérifie les TextBox vide. Applique un style (au bordure rouge) pour chaque TextBox vide.
+        /// </summary>
+        /// <returns>True si une des TextBox est vide. False si toutes les TextBox contient du texte.</returns>
         private bool Verif_TextBoxVide()
         {
             bool result = false;
@@ -153,8 +179,8 @@ namespace Prototype
                 MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
                 if (result == MessageBoxResult.OK)
                 {
-                    DataAccess accessDB = new DataAccess();
-                    accessDB.SetData($"DELETE FROM ENSEIGNANT WHERE idPersonnel='{enseignant.IdPersonnel}'");
+                    // Suppression de l'enseignant dans la base de données
+                    enseignant.Delete();
                 }
             }
         }

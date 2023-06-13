@@ -31,7 +31,8 @@ namespace Prototype.Metier
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accessDB = new DataAccess();
+            accessDB.SetData($"INSERT INTO ENSEIGNANT(nomPersonnel,prenomPersonnel,mail) VALUES ('{this.NomPersonnel}','{this.PrenomPersonnel}','{this.Email}')");
         }
 
         public void Read()
@@ -46,7 +47,8 @@ namespace Prototype.Metier
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accessDB = new DataAccess();
+            accessDB.SetData($"DELETE FROM ENSEIGNANT WHERE idPersonnel='{this.IdPersonnel}'");
         }
 
         public ObservableCollection<Enseignant> FindAll()

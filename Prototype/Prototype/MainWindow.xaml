@@ -26,7 +26,6 @@
             </Grid.ColumnDefinitions>
             <DataGrid
                 AutoGenerateColumns="False"
-                DataContext="{Binding LesAttributions}"
                 ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn

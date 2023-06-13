@@ -85,28 +85,40 @@
                 Margin="0,4,0,0"
                 Orientation="Horizontal">
                 <Label Content="Catégorie :" FontSize="14" />
-                <ComboBox DisplayMemberPath="NomCategorie" ItemsSource="{Binding Path=LesCategories}" />
+                <ComboBox
+                    Width="111"
+                    DisplayMemberPath="NomCategorie"
+                    ItemsSource="{Binding Path=LesCategories}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_materiel"
                 Margin="0,5,0,0"
                 Orientation="Horizontal">
                 <Label Content="Matériel :" FontSize="14" />
-                <ComboBox DisplayMemberPath="NomMateriel" ItemsSource="{Binding Path=LesMateriels}" />
+                <ComboBox
+                    Width="108"
+                    DisplayMemberPath="NomMateriel"
+                    ItemsSource="{Binding Path=LesMateriels}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_nomEns"
                 Margin="0,5,0,0"
                 Orientation="Horizontal">
                 <Label Content="Nom enseignant :" FontSize="14" />
-                <ComboBox DisplayMemberPath="NomPersonnel" ItemsSource="{Binding Path=LesEnseignants}" />
+                <ComboBox
+                    Width="99"
+                    DisplayMemberPath="NomPersonnel"
+                    ItemsSource="{Binding Path=LesEnseignants}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_prenomEns"
                 Margin="0,5,0,0"
                 Orientation="Horizontal">
                 <Label Content="Prénom enseignant :" FontSize="14" />
-                <ComboBox DisplayMemberPath="PrenomPersonnel" ItemsSource="{Binding Path=UnEnseignant}" />
+                <ComboBox
+                    Width="98"
+                    DisplayMemberPath="PrenomPersonnel"
+                    ItemsSource="{Binding Path=UnEnseignant}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_date"

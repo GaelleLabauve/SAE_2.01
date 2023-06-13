@@ -28,7 +28,9 @@ namespace Prototype.Metier
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "insert into Materiel(idcategorie, nommateriel, codebarre, refconstructeur) values("+"1,'"+this.NomMateriel+"','"+this.CodeBarre+"','"+this.Refconstructeur+"');";
+            DataTable datas = accesBD.GetData(requete); ;
         }
 
         public void Read()

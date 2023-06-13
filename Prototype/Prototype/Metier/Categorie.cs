@@ -29,7 +29,7 @@ namespace Prototype.Metier
         {
             DataAccess accesBD = new DataAccess();
             String requete = "insert into Categorie(nomCategorie) values('"+this.NomCategorie+"')";
-            DataTable datas = accesBD.GetData(requete); ;
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Read()
@@ -39,7 +39,9 @@ namespace Prototype.Metier
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "update Categorie set nomcategorie='" + this.NomCategorie + "')";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Delete()

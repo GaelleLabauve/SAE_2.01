@@ -22,6 +22,12 @@ namespace Prototype.Metier
             this.NomPersonnel = nomPersonnel;
             this.PrenomPersonnel = prenomPersonnel;
         }
+        public Enseignant(string email, string nomPersonnel, string prenomPersonnel)
+        {
+            this.Email = email;
+            this.NomPersonnel = nomPersonnel;
+            this.PrenomPersonnel = prenomPersonnel;
+        }
 
         public void Create()
         {

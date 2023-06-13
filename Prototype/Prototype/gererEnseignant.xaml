@@ -33,6 +33,7 @@
                 Grid.Column="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="Button_Click"
                 Content="Ajouter" />
             <Button
                 Grid.Column="1"
@@ -49,6 +50,7 @@
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Nom de l'enseignant :" />
             <TextBox
+                x:Name="tbNom"
                 Width="120"
                 Text=""
                 TextWrapping="Wrap" />
@@ -56,6 +58,7 @@
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Prénom de l'enseignant :" />
             <TextBox
+                x:Name="tbPrenom"
                 Width="120"
                 Text=""
                 TextWrapping="Wrap" />
@@ -63,6 +66,7 @@
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Mail :" />
             <TextBox
+                x:Name="tbMail"
                 Width="120"
                 Text=""
                 TextWrapping="Wrap" />

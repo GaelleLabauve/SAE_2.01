@@ -23,5 +23,21 @@ namespace Prototype
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbNom.Text))
+            {
+                MessageBox.Show("Renseigner les champs manquants");
+            }
+            if (String.IsNullOrWhiteSpace(tbPrenom.Text))
+            {
+                MessageBox.Show("Renseigner les champs manquants");
+            }
+            if (String.IsNullOrWhiteSpace(tbMail.Text))
+            {
+                MessageBox.Show("Renseigner les champs manquants");
+            }
+        }
     }
 }

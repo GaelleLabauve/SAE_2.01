@@ -13,6 +13,7 @@
     <Window.DataContext>
         <metier:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -23,31 +24,31 @@
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" DataContext="{Binding Source=LesAttributions}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=NomCategorie}"
+                        Binding="{Binding UnMateriel.UneCategorie.NomCategorie}"
                         Header="Catégorie" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=NomMateriel}"
+                        Binding="{Binding UnMateriel.NomMateriel}"
                         Header="Matériel" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=NomPersonnel}"
+                        Binding="{Binding UnEnseignant.NomPersonnel}"
                         Header="Nom enseignant" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=PrenomPersonnel}"
+                        Binding="{Binding UnEnseignant.PrenomPersonnel}"
                         Header="Prénom enseignant" />
                     <DataGridTextColumn
                         Width="0.7*"
-                        Binding="{Binding Path=DateAttribution}"
+                        Binding="{Binding DateAttribution}"
                         Header="Date" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Path=Commentaire}"
+                        Binding="{Binding Commentaire}"
                         Header="Commentaire" />
                 </DataGrid.Columns>
             </DataGrid>

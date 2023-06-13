@@ -14,14 +14,30 @@
         <ListView
             x:Name="lv_Attribution"
             Height="100"
-            ItemsSource="{Binding Path=LesAttributions}" SelectionChanged="lv_Attribution_SelectionChanged">
+            ItemsSource="{Binding Path=LesAttributions}"
+            SelectionChanged="lv_Attribution_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" Width="68" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Commentaire}" Header="Commentaire" Width="200"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant.NomPersonnel}" Header="Enseignant nom" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant.PrenomPersonnel}" Header="Enseignant prenom" Width="110" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}" Header="Materiel" Width="100"/>
+                    <GridViewColumn
+                        Width="68"
+                        DisplayMemberBinding="{Binding Path=DateAttribution}"
+                        Header="Date" />
+                    <GridViewColumn
+                        Width="200"
+                        DisplayMemberBinding="{Binding Path=Commentaire}"
+                        Header="Commentaire" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=UnEnseignant.NomPersonnel}"
+                        Header="Enseignant nom" />
+                    <GridViewColumn
+                        Width="110"
+                        DisplayMemberBinding="{Binding Path=UnEnseignant.PrenomPersonnel}"
+                        Header="Enseignant prenom" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}"
+                        Header="Materiel" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -51,42 +67,41 @@
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="Supprimer" Click="bt_supp_Click" />
+                Click="bt_supp_Click"
+                Content="Supprimer" />
         </Grid>
-        <StackPanel
+        <StackPanel x:Name="sp_lesReseignement" DataContext="{Binding SelectedItem, ElementName=lv_Attribution}">
+            <StackPanel
             x:Name="sp_categorie"
             Margin="0,15,0,0"
             Orientation="Horizontal">
-            <Label Content="Catégorie :" />
-            <ComboBox  ItemsSource="{Binding Path=LesCategories}" 
-          DisplayMemberPath="NomCategorie"/>
-        </StackPanel>
-        <StackPanel x:Name="sp_materiel" Orientation="Horizontal">
-            <Label Content="Matériel :" />
-            <ComboBox ItemsSource="{Binding Path=LesMateriels}" 
-          DisplayMemberPath="NomMateriel"/>
-        </StackPanel>
-        <StackPanel x:Name="sp_nomEns" Orientation="Horizontal">
-            <Label Content="Nom enseignant :" />
-            <ComboBox ItemsSource="{Binding Path=LesEnseignants}" 
-          DisplayMemberPath="NomPersonnel"/>
-        </StackPanel>
-        <StackPanel x:Name="sp_prenomEns" Orientation="Horizontal">
-            <Label Content="Prénom enseignant :" />
-            <ComboBox ItemsSource="{Binding Path=LesEnseignants}" 
-          DisplayMemberPath="PrenomPersonnel"/>
-        </StackPanel>
-        <StackPanel x:Name="sp_date" Orientation="Horizontal">
-            <Label Content="Date :" />
-            <DatePicker />
-        </StackPanel>
-        <StackPanel x:Name="sp_commentaire" Orientation="Horizontal">
-            <Label Content="Commentaire :" />
-            <TextBox
-                MinWidth="100"
+                <Label Content="Catégorie :" />
+                <ComboBox DisplayMemberPath="NomCategorie" ItemsSource="{Binding Path=LesCategories}" />
+            </StackPanel>
+            <StackPanel x:Name="sp_materiel" Orientation="Horizontal">
+                <Label Content="Matériel :" />
+                <ComboBox DisplayMemberPath="NomMateriel" ItemsSource="{Binding Path=LesMateriels}" />
+            </StackPanel>
+            <StackPanel x:Name="sp_nomEns" Orientation="Horizontal">
+                <Label Content="Nom enseignant :" />
+                <ComboBox DisplayMemberPath="NomPersonnel" ItemsSource="{Binding Path=LesEnseignants}" />
+            </StackPanel>
+            <StackPanel x:Name="sp_prenomEns" Orientation="Horizontal">
+                <Label Content="Prénom enseignant :" />
+                <ComboBox DisplayMemberPath="PrenomPersonnel" ItemsSource="{Binding Path=LesEnseignants}" />
+            </StackPanel>
+            <StackPanel x:Name="sp_date" Orientation="Horizontal">
+                <Label Content="Date :" />
+                <DatePicker SelectedDate="{Binding DateAttribution, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel x:Name="sp_commentaire" Orientation="Horizontal">
+                <Label Content="Commentaire :" />
+                <TextBox
+                MinWidth="100"                  
                 DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
                 Text="{Binding Commentaire}" />
+            </StackPanel>
         </StackPanel>
-
+        
     </StackPanel>
 </Window>

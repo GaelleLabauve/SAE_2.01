@@ -34,7 +34,7 @@ namespace Prototype
         {
             ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution());
             lv_Attribution.SelectedIndex = 0;
-            ((Categorie)lv_Attribution.SelectedItem).Create();
+            ((Attribution)lv_Attribution.SelectedItem).Create();
         }
 
         private void lv_Attribution_SelectionChanged(object sender, SelectionChangedEventArgs e)

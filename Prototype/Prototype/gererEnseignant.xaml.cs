@@ -1,4 +1,5 @@
-﻿using Prototype.Metier;
+﻿using Microsoft.VisualBasic;
+using Prototype.Metier;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -142,6 +143,20 @@ namespace Prototype
             lbNomError.Content = " ";
             lbPrenomError.Content = " ";
             lbMailError.Content = " ";
+        }
+
+        private void btSuppr_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_enseignant.SelectedIndex != -1)
+            {
+                Enseignant enseignant = (Enseignant)lv_enseignant.SelectedItem;
+                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    DataAccess accessDB = new DataAccess();
+                    accessDB.SetData($"DELETE FROM ENSEIGNANT WHERE idPersonnel='{enseignant.IdPersonnel}'");
+                }
+            }
         }
     }
 }

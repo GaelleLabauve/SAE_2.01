@@ -30,7 +30,7 @@ namespace Prototype.Metier
         {
             DataAccess accesBD = new DataAccess();
             String requete = "insert into Materiel(idcategorie, nommateriel, codebarre, refconstructeur) values("+"1,'"+this.NomMateriel+"','"+this.CodeBarre+"','"+this.Refconstructeur+"');";
-            DataTable datas = accesBD.GetData(requete); ;
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Read()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototype.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,35 +23,46 @@ namespace Prototype
         public gererAssociation()
         {
             InitializeComponent();
-            sp_categorie.IsEnabled = false;
-            sp_date.IsEnabled= false;
-            sp_materiel.IsEnabled=false;
-            sp_nomEns.IsEnabled = false;
-            sp_prenomEns.IsEnabled = false;
-            sp_commentaire.IsEnabled = false;
         }
 
         private void bt_modif_Click(object sender, RoutedEventArgs e)
         {
-            //Champs non modifiable
-            sp_categorie.IsEnabled = false;
-            sp_materiel.IsEnabled = false;
-            sp_nomEns.IsEnabled = false;
-            sp_prenomEns.IsEnabled = false;
-            //Chanps modifiabe
-            sp_date.IsEnabled = true;
-            sp_commentaire.IsEnabled = true;
+            ((Attribution)lv_Attribution.SelectedItem).Update();
         }
 
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
+            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution());
+            lv_Attribution.SelectedIndex = 0;
+            ((Attribution)lv_Attribution.SelectedItem).Create();
+        }
 
-            sp_categorie.IsEnabled = true;
+        private void lv_Attribution_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lv_Attribution.SelectedItem == null)
+            {
+                sp_categorie.IsEnabled = true;
+                sp_materiel.IsEnabled = true;
+                sp_nomEns.IsEnabled = true;
+                sp_prenomEns.IsEnabled = true;
+            }
+            else
+            {
+                //Champs non modifiable
+                sp_categorie.IsEnabled = false;
+                sp_materiel.IsEnabled = false;
+                sp_nomEns.IsEnabled = false;
+                sp_prenomEns.IsEnabled = false;
+            }
+            //Champs modifiabe
             sp_date.IsEnabled = true;
-            sp_materiel.IsEnabled = true;
-            sp_nomEns.IsEnabled = true;
-            sp_prenomEns.IsEnabled = true;
             sp_commentaire.IsEnabled = true;
+        }
+
+        private void bt_supp_Click(object sender, RoutedEventArgs e)
+        {
+            ((Attribution)lv_Attribution.SelectedItem).Delete();
+            ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
         }
     }
 }

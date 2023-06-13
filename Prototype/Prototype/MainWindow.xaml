@@ -46,7 +46,10 @@
                         Width="0.7*"
                         Binding="{Binding Path=DateAttribution}"
                         Header="Date" />
-                    <DataGridTextColumn Width="*" Header="Commentaire" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Path=Commentaire}"
+                        Header="Commentaire" />
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Grid.Column="1" Margin="5,0,5,0">

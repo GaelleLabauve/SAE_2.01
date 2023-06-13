@@ -61,6 +61,7 @@ namespace Prototype
 
         private void bt_tousMateriel_Click(object sender, RoutedEventArgs e)
         {
+            lv_MaterielChoix.SelectedItem = null;
         }
     }
 }

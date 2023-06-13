@@ -8,10 +8,10 @@ namespace Prototype.Metier
 {
     public class ApplicationData
     {
-        public ObservableCollection<Enseignant> LesEnseignants;
-        public ObservableCollection<Categorie> LesCategories;
-        public ObservableCollection<Materiel> LesMateriels;
-        public ObservableCollection<Attribution> LesAttributions;
+        public ObservableCollection<Enseignant> LesEnseignants { get; set; }
+        public ObservableCollection<Categorie> LesCategories { get; set; }
+        public ObservableCollection<Materiel> LesMateriels { get; set; }
+        public ObservableCollection<Attribution> LesAttributions { get; set; }
         public ApplicationData()
         {
             Enseignant e = new Enseignant();

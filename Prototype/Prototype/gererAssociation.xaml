@@ -17,10 +17,11 @@
             ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Commentaire}" Header="Commentaire" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant}" Header="Enseignant" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnMateriel}" Header="Materiel" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" Width="68" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Commentaire}" Header="Commentaire" Width="200"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant.NomPersonnel}" Header="Enseignant nom" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnEnseignant.PrenomPersonnel}" Header="Enseignant prenom" Width="110" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}" Header="Materiel" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -77,7 +78,10 @@
         </StackPanel>
         <StackPanel x:Name="sp_commentaire" Orientation="Horizontal">
             <Label Content="Commentaire :" />
-            <TextBox MinWidth="100" />
+            <TextBox
+                MinWidth="100"
+                DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
+                Text="{Binding Commentaire}" />
         </StackPanel>
 
     </StackPanel>

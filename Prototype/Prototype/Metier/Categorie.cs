@@ -38,7 +38,7 @@ namespace Prototype.Metier
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            
         }
 
         public ObservableCollection<Categorie> FindAll()

@@ -39,9 +39,10 @@
                 VerticalAlignment="Center"
                 Content="Modifier" />
             <Button
-                Grid.Column="0"
+                x:Name="btSupprimer"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
+                Click="BtSupprimer_Click"
                 Content="Supprimer" />
         </Grid>
         <Label
@@ -50,6 +51,7 @@
             VerticalAlignment="Center"
             Content="Nom de la catégorie :" />
         <TextBox
+            Width="139"
             HorizontalAlignment="Left"
             DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
             Text="{Binding NomCategorie}"

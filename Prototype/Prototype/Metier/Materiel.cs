@@ -9,28 +9,27 @@ namespace Prototype.Metier
         public int IdMateriel { get; set; }
         public int FK_IdCategorie { get; set; }
         public string NomMateriel { get; set; }
-        public string CodeBarre { get; set; }
-        public string Refconstructeur { get; set; }
+        public string CodeBarreInventaire { get; set; }
+        public string ReferenceConstructeurMateriel { get; set; }
         public Categorie UneCategorie { get; set; }
         public ObservableCollection<Attribution> LesAttributions { get; set; }
 
    
         public Materiel()
         { }
-        public Materiel(int idMateriel, int fk_idCategorie, string nomMateriel, string codeBarre, string refconstructeur)
+        public Materiel(int idMateriel, int fk_idCategorie, string nomMateriel, string codeBarreInventaire, string referenceConstructeurMateriel)
         {
             this.IdMateriel = idMateriel;
             this.FK_IdCategorie = fk_idCategorie;
             this.NomMateriel = nomMateriel;
-            this.CodeBarre = codeBarre;
-            this.Refconstructeur = refconstructeur;
+            this.CodeBarreInventaire = codeBarreInventaire;
+            this.ReferenceConstructeurMateriel = referenceConstructeurMateriel;
         }
 
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into Materiel(idcategorie, nommateriel, codebarre, refconstructeur) values("+"1,'"+this.NomMateriel+"','"+this.CodeBarre+"','"+this.Refconstructeur+"');";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.GetData($"INSERT INTO MATERIEL(idCategorie, nomMateriel, codeBarreInventaire, referenceConstructeurMateriel) VALUES('{this.FK_IdCategorie}','{this.NomMateriel}','{this.CodeBarreInventaire}','{this.ReferenceConstructeurMateriel}');");
         }
 
         public void Read()
@@ -45,7 +44,8 @@ namespace Prototype.Metier
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accessDB = new DataAccess();
+            accessDB.SetData($"DELETE FROM MATERIEL WHERE idMateriel='{this.IdMateriel}'");
         }
 
         public ObservableCollection<Materiel> FindAll()
@@ -53,14 +53,13 @@ namespace Prototype.Metier
             ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
 
             DataAccess accesBD = new DataAccess();
-            String requete = "SELECT * FROM Materiel";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData("SELECT * FROM MATERIEL;");
 
             if (datas != null)
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["nommateriel"], (String)row["codeBarre"], (String)row["refConstructeur"]);
+                    Materiel m = new Materiel(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idCategorie"].ToString()), (String)row["nomMateriel"], (String)row["codeBarreInventaire"], (String)row["referenceConstructeurMateriel"]);
                     lesMateriels.Add(m);
                 }
             }

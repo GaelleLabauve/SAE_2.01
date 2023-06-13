@@ -35,7 +35,7 @@ namespace Prototype
                 Enseignant enseignant = new Enseignant();
                 enseignant.NomPersonnel = tbNom.Text;
                 enseignant.PrenomPersonnel = tbPrenom.Text;
-                enseignant.Email = tbMail.Text;
+                enseignant.EmailPersonnel = tbMail.Text;
 
                 // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);

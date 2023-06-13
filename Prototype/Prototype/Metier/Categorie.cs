@@ -28,8 +28,7 @@ namespace Prototype.Metier
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into Categorie(nomCategorie) values('"+this.NomCategorie+"'";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.GetData($"INSERT INTO CATEGORIE_MATERIEL(nomCategorie) VALUES('{this.NomCategorie}');");
         }
 
         public void Read()
@@ -40,15 +39,13 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "update Categorie set nomcategorie='" + this.NomCategorie + "' where idCategorie =" + IdCategorie;
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.GetData($"UPDATE CATEGORIE_MATERIEL SET nomCategorie='{this.NomCategorie}' WHERE idCategorie='{this.IdCategorie}';");
         }
 
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "delete from Categorie where idcategorie=" + this.IdCategorie;
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.GetData($"DELETE FROM CATEGORIE_MATERIEL WHERE idCategorie='{this.IdCategorie}';");
         }
 
         public ObservableCollection<Categorie> FindAll()
@@ -56,8 +53,7 @@ namespace Prototype.Metier
             ObservableCollection<Categorie> lesCategories = new ObservableCollection<Categorie>();
 
             DataAccess accesBD = new DataAccess();
-            String requete = "SELECT * FROM Categorie";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData("SELECT * FROM CATEGORIE_MATERIEL;");
 
             if (datas != null)
             {

@@ -9,26 +9,25 @@ namespace Prototype.Metier
         public int FK_IdMateriel { get; set; }
         public int FK_IdPersonnel { get; set; }
         public DateTime DateAttribution { get; set; }
-        public string Commentaire { get; set; }
+        public string CommentaireAttribution { get; set; }
         public Enseignant UnEnseignant { get; set; }
         public Materiel UnMateriel { get; set; }
 
         public Attribution()
         {
         }
-        public Attribution(int fK_IdMateriel, int fK_IdPersonnel, DateTime dateAttribution, string commentaire)
+        public Attribution(int fK_IdMateriel, int fK_IdPersonnel, DateTime dateAttribution, string commentaireAttribution)
         {
             this.FK_IdMateriel = fK_IdMateriel;
             this.FK_IdPersonnel = fK_IdPersonnel;
             this.DateAttribution = dateAttribution;
-            this.Commentaire = commentaire;
+            this.CommentaireAttribution = commentaireAttribution;
         }
 
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into Attribution(idmateriel, idpersonnel, dateattribution, commentaire) values(" + "1,1," + this.DateAttribution+",'" + this.Commentaire +"');";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData($"INSERT INTO EST_ATTRIBUE(idMateriel, idPersonnel, dateAttribution, commentaireAttribution) VALUES('{this.FK_IdMateriel}','{this.FK_IdPersonnel}','{this.DateAttribution}','{this.CommentaireAttribution}');");
         }
 
         public void Read()
@@ -39,15 +38,13 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "update Attribution set commentaire='"+this.Commentaire+"'"+" WHERE idmateriel="+this.FK_IdMateriel+" and idpersonnel="+this.FK_IdPersonnel+";";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData($"UPDATE EST_ATTRIBUE SET commentaireAttribution='{this.CommentaireAttribution}' WHERE idMateriel='{this.FK_IdMateriel}' AND idPersonnel='{this.FK_IdPersonnel}';");
         }
 
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "delete from Attribution WHERE idmateriel="+this.FK_IdMateriel+" and idpersonnel="+this.FK_IdPersonnel+";";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData($"DELETE FROM EST_ATTRIBUE WHERE idMateriel={this.FK_IdMateriel} AND idPersonnel='{this.FK_IdPersonnel}';");
         }
 
         public ObservableCollection<Attribution> FindAll()
@@ -55,14 +52,13 @@ namespace Prototype.Metier
             ObservableCollection<Attribution> lesAttributions = new ObservableCollection<Attribution>();
 
             DataAccess accesBD = new DataAccess();
-            String requete = "SELECT * FROM Attribution";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData("SELECT * FROM EST_ATTRIBUE;");
 
             if (datas != null)
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Attribution a = new Attribution(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idPersonnel"].ToString()), (DateTime)row["dateAttribution"], (String)row["commentaire"]);
+                    Attribution a = new Attribution(int.Parse(row["idMateriel"].ToString()), int.Parse(row["idPersonnel"].ToString()), (DateTime)row["dateAttribution"], (String)row["commentaireAttribution"]);
                     lesAttributions.Add(a);
                 }
             }

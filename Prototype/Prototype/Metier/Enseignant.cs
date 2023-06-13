@@ -8,23 +8,23 @@ namespace Prototype.Metier
     public class Enseignant : Crud<Enseignant>
     {
         public int IdPersonnel { get; set; }
-        public string Email { get; set; }
+        public string EmailPersonnel { get; set; }
         public string NomPersonnel { get; set; }
         public string PrenomPersonnel { get; set; }
         public ObservableCollection<Attribution> LesAttributions { get; set; }
 
         public Enseignant()
         { }
-        public Enseignant(int idPersonnel, string email, string nomPersonnel, string prenomPersonnel)
+        public Enseignant(int idPersonnel, string emailPersonnel, string nomPersonnel, string prenomPersonnel)
         {
             this.IdPersonnel = idPersonnel;
-            this.Email = email;
+            this.EmailPersonnel = emailPersonnel;
             this.NomPersonnel = nomPersonnel;
             this.PrenomPersonnel = prenomPersonnel;
         }
-        public Enseignant(string email, string nomPersonnel, string prenomPersonnel)
+        public Enseignant(string emailPersonnel, string nomPersonnel, string prenomPersonnel)
         {
-            this.Email = email;
+            this.EmailPersonnel = emailPersonnel;
             this.NomPersonnel = nomPersonnel;
             this.PrenomPersonnel = prenomPersonnel;
         }
@@ -32,7 +32,7 @@ namespace Prototype.Metier
         public void Create()
         {
             DataAccess accessDB = new DataAccess();
-            accessDB.SetData($"INSERT INTO ENSEIGNANT(nomPersonnel,prenomPersonnel,mail) VALUES ('{this.NomPersonnel}','{this.PrenomPersonnel}','{this.Email}')");
+            accessDB.SetData($"INSERT INTO PERSONNEL(nomPersonnel,prenomPersonnel,emailPersonnel) VALUES ('{this.NomPersonnel}','{this.PrenomPersonnel}','{this.EmailPersonnel}');");
         }
 
         public void Read()
@@ -48,7 +48,7 @@ namespace Prototype.Metier
         public void Delete()
         {
             DataAccess accessDB = new DataAccess();
-            accessDB.SetData($"DELETE FROM ENSEIGNANT WHERE idPersonnel='{this.IdPersonnel}'");
+            accessDB.SetData($"DELETE FROM PERSONNEL WHERE idPersonnel='{this.IdPersonnel}';");
         }
 
         public ObservableCollection<Enseignant> FindAll()
@@ -56,14 +56,13 @@ namespace Prototype.Metier
             ObservableCollection<Enseignant> lesEnseignants = new ObservableCollection<Enseignant>();
 
             DataAccess accesBD = new DataAccess();
-            String requete = "SELECT * FROM Enseignant";
-            DataTable datas = accesBD.GetData(requete);
+            DataTable datas = accesBD.GetData("SELECT * FROM PERSONNEL;");
 
             if (datas != null)
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Enseignant e = new Enseignant(int.Parse(row["idPersonnel"].ToString()), (String)row["mail"], (String)row["nomPersonnel"], (String)row["prenomPersonnel"]);
+                    Enseignant e = new Enseignant(int.Parse(row["idPersonnel"].ToString()), (String)row["emailPersonnel"], (String)row["nomPersonnel"], (String)row["prenomPersonnel"]);
                     lesEnseignants.Add(e);
                 }
             }

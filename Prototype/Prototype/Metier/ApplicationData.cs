@@ -60,18 +60,22 @@ namespace Prototype.Metier
         {
             if (obj is Categorie)
             {
+                ((Categorie)obj).Create();
                 this.LesCategories.Add((Categorie)obj);
             }
             else if (obj is Attribution)
             {
+                ((Attribution)obj).Create();
                 this.LesAttributions.Add((Attribution)obj);
             }
             else if (obj is Enseignant)
             {
+                ((Enseignant)obj).Create();
                 this.LesEnseignants.Add((Enseignant)obj);
             }
             else if (obj is Materiel)
             {
+                ((Materiel)obj).Create();
                 this.LesMateriels.Add((Materiel)obj);
             }
         }
@@ -79,18 +83,22 @@ namespace Prototype.Metier
         {
             if (obj is Categorie)
             {
+                ((Categorie)obj).Delete();
                 this.LesCategories.Remove((Categorie)obj);
             }
             else if (obj is Attribution)
             {
+                ((Attribution)obj).Delete();
                 this.LesAttributions.Remove((Attribution)obj);
             }
             else if (obj is Enseignant)
             {
+                ((Enseignant)obj).Delete();
                 this.LesEnseignants.Remove((Enseignant)obj);
             }
             else if (obj is Materiel)
             {
+                ((Materiel)obj).Delete();
                 this.LesMateriels.Remove((Materiel)obj);
             }
         }

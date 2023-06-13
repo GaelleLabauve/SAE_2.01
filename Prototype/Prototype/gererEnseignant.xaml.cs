@@ -37,9 +37,7 @@ namespace Prototype
                 enseignant.PrenomPersonnel = tbPrenom.Text;
                 enseignant.Email = tbMail.Text;
 
-                // Création de l'enseignant dans la base de données
-                enseignant.Create();
-                // Ajout à la liste LesEnseignants
+                // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);
                 // Rafraîchissement de la ListeView
                 lvEnseignant.Items.Refresh();
@@ -60,8 +58,10 @@ namespace Prototype
                 MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
                 if (result == MessageBoxResult.OK)
                 {
-                    // Suppression de l'enseignant dans la base de données
-                    enseignant.Delete();
+                    // Suppression de l'enseignant dans la base de données et dans la liste LesEnseignants
+                    ((ApplicationData)this.DataContext).Remove(enseignant);
+                    // Rafraîchissement de la ListeView
+                    lvEnseignant.Items.Refresh();
                 }
             }
         }

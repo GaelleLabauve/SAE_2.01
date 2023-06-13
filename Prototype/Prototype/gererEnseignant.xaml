@@ -75,7 +75,10 @@
                 Text=""
                 TextChanged="Mail_TextChanged"
                 TextWrapping="Wrap" />
-            <Label x:Name="lbMailError" Foreground="Red" />
+            <Label
+                x:Name="lbMailError"
+                Content=" "
+                Foreground="Red" />
         </StackPanel>
 
     </StackPanel>

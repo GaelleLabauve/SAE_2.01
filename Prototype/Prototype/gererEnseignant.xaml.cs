@@ -26,7 +26,7 @@ namespace Prototype
 
         private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
-            if (!(Verif_TextBoxVide() || Verif_Donnees()))
+            if (!(Verif_TextBoxVide() || Verif_Style()))
             {
                 // Ajouter l'ajout à la liste et à la base de données
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
@@ -39,28 +39,49 @@ namespace Prototype
             if (tb.Text.Length > 50)
             {
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+                if (tb == tbNom)
+                {
+                    lbNomError.Content = "Trop long ( > 50 caractères)";
+                } else
+                {
+                    lbPrenomError.Content = "Trop long ( > 50 caractères)";
+                }
             } else
             {
                 tb.Style = new Style();
+                if (tb == tbNom)
+                {
+                    lbNomError.Content = "";
+                }
+                else
+                {
+                    lbPrenomError.Content = "";
+                }
             }
         }
 
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 100)
+            if (tbMail.Text.Length > 100)
             {
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content += "Trop long";
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                lbMailError.Content = "Trop long";
 
-            } else if (!tbMail.Text.Contains('@'))
-            {
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content += "\tInvalide (manque @)";
             }
-            else
+            if (!tbMail.Text.Contains('@'))
             {
-                tb.Style = new Style();
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                String content = lbMailError.Content.ToString();
+                if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
+                {
+                    lbMailError.Content += "\tInvalide (manque @)";
+                }
+            }
+
+            if (tbMail.Text.Length <= 100 && tbMail.Text.Contains('@'))
+            {
+                tbMail.Style = new Style();
+                lbMailError.Content = " ";
             }
         }
 
@@ -88,28 +109,21 @@ namespace Prototype
             }
             return result;
         }
-        private bool Verif_Donnees()
+        private bool Verif_Style()
         {
-            bool result = false;
-            if (tbNom.Text.Length > 50)
+            if (tbNom.Style == (Style)Application.Current.FindResource("Obligatoire"))
             {
-                MessageBox.Show("Le nom invalide : trop long (>50 caractères)");
-                tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                result = true;
+                return true;
             }
-            if (tbPrenom.Text.Length > 50)
+            if (tbPrenom.Style == (Style)Application.Current.FindResource("Obligatoire"))
             {
-                MessageBox.Show("Le prénom invalide : trop long (>50 caractères)");
-                tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                result = true;
+                return true;
             }
-            if (tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
+            if (tbMail.Style == (Style)Application.Current.FindResource("Obligatoire"))
             {
-                MessageBox.Show("Le mail invaldie : trop long (>100 caractères) ou mauvais format (..@..)");
-                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                result = true;
+                return true;
             }
-            return result;
+            return false;
         }
     }
 }

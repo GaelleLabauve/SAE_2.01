@@ -50,9 +50,9 @@
             VerticalAlignment="Center"
             Content="Nom de la catégorie :" />
         <TextBox
-            Width="50"
             HorizontalAlignment="Left"
-            Text=""
+            DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
+            Text="{Binding NomCategorie}"
             TextWrapping="Wrap" />
     </StackPanel>
 </Window>

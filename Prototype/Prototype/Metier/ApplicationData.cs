@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows;
 
@@ -52,6 +53,11 @@ namespace Prototype.Metier
                 uneAttribution.UnMateriel = LesMateriels.ToList<Materiel>().Find(m => m.IdMateriel == uneAttribution.FK_IdMateriel);
                 
             }
+
         }
+            public void Remove(Categorie c)
+            {
+                this.LesCategories.Remove(c);
+            }
     }
 }

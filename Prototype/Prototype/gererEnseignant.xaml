@@ -22,7 +22,7 @@
             Content="Sélectionner un enseignant :"
             FontSize="14" />
         <ListView
-            x:Name="lv_enseignant"
+            x:Name="lvEnseignant"
             Height="100"
             ItemsSource="{Binding Path=LesEnseignants}">
             <ListView.View>

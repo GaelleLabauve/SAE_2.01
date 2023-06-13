@@ -42,7 +42,7 @@ namespace Prototype
                 // Ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);
                 // Rafraîchissement de la ListeView
-                lv_enseignant.Items.Refresh();
+                lvEnseignant.Items.Refresh();
 
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
@@ -54,9 +54,9 @@ namespace Prototype
 
         private void btSuppr_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_enseignant.SelectedIndex != -1)
+            if (lvEnseignant.SelectedIndex != -1)
             {
-                Enseignant enseignant = (Enseignant)lv_enseignant.SelectedItem;
+                Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
                 MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
                 if (result == MessageBoxResult.OK)
                 {

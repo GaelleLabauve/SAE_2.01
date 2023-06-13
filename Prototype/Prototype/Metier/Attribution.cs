@@ -27,7 +27,7 @@ namespace Prototype.Metier
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into Attribution(idmateriel, idpersonnel, dateattribution, commentaire) values(" + "1,1," + ", CURRENTDATE()," + this.Commentaire +"');";
+            String requete = "insert into Attribution(idmateriel, idpersonnel, dateattribution, commentaire) values(" + "1,1," + this.DateAttribution+",'" + this.Commentaire +"');";
             DataTable datas = accesBD.GetData(requete);
         }
 

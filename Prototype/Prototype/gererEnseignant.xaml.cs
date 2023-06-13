@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototype.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,10 @@ namespace Prototype
         {
             if (!(Verif_TextBoxVide() || Verif_Style()))
             {
-                // Ajouter l'ajout à la liste et à la base de données
+                DataAccess accessDB = new DataAccess();
+                accessDB.SetData($"INSERT INTO ENSEIGNANT(nomPersonnel,prenomPersonnel,mail) VALUES ('{tbNom.Text}','{tbPrenom.Text}','{tbMail.Text}')");
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
+                Reset();
             }
         }
 
@@ -124,6 +127,21 @@ namespace Prototype
                 return true;
             }
             return false;
+        }
+
+        private void Reset()
+        {
+            tbNom.Text = "";
+            tbPrenom.Text = "";
+            tbMail.Text = "";
+
+            tbNom.Style = new Style();
+            tbPrenom.Style = new Style();
+            tbMail.Style = new Style();
+
+            lbNomError.Content = " ";
+            lbPrenomError.Content = " ";
+            lbMailError.Content = " ";
         }
     }
 }

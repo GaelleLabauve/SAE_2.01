@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototype.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace Prototype
         public gererCategorie()
         {
             InitializeComponent();
+        }
+
+        private void BtSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);
+            lv_categorie.SelectedIndex = 0;
         }
     }
 }

@@ -77,6 +77,7 @@
                 <ListView
                     x:Name="lv_MaterielChoix"
                     Height="100"
+                    DataContext="{Binding SelectedItem, ElementName=lv_cateChoix}"
                     ItemsSource="{Binding Path=LesMateriels}">
                     <ListView.View>
                         <GridView>

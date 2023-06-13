@@ -54,17 +54,20 @@
                 Click="BtSupprimer_Click"
                 Content="Supprimer" />
         </Grid>
-        <Label
+        <StackPanel Orientation="Horizontal">
+
+            <Label
             Margin="0,15,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Content="Nom de la catégorie :" />
-        <TextBox
+            <TextBox
             x:Name="tbCategorie"
             Width="139"
             HorizontalAlignment="Left"
             DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
             Text="{Binding NomCategorie}"
             TextWrapping="Wrap" />
+        </StackPanel>
     </StackPanel>
 </Window>

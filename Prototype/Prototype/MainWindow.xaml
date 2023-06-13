@@ -24,7 +24,10 @@
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}" DataContext="{Binding LesAttributions}">
+            <DataGrid
+                AutoGenerateColumns="False"
+                DataContext="{Binding LesAttributions}"
+                ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
@@ -63,7 +66,7 @@
                 <ListView
                     x:Name="lv_cateChoix"
                     Height="100"
-                    ItemsSource="{Binding LesCategories}">
+                    ItemsSource="{Binding Path=LesCategories}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom catégorie" />

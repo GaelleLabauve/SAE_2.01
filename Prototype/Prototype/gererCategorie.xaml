@@ -16,7 +16,10 @@
             Background="#FFFF4343"
             Content="Gestion de la catégorie"
             FontSize="25" />
-        <Label x:Name="lb_selectCategorie" Content="Sélectionner une catégorie :" />
+        <Label
+            x:Name="lb_selectCategorie"
+            Content="Sélectionner une catégorie :"
+            FontSize="15" />
         <ListView
             x:Name="lv_categorie"
             Height="100"
@@ -39,35 +42,40 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="BtAjouter_Click"
-                Content="Ajouter" />
+                Content="Ajouter"
+                FontSize="14" />
             <Button
                 x:Name="btModdifier"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Click="btModdifier_Click"
-                Content="Modifier" />
+                Content="Modifier"
+                FontSize="14" />
             <Button
                 x:Name="btSupprimer"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Click="BtSupprimer_Click"
-                Content="Supprimer" />
+                Content="Supprimer"
+                FontSize="14" />
         </Grid>
         <StackPanel Orientation="Horizontal">
 
             <Label
-            Margin="0,15,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Content="Nom de la catégorie :" />
+                Margin="0,15,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Nom de la catégorie :"
+                FontSize="14" />
             <TextBox
-            x:Name="tbCategorie"
-            Width="139"
-            HorizontalAlignment="Left"
-            DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
-            Text="{Binding NomCategorie}"
-            TextWrapping="Wrap" />
+                x:Name="tbCategorie"
+                Width="139"
+                Height="25"
+                Margin="0,15,0,0"
+                DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
+                Text="{Binding NomCategorie}"
+                TextWrapping="Wrap" />
         </StackPanel>
     </StackPanel>
 </Window>

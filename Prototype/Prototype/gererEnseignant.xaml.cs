@@ -42,6 +42,28 @@ namespace Prototype
                     tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                 }
             }
+            else if (tbNom.Text.Length > 50 || tbPrenom.Text.Length > 50 || tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
+            {
+                if (tbNom.Text.Length > 50)
+                {
+                    MessageBox.Show("Le nom invalide : trop long (>50 caractères)");
+                    tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
+                if (tbPrenom.Text.Length > 50)
+                {
+                    MessageBox.Show("Le prénom invalide : trop long (>50 caractères)");
+                    tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
+                if (tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
+                {
+                    MessageBox.Show("Le mail invaldie : trop long (>100 caractères) ou mauvais format (..@..)");
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
+            } else
+            {
+                // Ajouter l'ajout à la liste et à la base de données
+                MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

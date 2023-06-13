@@ -68,6 +68,12 @@ namespace Prototype.Metier
         {
             this.LesEnseignants.Remove(e);
         }
+        public void Remove(object obj)
+        {
+            if (obj is Categorie)
+            {
 
+            }
+        }
     }
 }

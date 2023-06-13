@@ -26,7 +26,9 @@ namespace Prototype.Metier
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "insert into Attribution(idmateriel, idpersonnel, dateattribution, commentaire) values(" + "1,1," + ", CURRENTDATE()," + this.Commentaire +"');";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Read()
@@ -36,12 +38,16 @@ namespace Prototype.Metier
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "update Attribution set commentaire='"+this.Commentaire+"'"+" WHERE idmateriel="+this.FK_IdMateriel+" and idpersonnel="+this.FK_IdPersonnel+";";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "delete from Attribution WHERE idmateriel="+this.FK_IdMateriel+" and idpersonnel="+this.FK_IdPersonnel+";";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public ObservableCollection<Attribution> FindAll()

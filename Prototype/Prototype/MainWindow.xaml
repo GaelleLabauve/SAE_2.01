@@ -24,9 +24,7 @@
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <DataGrid
-                AutoGenerateColumns="False"
-                ItemsSource="{Binding LesAttributions}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"

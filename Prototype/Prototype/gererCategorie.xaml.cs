@@ -27,7 +27,16 @@ namespace Prototype
 
         private void BtSupprimer_Click(object sender, RoutedEventArgs e)
         {
+            ((Categorie)lv_categorie.SelectedItem).Delete();
             ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);
+            lv_categorie.SelectedIndex = 0;
+            
+        }
+
+        private void BtAjouter_Click(object sender, RoutedEventArgs e)
+        {
+            ((Categorie)lv_categorie.SelectedItem).Create();
+            ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie());
             lv_categorie.SelectedIndex = 0;
         }
     }

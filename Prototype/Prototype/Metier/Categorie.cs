@@ -23,7 +23,9 @@ namespace Prototype.Metier
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "insert into Categorie(nomCategorie) values("+this.NomCategorie+")";
+            DataTable datas = accesBD.GetData(requete); ;
         }
 
         public void Read()
@@ -38,7 +40,9 @@ namespace Prototype.Metier
 
         public void Delete()
         {
-            
+            DataAccess accesBD = new DataAccess();
+            String requete = "delete from Categorie where idcategorie=" + this.IdCategorie;
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public ObservableCollection<Categorie> FindAll()

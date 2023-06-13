@@ -13,6 +13,7 @@
     <Window.DataContext>
         <metier:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />

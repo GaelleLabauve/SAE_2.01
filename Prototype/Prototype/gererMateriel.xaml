@@ -49,22 +49,24 @@
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Nom du materiél :" />
             <TextBox
-                Width="120"
-                Text=""
+                DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
+                MinWidth="120"
+                Text="{Binding NomMateriel}"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Référence du constructeur :" />
             <TextBox
-                Width="120"
-                Text=""
+                DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
+                Text="{Binding Refconstructeur}"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Code barre :" />
             <TextBox
                 Width="120"
-                Text=""
+                DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
+                Text="{Binding CodeBarre}"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">

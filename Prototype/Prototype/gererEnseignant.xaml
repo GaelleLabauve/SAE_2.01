@@ -10,7 +10,17 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
-        <Label x:Name="lb_selectEnseignant" Content="Sélectionner un enseignant :" />
+        <Label
+            Height="45"
+            Margin="0,0,0,2"
+            Background="#FFFF4343"
+            Content="Gestion des enseignants"
+            FontSize="25" />
+        <Label
+            x:Name="lb_selectEnseignant"
+            Margin="0,5,0,0"
+            Content="Sélectionner un enseignant :"
+            FontSize="14" />
         <ListView
             x:Name="lv_enseignant"
             Height="100"
@@ -23,7 +33,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,10,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -35,23 +45,26 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Ajouter_Click"
-                Content="Ajouter" />
+                Content="Ajouter"
+                FontSize="14" />
             <Button
                 x:Name="btModif"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Content="Modifier" />
+                Content="Modifier"
+                FontSize="14" />
             <Button
                 x:Name="btSuppr"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="btSuppr_Click"
-                Content="Supprimer" />
+                Content="Supprimer"
+                FontSize="14" />
         </Grid>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
-            <Label Content="Nom de l'enseignant :" />
+            <Label Content="Nom de l'enseignant :" FontSize="14" />
             <TextBox
                 x:Name="tbNom"
                 Width="120"
@@ -61,7 +74,7 @@
             <Label x:Name="lbNomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
-            <Label Content="Prénom de l'enseignant :" />
+            <Label Content="Prénom de l'enseignant :" FontSize="14" />
             <TextBox
                 x:Name="tbPrenom"
                 Width="120"
@@ -71,7 +84,7 @@
             <Label x:Name="lbPrenomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
-            <Label Content="Mail :" />
+            <Label Content="Mail :" FontSize="14" />
             <TextBox
                 x:Name="tbMail"
                 Width="120"

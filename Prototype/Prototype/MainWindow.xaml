@@ -22,8 +22,8 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*" />
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="271*" />
+                <ColumnDefinition Width="129*" />
             </Grid.ColumnDefinitions>
             <DataGrid
                 Height="356"
@@ -69,7 +69,8 @@
                     Grid.Column="1"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
-                    Content="Sélectionnez une catégorie de matériel :" />
+                    Content="Sélectionnez une catégorie de matériel :"
+                    FontSize="14" />
                 <ListView
                     x:Name="lv_cateChoix"
                     Height="110"
@@ -87,7 +88,8 @@
                     Width="228"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
-                    Content="Choisir un materiel :" />
+                    Content="Choisir un materiel :"
+                    FontSize="14" />
                 <ListView
                     x:Name="lv_MaterielChoix"
                     Height="100"
@@ -106,7 +108,8 @@
                     x:Name="bt_tousMateriel"
                     BorderBrush="Black"
                     Click="bt_tousMateriel_Click"
-                    Content="Voir tous les matériels" />
+                    Content="Voir tous les matériels"
+                    FontSize="14" />
             </StackPanel>
             <Rectangle
                 Grid.ColumnSpan="2"
@@ -117,6 +120,7 @@
                 Fill="#FFFF1D1D"
                 Stroke="Black" />
             <Label
+                Grid.ColumnSpan="2"
                 Width="332"
                 Height="38"
                 Margin="228,7,0,0"
@@ -127,25 +131,32 @@
 
         </Grid>
         <Menu>
-            <MenuItem Header="Gérer">
+            <MenuItem FontSize="14" Header="Gérer">
                 <MenuItem
                     x:Name="mi_gererAsso"
                     Click="mi_gererAsso_Click"
+                    FontSize="14"
                     Header="Attribution" />
                 <MenuItem
                     x:Name="mi_gererCate"
                     Click="mi_gererCate_Click"
+                    FontSize="14"
                     Header="Catégorie" />
                 <MenuItem
                     x:Name="mi_gererEnseinant"
                     Click="mi_gererEnseinant_Click"
+                    FontSize="14"
                     Header="Enseignant" />
                 <MenuItem
                     x:Name="mi_gererMateriel"
                     Click="mi_gererMateriel_Click"
+                    FontSize="14"
                     Header="Matériel" />
             </MenuItem>
-            <MenuItem Click="MenuItem_ClickQuitter" Header="Quitter" />
+            <MenuItem
+                Click="MenuItem_ClickQuitter"
+                FontSize="14"
+                Header="Quitter" />
         </Menu>
 
     </Grid>

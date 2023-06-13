@@ -56,18 +56,43 @@ namespace Prototype.Metier
 
         }
 
-        public void Remove(Categorie c)
+        public void Add(object obj)
         {
-            this.LesCategories.Remove(c);
+            if (obj is Categorie)
+            {
+                this.LesCategories.Add((Categorie)obj);
+            }
+            else if (obj is Attribution)
+            {
+                this.LesAttributions.Add((Attribution)obj);
+            }
+            else if (obj is Enseignant)
+            {
+                this.LesEnseignants.Add((Enseignant)obj);
+            }
+            else if (obj is Materiel)
+            {
+                this.LesMateriels.Add((Materiel)obj);
+            }
         }
-        public void Remove(Attribution c)
+        public void Remove(object obj)
         {
-            this.LesAttributions.Remove(c);
+            if (obj is Categorie)
+            {
+                this.LesCategories.Remove((Categorie)obj);
+            }
+            else if (obj is Attribution)
+            {
+                this.LesAttributions.Remove((Attribution)obj);
+            }
+            else if (obj is Enseignant)
+            {
+                this.LesEnseignants.Remove((Enseignant)obj);
+            }
+            else if (obj is Materiel)
+            {
+                this.LesMateriels.Remove((Materiel)obj);
+            }
         }
-        public void Remove(Enseignant e)
-        {
-            this.LesEnseignants.Remove(e);
-        }
-
     }
 }

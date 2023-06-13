@@ -39,6 +39,10 @@ namespace Prototype
 
                 // Création de l'enseignant dans la base de données
                 enseignant.Create();
+                // Ajout à la liste LesEnseignants
+                ((ApplicationData)this.DataContext).Add(enseignant);
+                // Rafraîchissement de la ListeView
+                lv_enseignant.Items.Refresh();
 
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
@@ -47,6 +51,21 @@ namespace Prototype
                 Reset();
             }
         }
+
+        private void btSuppr_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_enseignant.SelectedIndex != -1)
+            {
+                Enseignant enseignant = (Enseignant)lv_enseignant.SelectedItem;
+                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    // Suppression de l'enseignant dans la base de données
+                    enseignant.Delete();
+                }
+            }
+        }
+
 
         private void NomPrenom_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -169,20 +188,6 @@ namespace Prototype
             lbNomError.Content = " ";
             lbPrenomError.Content = " ";
             lbMailError.Content = " ";
-        }
-
-        private void btSuppr_Click(object sender, RoutedEventArgs e)
-        {
-            if (lv_enseignant.SelectedIndex != -1)
-            {
-                Enseignant enseignant = (Enseignant)lv_enseignant.SelectedItem;
-                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} de la liste des enseignants ?", "Suppression enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
-                if (result == MessageBoxResult.OK)
-                {
-                    // Suppression de l'enseignant dans la base de données
-                    enseignant.Delete();
-                }
-            }
         }
     }
 }

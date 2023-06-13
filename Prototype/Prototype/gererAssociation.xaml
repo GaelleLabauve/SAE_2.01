@@ -14,7 +14,7 @@
         <ListView
             x:Name="lv_Attribution"
             Height="100"
-            ItemsSource="{Binding Path=LesAttributions}">
+            ItemsSource="{Binding Path=LesAttributions}" SelectionChanged="lv_Attribution_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=DateAttribution}" Header="Date" Width="68" />
@@ -51,7 +51,7 @@
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="Supprimer" />
+                Content="Supprimer" Click="bt_supp_Click" />
         </Grid>
         <StackPanel
             x:Name="sp_categorie"

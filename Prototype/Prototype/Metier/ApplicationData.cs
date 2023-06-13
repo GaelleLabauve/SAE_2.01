@@ -59,5 +59,9 @@ namespace Prototype.Metier
             {
                 this.LesCategories.Remove(c);
             }
+            public void Remove(Attribution c)
+            {
+                this.LesAttributions.Remove(c);
+            }
     }
 }

@@ -55,6 +55,7 @@
                 Text=""
                 TextChanged="NomPrenom_TextChanged"
                 TextWrapping="Wrap" />
+            <Label x:Name="lbNomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Prénom de l'enseignant :" />
@@ -64,6 +65,7 @@
                 Text=""
                 TextChanged="NomPrenom_TextChanged"
                 TextWrapping="Wrap" />
+            <Label x:Name="lbPrenomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
             <Label Content="Mail :" />
@@ -73,6 +75,7 @@
                 Text=""
                 TextChanged="Mail_TextChanged"
                 TextWrapping="Wrap" />
+            <Label x:Name="lbMailError" Foreground="Red" />
         </StackPanel>
 
     </StackPanel>

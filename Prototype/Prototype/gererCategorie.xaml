@@ -14,7 +14,7 @@
         <ListView
             x:Name="lv_categorie"
             Height="100"
-            d:ItemsSource="{Binding Path=LesCategories}">
+            ItemsSource="{Binding Path=LesCategories}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom" />

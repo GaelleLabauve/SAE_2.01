@@ -14,7 +14,7 @@
         <ListView
             x:Name="lv_materiel"
             Height="100"
-            d:ItemsSource="{Binding Path=LesMateriels}">
+            ItemsSource="{Binding Path=LesMateriels}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=NomMateriel}" Header="Nom" />

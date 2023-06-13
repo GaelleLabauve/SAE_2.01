@@ -58,19 +58,23 @@
             Margin="0,15,0,0"
             Orientation="Horizontal">
             <Label Content="Catégorie :" />
-            <ComboBox />
+            <ComboBox  ItemsSource="{Binding Path=LesCategories}" 
+          DisplayMemberPath="NomCategorie"/>
         </StackPanel>
         <StackPanel x:Name="sp_materiel" Orientation="Horizontal">
             <Label Content="Matériel :" />
-            <ComboBox />
+            <ComboBox ItemsSource="{Binding Path=LesMateriels}" 
+          DisplayMemberPath="NomMateriel"/>
         </StackPanel>
         <StackPanel x:Name="sp_nomEns" Orientation="Horizontal">
             <Label Content="Nom enseignant :" />
-            <ComboBox />
+            <ComboBox ItemsSource="{Binding Path=LesEnseignants}" 
+          DisplayMemberPath="NomPersonnel"/>
         </StackPanel>
         <StackPanel x:Name="sp_prenomEns" Orientation="Horizontal">
             <Label Content="Prénom enseignant :" />
-            <ComboBox />
+            <ComboBox ItemsSource="{Binding Path=LesEnseignants}" 
+          DisplayMemberPath="PrenomPersonnel"/>
         </StackPanel>
         <StackPanel x:Name="sp_date" Orientation="Horizontal">
             <Label Content="Date :" />

@@ -55,13 +55,19 @@ namespace Prototype.Metier
             }
 
         }
-            public void Remove(Categorie c)
-            {
-                this.LesCategories.Remove(c);
-            }
-            public void Remove(Attribution c)
-            {
-                this.LesAttributions.Remove(c);
-            }
+
+        public void Remove(Categorie c)
+        {
+            this.LesCategories.Remove(c);
+        }
+        public void Remove(Attribution c)
+        {
+            this.LesAttributions.Remove(c);
+        }
+        public void Remove(Enseignant e)
+        {
+            this.LesEnseignants.Remove(e);
+        }
+
     }
 }

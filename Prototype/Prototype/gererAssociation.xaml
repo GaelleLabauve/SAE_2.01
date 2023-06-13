@@ -10,7 +10,16 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
-        <Label x:Name="lb_selectAsso" Content="Sélectionner une attribution :" />
+        <Label
+            Height="45"
+            Margin="0,0,0,2"
+            Background="#FFFF4343"
+            Content="Gestion des associations"
+            FontSize="25" />
+        <Label
+            x:Name="lb_selectAsso"
+            Content="Sélectionner une attribution :"
+            FontSize="14" />
         <ListView
             x:Name="lv_Attribution"
             Height="100"
@@ -41,7 +50,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,10,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -70,39 +79,54 @@
                 Click="bt_supp_Click"
                 Content="Supprimer" />
         </Grid>
-        <StackPanel x:Name="sp_lesReseignement" >
+        <StackPanel x:Name="sp_lesReseignement">
             <StackPanel
-            x:Name="sp_categorie"
-            Margin="0,15,0,0"
-            Orientation="Horizontal">
-                <Label Content="Catégorie :" />
+                x:Name="sp_categorie"
+                Margin="0,4,0,0"
+                Orientation="Horizontal">
+                <Label Content="Catégorie :" FontSize="14" />
                 <ComboBox DisplayMemberPath="NomCategorie" ItemsSource="{Binding Path=LesCategories}" />
             </StackPanel>
-            <StackPanel x:Name="sp_materiel" Orientation="Horizontal">
-                <Label Content="Matériel :" />
+            <StackPanel
+                x:Name="sp_materiel"
+                Margin="0,5,0,0"
+                Orientation="Horizontal">
+                <Label Content="Matériel :" FontSize="14" />
                 <ComboBox DisplayMemberPath="NomMateriel" ItemsSource="{Binding Path=LesMateriels}" />
             </StackPanel>
-            <StackPanel x:Name="sp_nomEns" Orientation="Horizontal">
-                <Label Content="Nom enseignant :" />
+            <StackPanel
+                x:Name="sp_nomEns"
+                Margin="0,5,0,0"
+                Orientation="Horizontal">
+                <Label Content="Nom enseignant :" FontSize="14" />
                 <ComboBox DisplayMemberPath="NomPersonnel" ItemsSource="{Binding Path=LesEnseignants}" />
             </StackPanel>
-            <StackPanel x:Name="sp_prenomEns" Orientation="Horizontal">
-                <Label Content="Prénom enseignant :" />
+            <StackPanel
+                x:Name="sp_prenomEns"
+                Margin="0,5,0,0"
+                Orientation="Horizontal">
+                <Label Content="Prénom enseignant :" FontSize="14" />
                 <ComboBox DisplayMemberPath="PrenomPersonnel" ItemsSource="{Binding Path=UnEnseignant}" />
             </StackPanel>
-            <StackPanel x:Name="sp_date" Orientation="Horizontal">
-                <Label Content="Date :" />
-                <DatePicker SelectedDate="{Binding DateAttribution, Mode=TwoWay}"
-                DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"/>
+            <StackPanel
+                x:Name="sp_date"
+                Margin="0,5,0,0"
+                Orientation="Horizontal">
+                <Label Content="Date :" FontSize="14" />
+                <DatePicker DataContext="{Binding SelectedItem, ElementName=lv_Attribution}" SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
             </StackPanel>
-            <StackPanel x:Name="sp_commentaire" Orientation="Horizontal">
-                <Label Content="Commentaire :" />
+            <StackPanel
+                x:Name="sp_commentaire"
+                Margin="0,5,0,0"
+                Orientation="Horizontal">
+                <Label Content="Commentaire :" FontSize="14" />
                 <TextBox
-                MinWidth="100"
-                DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
-                Text="{Binding Commentaire}" />
+                    Height="24"
+                    MinWidth="100"
+                    DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
+                    Text="{Binding Commentaire}" />
             </StackPanel>
         </StackPanel>
-        
+
     </StackPanel>
 </Window>

@@ -24,20 +24,30 @@ namespace Prototype
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(tbNom.Text))
+            if (String.IsNullOrWhiteSpace(tbNom.Text) || String.IsNullOrWhiteSpace(tbPrenom.Text) || String.IsNullOrWhiteSpace(tbMail.Text))
             {
-                MessageBox.Show("Renseigner les champs manquants");
+                MessageBox.Show("Veuillez remplir les champs manquants.", "Champs manquants", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (String.IsNullOrWhiteSpace(tbNom.Text))
+                {
+                    tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
+                if (String.IsNullOrWhiteSpace(tbPrenom.Text))
+                {
+                    tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
+                if (String.IsNullOrWhiteSpace(tbMail.Text))
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                }
             }
-            if (String.IsNullOrWhiteSpace(tbPrenom.Text))
-            {
-                MessageBox.Show("Renseigner les champs manquants");
-            }
-            if (String.IsNullOrWhiteSpace(tbMail.Text))
-            {
-                MessageBox.Show("Renseigner les champs manquants");
-            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Style = new Style();
         }
     }
 }

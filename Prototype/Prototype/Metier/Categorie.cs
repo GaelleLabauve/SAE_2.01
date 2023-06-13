@@ -20,11 +20,15 @@ namespace Prototype.Metier
             this.IdCategorie = idCategorie;
             this.NomCategorie = nomCategorie;
         }
+        public Categorie( string nomCategorie)
+        {
+            this.NomCategorie = nomCategorie;
+        }
 
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into Categorie(nomCategorie) values("+this.NomCategorie+")";
+            String requete = "insert into Categorie(nomCategorie) values('"+this.NomCategorie+"')";
             DataTable datas = accesBD.GetData(requete); ;
         }
 

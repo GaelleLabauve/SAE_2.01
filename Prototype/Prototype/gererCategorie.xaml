@@ -53,6 +53,7 @@
             VerticalAlignment="Center"
             Content="Nom de la catégorie :" />
         <TextBox
+            x:Name="tbCategorie"
             Width="139"
             HorizontalAlignment="Left"
             DataContext="{Binding SelectedItem, ElementName=lv_categorie}"

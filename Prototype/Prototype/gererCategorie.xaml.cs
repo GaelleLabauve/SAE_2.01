@@ -35,9 +35,9 @@ namespace Prototype
 
         private void BtAjouter_Click(object sender, RoutedEventArgs e)
         {
-            ((Categorie)lv_categorie.SelectedItem).Create();
-            ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie());
+            ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie(tbCategorie.Text));
             lv_categorie.SelectedIndex = 0;
+            ((Categorie)lv_categorie.SelectedItem).Create();
         }
     }
 }

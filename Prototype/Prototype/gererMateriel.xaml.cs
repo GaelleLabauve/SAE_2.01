@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototype.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,17 @@ namespace Prototype
         public gererMateriel()
         {
             InitializeComponent();
+        }
+
+        private void bt_ajouter_Click(object sender, RoutedEventArgs e)
+        {
+            ((ApplicationData)DataContext).LesMateriels.Insert(0, new Materiel());
+            lv_materiel.SelectedIndex = 0;
+        }
+
+        private void bt_valideajout_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Create();
         }
     }
 }

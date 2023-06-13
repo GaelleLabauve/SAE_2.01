@@ -32,10 +32,7 @@ namespace Prototype
             if (!(Verif_TextBoxVide() || Verif_Style()))
             {
                 // Initialisation du nouvel enseignant et ajout des informations
-                Enseignant enseignant = new Enseignant();
-                enseignant.NomPersonnel = tbNom.Text;
-                enseignant.PrenomPersonnel = tbPrenom.Text;
-                enseignant.EmailPersonnel = tbMail.Text;
+                Enseignant enseignant = new Enseignant(tbMail.Text, tbNom.Text, tbPrenom.Text);
 
                 // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);
@@ -158,6 +155,11 @@ namespace Prototype
             }
             return result;
         }
+
+        /// <summary>
+        /// Vérifie les styles des TextBox.
+        /// </summary>
+        /// <returns>True si une des TextBox a le style "Obligatoire" (aux bordures rouges).</returns>
         private bool Verif_Style()
         {
             if (tbNom.Style == (Style)Application.Current.FindResource("Obligatoire"))
@@ -175,6 +177,9 @@ namespace Prototype
             return false;
         }
 
+        /// <summary>
+        /// Réinitialise toutes les TextBox, les styles de celles-ci, ainsi que les labels des messages d'erreur.
+        /// </summary>
         private void Reset()
         {
             tbNom.Text = "";

@@ -26,50 +26,84 @@ namespace Prototype
 
         private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(tbNom.Text) || String.IsNullOrWhiteSpace(tbPrenom.Text) || String.IsNullOrWhiteSpace(tbMail.Text))
-            {
-                MessageBox.Show("Veuillez remplir les champs manquants.", "Champs manquants", MessageBoxButton.OK, MessageBoxImage.Warning);
-                if (String.IsNullOrWhiteSpace(tbNom.Text))
-                {
-                    tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-                if (String.IsNullOrWhiteSpace(tbPrenom.Text))
-                {
-                    tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-                if (String.IsNullOrWhiteSpace(tbMail.Text))
-                {
-                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-            }
-            else if (tbNom.Text.Length > 50 || tbPrenom.Text.Length > 50 || tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
-            {
-                if (tbNom.Text.Length > 50)
-                {
-                    MessageBox.Show("Le nom invalide : trop long (>50 caractères)");
-                    tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-                if (tbPrenom.Text.Length > 50)
-                {
-                    MessageBox.Show("Le prénom invalide : trop long (>50 caractères)");
-                    tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-                if (tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
-                {
-                    MessageBox.Show("Le mail invaldie : trop long (>100 caractères) ou mauvais format (..@..)");
-                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                }
-            } else
+            if (!(Verif_TextBoxVide() || Verif_Donnees()))
             {
                 // Ajouter l'ajout à la liste et à la base de données
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NomPrenom_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            tb.Style = new Style();
+            if (tb.Text.Length > 50)
+            {
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+            } else
+            {
+                tb.Style = new Style();
+            }
+        }
+
+        private void Mail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100 || !tbMail.Text.Contains('@'))
+            {
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+            }
+            else
+            {
+                tb.Style = new Style();
+            }
+        }
+
+        private bool Verif_TextBoxVide()
+        {
+            bool result = false;
+            if (String.IsNullOrWhiteSpace(tbNom.Text))
+            {
+                tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            if (String.IsNullOrWhiteSpace(tbPrenom.Text))
+            {
+                tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            if (String.IsNullOrWhiteSpace(tbMail.Text))
+            {
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            if (result)
+            {
+                MessageBox.Show("Veuillez remplir les champs manquants.", "Champs manquants", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return result;
+        }
+        private bool Verif_Donnees()
+        {
+            bool result = false;
+            if (tbNom.Text.Length > 50)
+            {
+                MessageBox.Show("Le nom invalide : trop long (>50 caractères)");
+                tbNom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            if (tbPrenom.Text.Length > 50)
+            {
+                MessageBox.Show("Le prénom invalide : trop long (>50 caractères)");
+                tbPrenom.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            if (tbMail.Text.Length > 100 || !tbMail.Text.Contains('@'))
+            {
+                MessageBox.Show("Le mail invaldie : trop long (>100 caractères) ou mauvais format (..@..)");
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                result = true;
+            }
+            return result;
         }
     }
 }

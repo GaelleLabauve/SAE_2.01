@@ -53,7 +53,7 @@
                 x:Name="tbNom"
                 Width="120"
                 Text=""
-                TextChanged="TextBox_TextChanged"
+                TextChanged="NomPrenom_TextChanged"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
@@ -62,7 +62,7 @@
                 x:Name="tbPrenom"
                 Width="120"
                 Text=""
-                TextChanged="TextBox_TextChanged"
+                TextChanged="NomPrenom_TextChanged"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
@@ -71,7 +71,7 @@
                 x:Name="tbMail"
                 Width="120"
                 Text=""
-                TextChanged="TextBox_TextChanged"
+                TextChanged="Mail_TextChanged"
                 TextWrapping="Wrap" />
         </StackPanel>
 

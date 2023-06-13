@@ -70,7 +70,7 @@
                 Click="bt_supp_Click"
                 Content="Supprimer" />
         </Grid>
-        <StackPanel x:Name="sp_lesReseignement" DataContext="{Binding SelectedItem, ElementName=lv_Attribution}">
+        <StackPanel x:Name="sp_lesReseignement" >
             <StackPanel
             x:Name="sp_categorie"
             Margin="0,15,0,0"
@@ -88,16 +88,17 @@
             </StackPanel>
             <StackPanel x:Name="sp_prenomEns" Orientation="Horizontal">
                 <Label Content="Prénom enseignant :" />
-                <ComboBox DisplayMemberPath="PrenomPersonnel" ItemsSource="{Binding Path=LesEnseignants}" />
+                <ComboBox DisplayMemberPath="PrenomPersonnel" ItemsSource="{Binding Path=UnEnseignant}" />
             </StackPanel>
             <StackPanel x:Name="sp_date" Orientation="Horizontal">
                 <Label Content="Date :" />
-                <DatePicker SelectedDate="{Binding DateAttribution, Mode=TwoWay}"/>
+                <DatePicker SelectedDate="{Binding DateAttribution, Mode=TwoWay}"
+                DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"/>
             </StackPanel>
             <StackPanel x:Name="sp_commentaire" Orientation="Horizontal">
                 <Label Content="Commentaire :" />
                 <TextBox
-                MinWidth="100"                  
+                MinWidth="100"
                 DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
                 Text="{Binding Commentaire}" />
             </StackPanel>

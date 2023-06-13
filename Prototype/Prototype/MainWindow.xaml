@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Prototype"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:metier="clr-namespace:Prototype.Métier"
+    xmlns:metier="clr-namespace:Prototype.Metier"
     Title="MATINFO"
     Width="800"
     Height="450"

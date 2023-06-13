@@ -39,5 +39,11 @@ namespace Prototype
             lv_categorie.SelectedIndex = 0;
             ((Categorie)lv_categorie.SelectedItem).Create();
         }
+
+        private void btModdifier_Click(object sender, RoutedEventArgs e)
+        {
+            ((Categorie)lv_categorie.SelectedItem).Create();
+            ((ApplicationData)DataContext).LesCategories.Take(tbCategorie.Text);
+        }
     }
 }

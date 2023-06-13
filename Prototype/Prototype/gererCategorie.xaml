@@ -35,11 +35,11 @@
                 Click="BtAjouter_Click"
                 Content="Ajouter" />
             <Button
+                x:Name="btModdifier"
                 Grid.Column="1"
-                Margin="0,0,0,0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Content="Modifier" />
+                VerticalAlignment="Top"
+                Content="Modifier" Click="btModdifier_Click" />
             <Button
                 x:Name="btSupprimer"
                 HorizontalAlignment="Center"

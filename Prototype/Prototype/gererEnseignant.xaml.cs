@@ -47,20 +47,26 @@ namespace Prototype
 
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 100)
+            if (tbMail.Text.Length > 100)
             {
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content += "Trop long";
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                lbMailError.Content = "Trop long";
 
-            } else if (!tbMail.Text.Contains('@'))
-            {
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content += "\tInvalide (manque @)";
             }
-            else
+            if (!tbMail.Text.Contains('@'))
             {
-                tb.Style = new Style();
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                String content = lbMailError.Content.ToString();
+                if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
+                {
+                    lbMailError.Content += "\tInvalide (manque @)";
+                }
+            }
+
+            if (tbMail.Text.Length <= 100 && tbMail.Text.Contains('@'))
+            {
+                tbMail.Style = new Style();
+                lbMailError.Content = " ";
             }
         }
 

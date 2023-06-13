@@ -10,7 +10,16 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
-        <Label x:Name="lb_selectCategorie" Content="Sélectionner une catégorie :" />
+        <Label
+            Height="45"
+            Margin="0,0,0,5"
+            Background="#FFFF4343"
+            Content="Gestion de la catégorie"
+            FontSize="25" />
+        <Label
+            x:Name="lb_selectCategorie"
+            Content="Sélectionner une catégorie :"
+            FontSize="15" />
         <ListView
             x:Name="lv_categorie"
             Height="100"
@@ -21,7 +30,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,20,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -33,31 +42,40 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="BtAjouter_Click"
-                Content="Ajouter" />
+                Content="Ajouter"
+                FontSize="14" />
             <Button
+                x:Name="btModdifier"
                 Grid.Column="1"
-                Margin="0,0,0,0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Content="Modifier" />
+                VerticalAlignment="Top"
+                Click="btModdifier_Click"
+                Content="Modifier"
+                FontSize="14" />
             <Button
                 x:Name="btSupprimer"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Click="BtSupprimer_Click"
-                Content="Supprimer" />
+                Content="Supprimer"
+                FontSize="14" />
         </Grid>
-        <Label
-            Margin="0,25,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Content="Nom de la catégorie :" />
-        <TextBox
-            x:Name="tbCategorie"
-            Width="139"
-            HorizontalAlignment="Left"
-            DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
-            Text="{Binding NomCategorie}"
-            TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal">
+
+            <Label
+                Margin="0,15,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Nom de la catégorie :"
+                FontSize="14" />
+            <TextBox
+                x:Name="tbCategorie"
+                Width="139"
+                Height="25"
+                Margin="0,15,0,0"
+                DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
+                Text="{Binding NomCategorie}"
+                TextWrapping="Wrap" />
+        </StackPanel>
     </StackPanel>
 </Window>

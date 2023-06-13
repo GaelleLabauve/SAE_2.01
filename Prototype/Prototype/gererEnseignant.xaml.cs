@@ -27,6 +27,9 @@ namespace Prototype
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Ajoute (après vérification) un enseignant à la base de données et à la liste LesEnseignants.
+        /// </summary>
         private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
             if (!(Verif_TextBoxVide() || Verif_Style()))
@@ -47,6 +50,9 @@ namespace Prototype
             }
         }
 
+        /// <summary>
+        /// Suppression (après confirmation) de l'item sélectionné dans la ListView.
+        /// </summary>
         private void btSuppr_Click(object sender, RoutedEventArgs e)
         {
             if (lvEnseignant.SelectedIndex != -1)
@@ -63,7 +69,9 @@ namespace Prototype
             }
         }
 
-
+        /// <summary>
+        /// Applique le style "Obligatoire" (bordures rouges) à la TextBox en fonction du texte (ici de la longueur du texte)
+        /// </summary>
         private void NomPrenom_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -97,6 +105,9 @@ namespace Prototype
             }
         }
 
+        /// <summary>
+        /// Applique le style "Obligatoire" (bordures rouges) à la TextBox en fonction du texte (ici de la longueur du texte et la présence ou non d'un @)
+        /// </summary>
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Si la taille du mail dépasse 100 caractères alors il n'est pas valide

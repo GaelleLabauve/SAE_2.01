@@ -10,6 +10,12 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
+        <Label
+            Height="45"
+            Margin="0,0,0,5"
+            Background="#FFFF4343"
+            Content="Gestion de la catégorie"
+            FontSize="25" />
         <Label x:Name="lb_selectCategorie" Content="Sélectionner une catégorie :" />
         <ListView
             x:Name="lv_categorie"
@@ -21,7 +27,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,20,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -39,7 +45,8 @@
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Content="Modifier" Click="btModdifier_Click" />
+                Click="btModdifier_Click"
+                Content="Modifier" />
             <Button
                 x:Name="btSupprimer"
                 HorizontalAlignment="Center"
@@ -48,7 +55,7 @@
                 Content="Supprimer" />
         </Grid>
         <Label
-            Margin="0,25,0,0"
+            Margin="0,15,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Content="Nom de la catégorie :" />

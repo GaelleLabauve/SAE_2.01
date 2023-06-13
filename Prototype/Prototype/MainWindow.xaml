@@ -22,10 +22,16 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesAttributions}">
+            <DataGrid
+                Height="356"
+                Margin="0,53,0,0"
+                VerticalAlignment="Top"
+                AutoGenerateColumns="False"
+                BorderBrush="Black"
+                ItemsSource="{Binding LesAttributions}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
@@ -53,17 +59,20 @@
                         Header="Commentaire" />
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Grid.Column="1" Margin="5,0,5,0">
+            <StackPanel
+                Grid.Column="1"
+                Height="356"
+                Margin="5,0,0,0"
+                VerticalAlignment="Bottom">
                 <Label
                     x:Name="lb_selectCate"
                     Grid.Column="1"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
                     Content="Sélectionnez une catégorie de matériel :" />
                 <ListView
                     x:Name="lv_cateChoix"
-                    Height="100"
+                    Height="110"
                     ItemsSource="{Binding Path=LesCategories}">
                     <ListView.View>
                         <GridView>
@@ -75,9 +84,9 @@
                 <Label
                     x:Name="lb_selectMateriel"
                     Grid.Column="1"
+                    Width="228"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
                     Content="Choisir un materiel :" />
                 <ListView
                     x:Name="lv_MaterielChoix"
@@ -93,16 +102,28 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
                 <Button
                     x:Name="bt_tousMateriel"
-                    Grid.Column="1"
-                    Margin="10,10,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
+                    BorderBrush="Black"
                     Click="bt_tousMateriel_Click"
                     Content="Voir tous les matériels" />
             </StackPanel>
+            <Rectangle
+                Grid.ColumnSpan="2"
+                Width="800"
+                Height="53"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="#FFFF1D1D"
+                Stroke="Black" />
+            <Label
+                Width="332"
+                Height="38"
+                Margin="228,7,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="MATINFO - Gestion des attributions"
+                FontSize="20" />
 
         </Grid>
         <Menu>

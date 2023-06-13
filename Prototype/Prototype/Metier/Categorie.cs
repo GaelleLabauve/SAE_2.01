@@ -40,7 +40,7 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "update Categorie set nomcategorie='" + this.NomCategorie + "')";
+            String requete = "update Categorie set nomcategorie='" + this.NomCategorie + "' where idCategorie =" + IdCategorie;
             DataTable datas = accesBD.GetData(requete);
         }
 

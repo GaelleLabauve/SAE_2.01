@@ -9,7 +9,16 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <StackPanel Margin="10,20,10,10">
+    <StackPanel
+        Height="404"
+        Margin="10,0,10,10"
+        VerticalAlignment="Bottom">
+        <Label
+            Height="45"
+            Margin="0,0,0,5"
+            Background="#FFFF4343"
+            Content="Gestion du matériel"
+            FontSize="25" />
         <Label x:Name="lb_selectMateriel" Content="Sélectionner un matériel :" />
         <ListView
             x:Name="lv_materiel"
@@ -23,7 +32,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,50,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,20,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -57,26 +66,34 @@
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Label Content="Référence du constructeur :" />
+            <Label Margin="0,10,0,0" Content="Référence du constructeur :" />
             <TextBox
+                Width="116"
+                Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding Refconstructeur}"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Label Content="Code barre :" />
+            <Label Margin="0,10,0,0" Content="Code barre :" />
             <TextBox
                 Width="120"
+                Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding CodeBarre}"
                 TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Label Content="Catégorie :" />
-            <ComboBox />
+            <Label Margin="0,10,0,0" Content="Catégorie :" />
+            <ComboBox Width="70" Margin="0,10,0,0" />
         </StackPanel>
 
-        <Button x:Name="bt_valideajout" Content="Valider l'ajout" Click="bt_valideajout_Click" />
+        <Button
+            x:Name="bt_valideajout"
+            Margin="0,12,0,0"
+            Click="bt_valideajout_Click"
+            Content="Valider l'ajout" />
+
 
     </StackPanel>
 </Window>

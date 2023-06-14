@@ -60,7 +60,7 @@ namespace Prototype.Metier
             ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
 
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData("SELECT * FROM MATERIEL;");
+            DataTable datas = accesBD.GetData("SELECT * FROM MATERIEL ORDER BY idMateriel;");
 
             if (datas != null)
             {

@@ -46,7 +46,7 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accessDB = new DataAccess();
-            accessDB.SetData($"UPDATE ENSEIGNANT SET emailPersonnel='{this.EmailPersonnel}' SET nomPersonnel='{this.NomPersonnel}' SET prenomPersonnel='{this.PrenomPersonnel}' WHERE idPersonnel='{this.IdPersonnel}'");
+            accessDB.GetData($"UPDATE PERSONNEL SET emailPersonnel='{this.EmailPersonnel}', nomPersonnel='{this.NomPersonnel}', prenomPersonnel='{this.PrenomPersonnel}' WHERE idPersonnel={this.IdPersonnel};");
         }
 
         public void Delete()
@@ -60,7 +60,7 @@ namespace Prototype.Metier
             ObservableCollection<Enseignant> lesEnseignants = new ObservableCollection<Enseignant>();
 
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData("SELECT * FROM PERSONNEL;");
+            DataTable datas = accesBD.GetData("SELECT * FROM PERSONNEL ORDER BY idPersonnel;");
 
             if (datas != null)
             {

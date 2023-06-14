@@ -60,7 +60,7 @@ namespace Prototype
                 if (!(Verif_TextBoxVide() || Verif_Style()))
                 {
                     Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
-                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel,MessageBoxImage.Warning,MessageBoxResult.Cancel);
+                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} {enseignant.IdPersonnel}?", "Modification enseignant", MessageBoxButton.OKCancel,MessageBoxImage.Warning,MessageBoxResult.Cancel);
                     
                     if (result == MessageBoxResult.OK)
                     {

@@ -45,6 +45,9 @@ namespace Prototype
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
 
+                // Sélection de l'enseignant ajouté
+                lvEnseignant.SelectedIndex = lvEnseignant.Items.Count - 1;
+
                 // Reset des champs de saisie
                 Reset();
             }
@@ -107,6 +110,12 @@ namespace Prototype
                     ((ApplicationData)this.DataContext).Remove(enseignant);
                     // Rafraîchissement de la ListeView
                     lvEnseignant.Items.Refresh();
+
+                    // Réinitialisation de la sélection
+                    lvEnseignant.SelectedIndex = -1;
+
+                    // Message de confirmation
+                    MessageBox.Show("Enseignant supprimé !", "Suppression enseignant", MessageBoxButton.OK);
                 }
             }
         }
@@ -260,6 +269,9 @@ namespace Prototype
                 tbNom.Text = enseignant.NomPersonnel;
                 tbPrenom.Text = enseignant.PrenomPersonnel;
                 tbMail.Text = enseignant.EmailPersonnel;
+            } else
+            {
+                Reset();
             }
         }
     }

@@ -86,7 +86,7 @@
         <StackPanel x:Name="sp_lesReseignement">
             <StackPanel
                 x:Name="sp_materiel"
-                Margin="0,15,0,0"
+                Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Matériel :" FontSize="14" />
                 <ComboBox

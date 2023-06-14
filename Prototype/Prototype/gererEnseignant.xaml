@@ -23,7 +23,7 @@
             FontSize="14" />
         <ListView
             x:Name="lvEnseignant"
-            Height="100"
+            Height="200"
             ItemsSource="{Binding Path=LesEnseignants}">
             <ListView.View>
                 <GridView>

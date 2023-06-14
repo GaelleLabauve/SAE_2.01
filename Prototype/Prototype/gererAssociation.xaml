@@ -14,7 +14,7 @@
             Height="45"
             Margin="0,0,0,2"
             Background="#FFFF4343"
-            Content="Gestion des associations"
+            Content="Gestion des attributions"
             FontSize="25" />
         <Label
             x:Name="lb_selectAsso"

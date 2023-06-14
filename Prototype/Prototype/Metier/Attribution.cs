@@ -52,7 +52,7 @@ namespace Prototype.Metier
             ObservableCollection<Attribution> lesAttributions = new ObservableCollection<Attribution>();
 
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData("SELECT * FROM EST_ATTRIBUE;");
+            DataTable datas = accesBD.GetData("SELECT * FROM EST_ATTRIBUE ORDER BY idMateriel,idPersonnel,DateAttribution;");
 
             if (datas != null)
             {

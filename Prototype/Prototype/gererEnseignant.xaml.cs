@@ -51,6 +51,44 @@ namespace Prototype
         }
 
         /// <summary>
+        /// Modification (après confirmation) de l'item sélectionné dans la ListView.
+        /// </summary>
+        private void btModif_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvEnseignant.SelectedIndex != -1)
+            {
+                if (!(Verif_TextBoxVide() || Verif_Style()))
+                {
+                    Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
+                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel,MessageBoxImage.Warning,MessageBoxResult.Cancel);
+                    
+                    if (result == MessageBoxResult.OK)
+                    {
+                        // Modification des informations
+                        enseignant.EmailPersonnel = tbMail.Text;
+                        enseignant.NomPersonnel = tbNom.Text;
+                        enseignant.PrenomPersonnel = tbPrenom.Text;
+
+                        // Modificaiton de l'enseignant dans la base de données
+                        enseignant.Update();
+                        // Rafraîchissement de la ListeView
+                        lvEnseignant.Items.Refresh();
+
+                        // Message de confirmation
+                        MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
+
+                        // Reset des champs de saisie
+                        Reset();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un enseignant pour le modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>
         /// Suppression (après confirmation) de l'item sélectionné dans la ListView.
         /// </summary>
         private void btSuppr_Click(object sender, RoutedEventArgs e)

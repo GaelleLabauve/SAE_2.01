@@ -45,7 +45,8 @@ namespace Prototype.Metier
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accessDB = new DataAccess();
+            accessDB.SetData($"UPDATE ENSEIGNANT SET emailPersonnel='{this.EmailPersonnel}' SET nomPersonnel='{this.NomPersonnel}' SET prenomPersonnel='{this.PrenomPersonnel}' WHERE idPersonnel='{this.IdPersonnel}'");
         }
 
         public void Delete()

@@ -52,6 +52,7 @@
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
+                Click="btModif_Click"
                 Content="Modifier"
                 FontSize="14" />
             <Button
@@ -68,9 +69,10 @@
             <TextBox
                 x:Name="tbNom"
                 Width="120"
-                Text=""
+                Text="{Binding NomPersonnel}"
                 TextChanged="NomPrenom_TextChanged"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}"/>
             <Label x:Name="lbNomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
@@ -78,9 +80,10 @@
             <TextBox
                 x:Name="tbPrenom"
                 Width="120"
-                Text=""
+                Text="{Binding PrenomPersonnel}"
                 TextChanged="NomPrenom_TextChanged"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}" />
             <Label x:Name="lbPrenomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
@@ -88,9 +91,10 @@
             <TextBox
                 x:Name="tbMail"
                 Width="120"
-                Text=""
+                Text="{Binding EmailPersonnel}"
                 TextChanged="Mail_TextChanged"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap" 
+                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}"/>
             <Label
                 x:Name="lbMailError"
                 Content=" "

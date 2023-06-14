@@ -23,7 +23,6 @@ namespace Prototype
         public gererAssociation()
         {
             InitializeComponent();
-
         }
 
         private void bt_modif_Click(object sender, RoutedEventArgs e)

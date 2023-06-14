@@ -53,7 +53,7 @@
         </ListView>
         <Grid
             x:Name="grid_bouton"
-            Margin="0,15,0,0"
+            Margin="0,20,0,0"
             VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -97,7 +97,7 @@
             </StackPanel>
             <StackPanel
                 x:Name="sp_nomEns"
-                Margin="0,15,0,0"
+                Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Enseignant :" FontSize="14" />
                 <ComboBox
@@ -108,7 +108,7 @@
             </StackPanel>
             <StackPanel
                 x:Name="sp_date"
-                Margin="0,15,0,0"
+                Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Date :" FontSize="14" />
                 <DatePicker
@@ -118,7 +118,7 @@
             </StackPanel>
             <StackPanel
                 x:Name="sp_commentaire"
-                Margin="0,15,0,0"
+                Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Commentaire :" FontSize="14" />
                 <TextBox

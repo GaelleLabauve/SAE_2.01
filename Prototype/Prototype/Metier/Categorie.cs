@@ -6,10 +6,27 @@ using System.Runtime.CompilerServices;
 
 namespace Prototype.Metier
 {
+    /// <summary>
+    /// Stocke 3 informations :
+    /// 1 chaines : le nom de la catégorie
+    /// 1 entier : l'idCategorie entrer dans la base de donnée
+    /// 1 ObservableCollection<Materiel> : la liste des materiel de cette catégorie
+    /// </summary>
     public class Categorie : Crud<Categorie>
     {
+        /// <summary>
+        /// Obtient ou définit l'idCategorie de cette catégorie –
+        /// </summary>
         public int IdCategorie { get; set; }
+
+        /// <summary>
+        /// Obtient ou définit le nom de cette catégorie –
+        /// </summary>
         public string NomCategorie { get; set; }
+
+        /// <summary>
+        /// Obtient ou définit la liste des materiels de cette catégorie –
+        /// </summary>
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 
 
@@ -25,7 +42,9 @@ namespace Prototype.Metier
             this.NomCategorie = nomCategorie;
         }
 
-        
+        /// <summary>
+        /// Crée dans la base de donnée cette catégorie
+        /// </summary>
         public void Create()
         {   
             DataAccess accesBD = new DataAccess();
@@ -37,18 +56,28 @@ namespace Prototype.Metier
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Modifie dans la base de donnée le nom de cette catégorie
+        /// </summary>
         public void Update()
         {   
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"UPDATE CATEGORIE_MATERIEL SET nomCategorie='{this.NomCategorie}' WHERE idCategorie='{this.IdCategorie}';");
         }
 
+        /// <summary>
+        /// Supprime dans la base de donnée cette catégorie
+        /// </summary>
         public void Delete()
         {   
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"DELETE FROM CATEGORIE_MATERIEL WHERE idCategorie='{this.IdCategorie}';");
         }
 
+        /// <summary>
+        /// Cherche dans la base de donnée toute les catgories enregistrées
+        /// </summary>
+        /// /// <returns>L'ObservableCollection regroupant toutes les catégories entrées dans la base de donnée</returns>
         public ObservableCollection<Categorie> FindAll()
         {
             

@@ -193,14 +193,17 @@ namespace Prototype
         /// </summary>
         private void Reset()
         {
+            // Réinitialisation du texte des TextBox
             tbNom.Text = "";
             tbPrenom.Text = "";
             tbMail.Text = "";
 
+            // Réinitialisation du style des TextBox
             tbNom.Style = new Style();
             tbPrenom.Style = new Style();
             tbMail.Style = new Style();
 
+            // Réinitialisation du texte des Label
             lbNomError.Content = " ";
             lbPrenomError.Content = " ";
             lbMailError.Content = " ";

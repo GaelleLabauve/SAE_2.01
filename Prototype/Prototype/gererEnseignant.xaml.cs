@@ -81,6 +81,10 @@ namespace Prototype
                         Reset();
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Veuillez renseigner les champs de manière conforme.", "Erreur modification enseignant", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             else
             {

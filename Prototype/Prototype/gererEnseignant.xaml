@@ -24,7 +24,7 @@
         <ListView
             x:Name="lvEnseignant"
             Height="200"
-            ItemsSource="{Binding Path=LesEnseignants}">
+            ItemsSource="{Binding Path=LesEnseignants}" SelectionChanged="lvEnseignant_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Nom" />
@@ -69,10 +69,9 @@
             <TextBox
                 x:Name="tbNom"
                 Width="120"
-                Text="{Binding NomPersonnel}"
+                Text=""
                 TextChanged="NomPrenom_TextChanged"
-                TextWrapping="Wrap"
-                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}"/>
+                TextWrapping="Wrap" />
             <Label x:Name="lbNomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
@@ -80,10 +79,9 @@
             <TextBox
                 x:Name="tbPrenom"
                 Width="120"
-                Text="{Binding PrenomPersonnel}"
+                Text=""
                 TextChanged="NomPrenom_TextChanged"
-                TextWrapping="Wrap"
-                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}" />
+                TextWrapping="Wrap" />
             <Label x:Name="lbPrenomError" Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
@@ -91,10 +89,9 @@
             <TextBox
                 x:Name="tbMail"
                 Width="120"
-                Text="{Binding EmailPersonnel}"
+                Text=""
                 TextChanged="Mail_TextChanged"
-                TextWrapping="Wrap" 
-                DataContext="{Binding SelectedItem, ElementName=lvEnseignant}"/>
+                TextWrapping="Wrap" />
             <Label
                 x:Name="lbMailError"
                 Content=" "

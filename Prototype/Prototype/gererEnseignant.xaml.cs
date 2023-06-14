@@ -250,5 +250,17 @@ namespace Prototype
             lbPrenomError.Content = " ";
             lbMailError.Content = " ";
         }
+
+        private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvEnseignant.SelectedIndex != -1)
+            {
+                Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
+
+                tbNom.Text = enseignant.NomPersonnel;
+                tbPrenom.Text = enseignant.PrenomPersonnel;
+                tbMail.Text = enseignant.EmailPersonnel;
+            }
+        }
     }
 }

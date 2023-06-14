@@ -51,7 +51,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid x:Name="grid_bouton" Margin="0,15,0,0" VerticalAlignment="Center">
+        <Grid
+            x:Name="grid_bouton"
+            Margin="0,15,0,0"
+            VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -82,17 +85,6 @@
         </Grid>
         <StackPanel x:Name="sp_lesReseignement">
             <StackPanel
-                x:Name="sp_categorie"
-                Margin="0,20,0,0"
-                Orientation="Horizontal">
-                <Label Content="Catégorie :" FontSize="14" />
-                <ComboBox
-                    x:Name="cb_categorie"
-                    Width="111"
-                    DisplayMemberPath="NomCategorie"
-                    ItemsSource="{Binding Path=LesCategories}" />
-            </StackPanel>
-            <StackPanel
                 x:Name="sp_materiel"
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
@@ -119,14 +111,18 @@
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Date :" FontSize="14" />
-                <DatePicker x:Name="datePicker_date" DataContext="{Binding SelectedItem, ElementName=lv_Attribution}" SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
+                <DatePicker
+                    x:Name="datePicker_date"
+                    DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
+                    SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_commentaire"
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Commentaire :" FontSize="14" />
-                <TextBox x:Name="tb_commentaire"
+                <TextBox
+                    x:Name="tb_commentaire"
                     Height="24"
                     MinWidth="100"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"

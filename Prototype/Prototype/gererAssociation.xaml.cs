@@ -33,7 +33,7 @@ namespace Prototype
 
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
-            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution(((Materiel)cb_categorie.SelectedItem).IdMateriel, ((Enseignant)cb_categorie.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text));
+            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text));
             lv_Attribution.SelectedIndex = 0;
             ((Attribution)lv_Attribution.SelectedItem).Create();
         }
@@ -43,18 +43,11 @@ namespace Prototype
             if(lv_Attribution.SelectedItem == null)
             {
                 sp_lesReseignement.DataContext = null;
-                sp_categorie.IsEnabled = true;
                 sp_materiel.IsEnabled = true;
                 sp_nomEns.IsEnabled = true;
             }
             else
-            {/*
-                sp_lesReseignement.DataContext = "{ Binding SelectedItem, ElementName=lv_Attribution}";*/
-                foreach (Categorie i in cb_categorie.Items)
-                {
-                    if(i.NomCategorie == ((Attribution)lv_Attribution.SelectedItem).UnMateriel.UneCategorie.NomCategorie)
-                        cb_categorie.SelectedItem= i;
-                }
+            {
 
                 foreach (Materiel i in cb_materiel.Items)
                 {
@@ -68,7 +61,6 @@ namespace Prototype
                         cb_nomPrenomEns.SelectedItem = i;
                 }
                 //Champs non modifiable
-                sp_categorie.IsEnabled = false;
                 sp_materiel.IsEnabled = false;
                 sp_nomEns.IsEnabled = false;
             }

@@ -27,7 +27,7 @@
         <ListView
             x:Name="lv_materiel"
             Height="100"
-            ItemsSource="{Binding Path=LesMateriels}">
+            ItemsSource="{Binding Path=LesMateriels}" SelectionChanged="lv_materiel_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=NomMateriel}" Header="Nom" />
@@ -101,7 +101,12 @@
                 Margin="0,10,0,0"
                 Content="Catégorie :"
                 FontSize="14" />
-            <ComboBox Width="70" Margin="0,10,0,0" />
+            <ComboBox
+                x:Name="cb_categorie"
+                MinWidth="70"
+                Margin="0,10,0,0" 
+                    DisplayMemberPath="NomCategorie"
+                ItemsSource="{Binding Path=LesCategories}"/>
         </StackPanel>
 
         <Button

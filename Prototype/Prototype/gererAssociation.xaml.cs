@@ -33,7 +33,7 @@ namespace Prototype
 
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
-            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution());
+            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution(((Materiel)cb_categorie.SelectedItem).IdMateriel, ((Enseignant)cb_categorie.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text));
             lv_Attribution.SelectedIndex = 0;
             ((Attribution)lv_Attribution.SelectedItem).Create();
         }

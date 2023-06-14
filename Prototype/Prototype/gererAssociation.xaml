@@ -51,7 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,15,0,0" VerticalAlignment="Center">
+        <Grid x:Name="grid_bouton" Margin="0,15,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -119,14 +119,14 @@
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Date :" FontSize="14" />
-                <DatePicker DataContext="{Binding SelectedItem, ElementName=lv_Attribution}" SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
+                <DatePicker x:Name="datePicker_date" DataContext="{Binding SelectedItem, ElementName=lv_Attribution}" SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_commentaire"
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Commentaire :" FontSize="14" />
-                <TextBox
+                <TextBox x:Name="tb_commentaire"
                     Height="24"
                     MinWidth="100"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"

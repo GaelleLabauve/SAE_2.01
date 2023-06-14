@@ -33,7 +33,21 @@ namespace Prototype
 
         private void bt_valideajout_Click(object sender, RoutedEventArgs e)
         {
+            Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
             ((Materiel)lv_materiel.SelectedItem).Create();
+        }
+
+        private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lv_materiel.SelectedItem != null)
+            {
+
+                foreach (Categorie i in cb_categorie.Items)
+                {
+                    if (i.NomCategorie == ((Materiel)lv_materiel.SelectedItem).UneCategorie.NomCategorie)
+                        cb_categorie.SelectedItem = i;
+                }
+            }
         }
     }
 }

@@ -25,8 +25,9 @@ namespace Prototype.Metier
             this.NomCategorie = nomCategorie;
         }
 
+        
         public void Create()
-        {
+        {   
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"INSERT INTO CATEGORIE_MATERIEL(nomCategorie) VALUES('{this.NomCategorie}');");
         }
@@ -37,19 +38,20 @@ namespace Prototype.Metier
         }
 
         public void Update()
-        {
+        {   
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"UPDATE CATEGORIE_MATERIEL SET nomCategorie='{this.NomCategorie}' WHERE idCategorie='{this.IdCategorie}';");
         }
 
         public void Delete()
-        {
+        {   
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"DELETE FROM CATEGORIE_MATERIEL WHERE idCategorie='{this.IdCategorie}';");
         }
 
         public ObservableCollection<Categorie> FindAll()
         {
+            
             ObservableCollection<Categorie> lesCategories = new ObservableCollection<Categorie>();
 
             DataAccess accesBD = new DataAccess();

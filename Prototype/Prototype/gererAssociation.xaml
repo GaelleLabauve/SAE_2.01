@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="gérer les attributions"
     Width="800"
-    Height="450"
+    Height="550"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
         <Label
@@ -18,6 +18,7 @@
             FontSize="25" />
         <Label
             x:Name="lb_selectAsso"
+            Margin="0,10,0,0"
             Content="Sélectionner une attribution :"
             FontSize="14" />
         <ListView
@@ -50,7 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,10,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,15,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -82,54 +83,47 @@
         <StackPanel x:Name="sp_lesReseignement">
             <StackPanel
                 x:Name="sp_categorie"
-                Margin="0,4,0,0"
+                Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Catégorie :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_categorie"
                     Width="111"
                     DisplayMemberPath="NomCategorie"
                     ItemsSource="{Binding Path=LesCategories}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_materiel"
-                Margin="0,5,0,0"
+                Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Matériel :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_materiel"
                     Width="108"
                     DisplayMemberPath="NomMateriel"
                     ItemsSource="{Binding Path=LesMateriels}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_nomEns"
-                Margin="0,5,0,0"
+                Margin="0,15,0,0"
                 Orientation="Horizontal">
-                <Label Content="Nom enseignant :" FontSize="14" />
+                <Label Content="Enseignant :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_nomPrenomEns"
                     Width="99"
-                    DisplayMemberPath="NomPersonnel"
+                    DisplayMemberPath="NomPrenom"
                     ItemsSource="{Binding Path=LesEnseignants}" />
             </StackPanel>
             <StackPanel
-                x:Name="sp_prenomEns"
-                Margin="0,5,0,0"
-                Orientation="Horizontal">
-                <Label Content="Prénom enseignant :" FontSize="14" />
-                <ComboBox
-                    Width="98"
-                    DisplayMemberPath="PrenomPersonnel"
-                    ItemsSource="{Binding Path=UnEnseignant}" />
-            </StackPanel>
-            <StackPanel
                 x:Name="sp_date"
-                Margin="0,5,0,0"
+                Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Date :" FontSize="14" />
                 <DatePicker DataContext="{Binding SelectedItem, ElementName=lv_Attribution}" SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_commentaire"
-                Margin="0,5,0,0"
+                Margin="0,15,0,0"
                 Orientation="Horizontal">
                 <Label Content="Commentaire :" FontSize="14" />
                 <TextBox

@@ -23,6 +23,7 @@ namespace Prototype
         public gererAssociation()
         {
             InitializeComponent();
+
         }
 
         private void bt_modif_Click(object sender, RoutedEventArgs e)
@@ -41,18 +42,35 @@ namespace Prototype
         {
             if(lv_Attribution.SelectedItem == null)
             {
+                sp_lesReseignement.DataContext = null;
                 sp_categorie.IsEnabled = true;
                 sp_materiel.IsEnabled = true;
                 sp_nomEns.IsEnabled = true;
-                sp_prenomEns.IsEnabled = true;
             }
             else
-            {
+            {/*
+                sp_lesReseignement.DataContext = "{ Binding SelectedItem, ElementName=lv_Attribution}";*/
+                foreach (Categorie i in cb_categorie.Items)
+                {
+                    if(i.NomCategorie == ((Attribution)lv_Attribution.SelectedItem).UnMateriel.UneCategorie.NomCategorie)
+                        cb_categorie.SelectedItem= i;
+                }
+
+                foreach (Materiel i in cb_materiel.Items)
+                {
+                    if(i.NomMateriel == ((Attribution)lv_Attribution.SelectedItem).UnMateriel.NomMateriel)
+                        cb_materiel.SelectedItem = i;
+                }
+
+                foreach (Enseignant i in cb_nomPrenomEns.Items)
+                {
+                    if(i.NomPrenom == ((Attribution)lv_Attribution.SelectedItem).UnEnseignant.NomPrenom)
+                        cb_nomPrenomEns.SelectedItem = i;
+                }
                 //Champs non modifiable
                 sp_categorie.IsEnabled = false;
                 sp_materiel.IsEnabled = false;
                 sp_nomEns.IsEnabled = false;
-                sp_prenomEns.IsEnabled = false;
             }
             //Champs modifiabe
             sp_date.IsEnabled = true;

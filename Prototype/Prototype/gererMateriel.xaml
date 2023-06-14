@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="gérer le materiel"
     Width="800"
-    Height="450"
+    Height="550"
     mc:Ignorable="d">
     <StackPanel
-        Height="404"
-        Margin="10,0,10,10"
-        VerticalAlignment="Bottom">
+        Height="514"
+        Margin="10,0,10,0"
+        VerticalAlignment="Center">
         <Label
             Height="45"
             Margin="0,0,0,2"
@@ -21,6 +21,7 @@
             FontSize="25" />
         <Label
             x:Name="lb_selectMateriel"
+            Margin="0,10,0,0"
             Content="Sélectionner un matériel :"
             FontSize="14" />
         <ListView
@@ -35,7 +36,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,10,0,0" VerticalAlignment="Center">
+        <Grid Margin="0,20,0,0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -63,7 +64,7 @@
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>
-        <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
             <Label Content="Nom du materiél :" FontSize="14" />
             <TextBox
                 MinWidth="120"
@@ -71,7 +72,7 @@
                 Text="{Binding NomMateriel}"
                 TextWrapping="Wrap" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Référence du constructeur :"
@@ -83,7 +84,7 @@
                 Text="{Binding Refconstructeur}"
                 TextWrapping="Wrap" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Code barre :"
@@ -95,7 +96,7 @@
                 Text="{Binding CodeBarre}"
                 TextWrapping="Wrap" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Catégorie :"
@@ -105,7 +106,7 @@
 
         <Button
             x:Name="bt_valideajout"
-            Margin="0,12,0,0"
+            Margin="0,20,0,0"
             Click="bt_valideajout_Click"
             Content="Valider l'ajout"
             FontSize="14" />

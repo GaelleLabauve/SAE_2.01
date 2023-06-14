@@ -17,6 +17,13 @@ namespace Prototype.Metier
    
         public Materiel()
         { }
+        public Materiel(int fk_idCategorie, string nomMateriel, string codeBarreInventaire, string referenceConstructeurMateriel)
+        {
+            this.FK_IdCategorie = fk_idCategorie;
+            this.NomMateriel = nomMateriel;
+            this.CodeBarreInventaire = codeBarreInventaire;
+            this.ReferenceConstructeurMateriel = referenceConstructeurMateriel;
+        }
         public Materiel(int idMateriel, int fk_idCategorie, string nomMateriel, string codeBarreInventaire, string referenceConstructeurMateriel)
         {
             this.IdMateriel = idMateriel;

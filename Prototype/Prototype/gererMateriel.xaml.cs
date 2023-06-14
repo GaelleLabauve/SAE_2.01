@@ -33,6 +33,7 @@ namespace Prototype
 
         private void bt_valideajout_Click(object sender, RoutedEventArgs e)
         {
+            Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
             ((Materiel)lv_materiel.SelectedItem).Create();
         }
 

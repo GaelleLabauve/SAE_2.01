@@ -8,12 +8,35 @@ using System.Windows;
 
 namespace Prototype.Metier
 {
+    /// <summary>
+    /// Entre toutes les données de la base de donnée dans 4 ObservableCollection différentes.
+    /// Sert lors du binding.
+    /// </summary>
     public class ApplicationData
     {
+        /// <summary>
+        /// Obtient ou définit l'ObservableCollection des Enseignants –
+        /// </summary>
         public ObservableCollection<Enseignant> LesEnseignants { get; set; }
+
+        /// <summary>
+        /// Obtient ou définit l'ObservableCollection des Catégories –
+        /// </summary>
         public ObservableCollection<Categorie> LesCategories { get; set; }
+
+        /// <summary>
+        /// Obtient ou définit l'ObservableCollection des Materiels –
+        /// </summary>
         public ObservableCollection<Materiel> LesMateriels { get; set; }
+
+        /// <summary>
+        /// Obtient ou définit l'ObservableCollection des Attributions –
+        /// </summary>
         public ObservableCollection<Attribution> LesAttributions { get; set; }
+
+        /// <summary>
+        /// Définit toutes les ObservableCollection a partir des fonction des différente classes –
+        /// </summary>
         public ApplicationData()
         {
             Enseignant e = new Enseignant();
@@ -57,6 +80,9 @@ namespace Prototype.Metier
 
         }
 
+        /// <summary>
+        /// Ajoute l'obj entré en parametre dans la l'ObservableCollection concerné et dans la base de donnée –
+        /// </summary>
         public void Add(object obj)
         {
             if (obj is Categorie)
@@ -100,6 +126,10 @@ namespace Prototype.Metier
                 this.LesMateriels.Add((Materiel)obj);
             }
         }
+
+        /// <summary>
+        /// Supprime l'obj entré en parametre dans la l'ObservableCollection concerné et dans la base de donnée –
+        /// </summary>
         public void Remove(object obj)
         {
             if (obj is Categorie)

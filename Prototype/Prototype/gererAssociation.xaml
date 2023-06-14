@@ -87,6 +87,7 @@
                 Orientation="Horizontal">
                 <Label Content="Catégorie :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_categorie"
                     Width="111"
                     DisplayMemberPath="NomCategorie"
                     ItemsSource="{Binding Path=LesCategories}" />
@@ -97,6 +98,7 @@
                 Orientation="Horizontal">
                 <Label Content="Matériel :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_materiel"
                     Width="108"
                     DisplayMemberPath="NomMateriel"
                     ItemsSource="{Binding Path=LesMateriels}" />
@@ -107,6 +109,7 @@
                 Orientation="Horizontal">
                 <Label Content="Enseignant :" FontSize="14" />
                 <ComboBox
+                    x:Name="cb_nomPrenomEns"
                     Width="99"
                     DisplayMemberPath="NomPrenom"
                     ItemsSource="{Binding Path=LesEnseignants}" />

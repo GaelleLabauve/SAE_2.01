@@ -41,18 +41,18 @@ namespace Prototype
         {
             if(lv_Attribution.SelectedItem == null)
             {
+                sp_lesReseignement.DataContext = null;
                 sp_categorie.IsEnabled = true;
                 sp_materiel.IsEnabled = true;
                 sp_nomEns.IsEnabled = true;
-                sp_prenomEns.IsEnabled = true;
             }
             else
             {
+                sp_lesReseignement.DataContext = "{ Binding SelectedItem, ElementName=lv_Attribution}";
                 //Champs non modifiable
                 sp_categorie.IsEnabled = false;
                 sp_materiel.IsEnabled = false;
                 sp_nomEns.IsEnabled = false;
-                sp_prenomEns.IsEnabled = false;
             }
             //Champs modifiabe
             sp_date.IsEnabled = true;

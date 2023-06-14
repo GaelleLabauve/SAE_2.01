@@ -7,6 +7,7 @@ namespace Prototype.Metier
 {
     public class Enseignant : Crud<Enseignant>
     {
+        public string NomPrenom { get; }
         public int IdPersonnel { get; set; }
         public string EmailPersonnel { get; set; }
         public string NomPersonnel { get; set; }
@@ -21,12 +22,14 @@ namespace Prototype.Metier
             this.EmailPersonnel = emailPersonnel;
             this.NomPersonnel = nomPersonnel;
             this.PrenomPersonnel = prenomPersonnel;
+            this.NomPrenom = nomPersonnel+" "+prenomPersonnel;
         }
         public Enseignant(string emailPersonnel, string nomPersonnel, string prenomPersonnel)
         {
             this.EmailPersonnel = emailPersonnel;
             this.NomPersonnel = nomPersonnel;
             this.PrenomPersonnel = prenomPersonnel;
+            this.NomPrenom = nomPersonnel + " " + prenomPersonnel;
         }
 
         public void Create()

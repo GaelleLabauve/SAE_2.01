@@ -105,21 +105,11 @@
                 x:Name="sp_nomEns"
                 Margin="0,15,0,0"
                 Orientation="Horizontal">
-                <Label Content="Nom enseignant :" FontSize="14" />
+                <Label Content="Enseignant :" FontSize="14" />
                 <ComboBox
                     Width="99"
-                    DisplayMemberPath="NomPersonnel"
+                    DisplayMemberPath="NomPrenom"
                     ItemsSource="{Binding Path=LesEnseignants}" />
-            </StackPanel>
-            <StackPanel
-                x:Name="sp_prenomEns"
-                Margin="0,15,0,0"
-                Orientation="Horizontal">
-                <Label Content="Prénom enseignant :" FontSize="14" />
-                <ComboBox
-                    Width="98"
-                    DisplayMemberPath="PrenomPersonnel"
-                    ItemsSource="{Binding Path=UnEnseignant}" />
             </StackPanel>
             <StackPanel
                 x:Name="sp_date"

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
@@ -61,21 +62,41 @@ namespace Prototype.Metier
             if (obj is Categorie)
             {
                 ((Categorie)obj).Create();
+                //Le nom étant unique, on recherche dans la base de données l'idCategorie de la categorie ayant le nom venant d'être ajouter. On peut alors renseigner l'idCategorie dans l'obj
+                DataAccess accesBD = new DataAccess();
+                DataTable datas = accesBD.GetData("SELECT idCategorie FROM CATEGORIE_MATERIEL WHERE nomCategorie ='" + ((Categorie)obj).NomCategorie + "';");
+                foreach (DataRow row in datas.Rows)
+                {
+                    ((Categorie)obj).IdCategorie = (int.Parse(row["idCategorie"].ToString()));
+                }
                 this.LesCategories.Add((Categorie)obj);
             }
             else if (obj is Attribution)
             {
-                ((Attribution)obj).Create();
+                ((Attribution)obj).Create(); 
                 this.LesAttributions.Add((Attribution)obj);
             }
             else if (obj is Enseignant)
             {
-                ((Enseignant)obj).Create();
+                ((Enseignant)obj).Create(); 
+                //L'email étant unique, on recherche dans la base de données l'idPersonnel du personnel ayant l'email venant d'être ajouter. On peut alors renseigner l'idPersonnel dans l'obj
+                DataAccess accesBD = new DataAccess();
+                DataTable datas = accesBD.GetData("SELECT idPersonnel FROM PERSONNEL WHERE emailPersonnel ='" + ((Enseignant)obj).EmailPersonnel + "';");
+                foreach (DataRow row in datas.Rows)
+                {
+                    ((Enseignant)obj).IdPersonnel = (int.Parse(row["idPersonnel"].ToString()));
+                }
                 this.LesEnseignants.Add((Enseignant)obj);
             }
             else if (obj is Materiel)
             {
                 ((Materiel)obj).Create();
+                DataAccess accesBD = new DataAccess();
+                DataTable datas = accesBD.GetData("SELECT idmateriel FROM materiel WHERE codeBarreInventaire ='"+((Materiel)obj).CodeBarreInventaire+"';");
+                foreach (DataRow row in datas.Rows)
+                {
+                    ((Materiel)obj).IdMateriel= (int.Parse(row["idMateriel"].ToString()));
+                }
                 this.LesMateriels.Add((Materiel)obj);
             }
         }

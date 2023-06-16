@@ -50,8 +50,14 @@ namespace Prototype
 
         private void btSupp_Click(object sender, RoutedEventArgs e)
         {
-            ((Materiel)lv_materiel.SelectedItem).Delete();
-            ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+            Materiel materiel = (Materiel)lv_materiel.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ((Materiel)lv_materiel.SelectedItem).Delete();
+                ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+                MessageBox.Show("Suppression réaliser avec succés !", "Super !", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void btModif_Click(object sender, RoutedEventArgs e)

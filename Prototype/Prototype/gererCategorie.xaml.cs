@@ -32,9 +32,15 @@ namespace Prototype
         private void BtSupprimer_Click(object sender, RoutedEventArgs e)
         {
             // Suppression de la catégorie dans la base de données et dans la liste LesCatégories
-            ((Categorie)lv_categorie.SelectedItem).Delete();
-            ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);
-            lv_categorie.SelectedIndex = 0;
+            Categorie categorie = (Categorie)lv_categorie.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {categorie.NomCategorie} de la liste des categories ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ((Categorie)lv_categorie.SelectedItem).Delete();            
+                ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);            
+                lv_categorie.SelectedIndex = 0;
+                MessageBox.Show("Suppression réaliser avec succés !", "Super !", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             
         }
 

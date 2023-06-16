@@ -72,8 +72,14 @@ namespace Prototype
 
         private void bt_supp_Click(object sender, RoutedEventArgs e)
         {
-            ((Attribution)lv_Attribution.SelectedItem).Delete();
-            ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
+            Attribution attribution = (Attribution)lv_Attribution.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer l'attribution :  \n Materiel : {attribution.UnMateriel.NomMateriel} \n Enseignant : {attribution.UnEnseignant.NomPrenom} \n Date : {attribution.DateAttribution} \n Commentaire :{attribution.CommentaireAttribution}", "Suppression Attribution", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ((Attribution)lv_Attribution.SelectedItem).Delete();
+                ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
+                MessageBox.Show("Suppression réaliser avec succés !", "Super !", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void tb_commentaire_TextChanged(object sender, TextChangedEventArgs e)

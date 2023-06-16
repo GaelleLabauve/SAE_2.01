@@ -25,7 +25,7 @@
             Content="Sélectionner un matériel :"
             FontSize="14" />
         <ListView
-            x:Name="lv_materiel"
+            x:Name="lvMateriel"
             Height="100"
             ItemsSource="{Binding Path=LesMateriels}"
             SelectionChanged="lv_materiel_SelectionChanged">
@@ -72,15 +72,16 @@
         </Grid>
         <StackPanel
             x:Name="spNom"
-            Margin="0,20,0,0"
-            Orientation="Horizontal">
+            Margin="0,30,0,0"
+            Orientation="Horizontal"
+            Visibility="Hidden">
             <Label Content="Nom du materiél :" FontSize="14" />
             <TextBox
                 x:Name="tbMateriel"
                 Width="178"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding NomMateriel}"
-                TextChanged="tb_materiel_TextChanged"
+                TextChanged="tbMateriel_TextChanged"
                 TextWrapping="Wrap" />
             <Label
                 x:Name="lbNomError"
@@ -90,7 +91,8 @@
         <StackPanel
             x:Name="spRefConstructeur"
             Margin="0,5,0,0"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="Hidden">
             <Label
                 Margin="0,10,0,0"
                 Content="Référence du constructeur :"
@@ -101,7 +103,7 @@
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding ReferenceConstructeurMateriel}"
-                TextChanged="tb_refCons_TextChanged"
+                TextChanged="tbRefCons_TextChanged"
                 TextWrapping="Wrap" />
             <Label
                 x:Name="lbRefError"
@@ -113,7 +115,8 @@
         <StackPanel
             x:Name="spCodeBarre"
             Margin="0,5,0,0"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="Hidden">
             <Label
                 Margin="0,10,0,0"
                 Content="Code barre :"
@@ -124,10 +127,10 @@
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding CodeBarreInventaire}"
-                TextChanged="tb_codeBarre_TextChanged"
+                TextChanged="tbCodeBarre_TextChanged"
                 TextWrapping="Wrap" />
             <Label
-                x:Name="lb_CodeBarreError"
+                x:Name="lbCodeBarreError"
                 Width="195"
                 Height="28"
                 Foreground="Red" />
@@ -135,7 +138,8 @@
         <StackPanel
             x:Name="spCategorie"
             Margin="0,5,0,0"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="Hidden">
             <Label
                 Margin="0,10,0,0"
                 Content="Catégorie :"
@@ -146,10 +150,16 @@
                 Margin="0,10,0,0"
                 DisplayMemberPath="NomCategorie"
                 ItemsSource="{Binding Path=LesCategories}" />
+            <Label
+                x:Name="lbCategorieError"
+                Width="195"
+                Height="28"
+                Foreground="Red" />
         </StackPanel>
         <Button
             x:Name="btAnnuler"
             Height="30"
+            Margin="0,20,0,0"
             HorizontalAlignment="Center"
             HorizontalContentAlignment="Center"
             Click="btAnnuler_Click"

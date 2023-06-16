@@ -38,19 +38,19 @@ namespace Prototype
             {
                 Materiel m = new Materiel(((Categorie)cbCategorie.SelectedItem).IdCategorie, tbMateriel.Text, tbCodeBarre.Text, tbRefCons.Text);
                 ((ApplicationData)DataContext).Add(m);
-                lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+                lvMateriel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
                 MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(lv_materiel.SelectedItem != null)
+            if(lvMateriel.SelectedItem != null)
             {
 
                 foreach (Categorie i in cbCategorie.Items)
                 {
-                    if (i.NomCategorie == ((Materiel)lv_materiel.SelectedItem).UneCategorie.NomCategorie)
+                    if (i.NomCategorie == ((Materiel)lvMateriel.SelectedItem).UneCategorie.NomCategorie)
                         cbCategorie.SelectedItem = i;
                 }
             }
@@ -58,18 +58,18 @@ namespace Prototype
 
         private void btSupp_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_materiel.SelectedItem is null)
+            if (lvMateriel.SelectedItem is null)
             {
                 MessageBox.Show("Séléctionner un materiel pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                Materiel materiel = (Materiel)lv_materiel.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                Materiel materiel = (Materiel)lvMateriel.SelectedItem;
+                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    ((Materiel)lv_materiel.SelectedItem).Delete();
-                    ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+                    ((Materiel)lvMateriel.SelectedItem).Delete();
+                    ((ApplicationData)this.DataContext).Remove((Materiel)lvMateriel.SelectedItem);
                     MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -77,19 +77,19 @@ namespace Prototype
 
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_materiel.SelectedItem is null)
+            if (lvMateriel.SelectedItem is null)
             {
                 MessageBox.Show("Séléctionner un materiel pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
 
-                ((Materiel)lv_materiel.SelectedItem).Update();
+                ((Materiel)lvMateriel.SelectedItem).Update();
                 MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
-        private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbCodeBarre_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.Text.Length > 100)
@@ -100,7 +100,7 @@ namespace Prototype
                 // Ajout du message 
                 if (tb == tbCodeBarre)
                 {
-                    lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
+                    lbCodeBarreError.Content = "Trop long ( > 100 caractères)";
                 }
             }
             else
@@ -111,72 +111,101 @@ namespace Prototype
                 // Réinitialisation du label
                 if (tb == tbCodeBarre)
                 {
-                    lb_CodeBarreError.Content = "";
+                    lbCodeBarreError.Content = "";
                 }
                
             }
         }
-       
 
-        private void tb_refCons_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbRefCons_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 100)
+            if (tbRefCons.Text.Length > 100)
             {
                 // Application du style avec bordures rouges
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+                tbRefCons.Style = (Style)Application.Current.FindResource("Obligatoire");
 
-                // Ajout du message 
-                if (tb == tbRefCons)
-                {
-                    lbRefError.Content = "Trop long ( > 100 caractères)";
-                }
+                // Message d'erreur
+                lbRefError.Content = "Trop long ( > 100 caractères)";
             }
             else
             {
                 // Suppression du style (remplacement par un style par défaut)
-                tb.Style = new Style();
+                tbRefCons.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tbRefCons)
-                {
-                    lbRefError.Content = "";
-                }
-
+                lbRefError.Content = "";
             }
         }
 
-        private void tb_materiel_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbMateriel_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 100)
+            if (tbMateriel.Text.Length > 100)
             {
                 // Application du style avec bordures rouges
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+                tbMateriel.Style = (Style)Application.Current.FindResource("Obligatoire");
 
-                // Ajout du message 
-                if (tb == tbMateriel)
-                {
-                    lbNomError.Content = "Trop long ( > 100 caractères)";
-                }
+                // Message d'erreur 
+                lbNomError.Content = "Trop long ( > 100 caractères)";
             }
             else
             {
                 // Suppression du style (remplacement par un style par défaut)
-                tb.Style = new Style();
+                tbMateriel.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tbMateriel)
-                {
-                    lbNomError.Content = "";
-                }
-
+                lbNomError.Content = "";
             }
+        }
+
+        private void Reset()
+        {
+            // Réinitialisation du texte des TextBox
+            tbMateriel.Text = "";
+            tbRefCons.Text = "";
+            tbCodeBarre.Text = "";
+            cbCategorie.SelectedIndex = -1;
+
+            // Réinitialisation du style des TextBox
+            tbMateriel.Style = new Style();
+            tbRefCons.Style = new Style();
+            tbCodeBarre.Style = new Style();
+            cbCategorie.Style = new Style();
+
+            // Réinitialisation du texte des Label
+            lbNomError.Content = " ";
+            lbRefError.Content = " ";
+            lbCodeBarreError.Content = " ";
+            lbCategorieError.Content = " ";
+
+            // Cache les StackPanel
+            spNom.Visibility = Visibility.Hidden;
+            spRefConstructeur.Visibility = Visibility.Hidden;
+            spCodeBarre.Visibility = Visibility.Hidden;
+            spCategorie.Visibility = Visibility.Hidden;
+
+            // Cache le boutton annuler
+            btAnnuler.Visibility = Visibility.Hidden;
+        }
+
+        private void AfficheForm()
+        {
+            // Affiche les StackPanel
+            spNom.Visibility = Visibility.Visible;
+            spRefConstructeur.Visibility = Visibility.Visible;
+            spCodeBarre.Visibility = Visibility.Visible;
+            spCategorie.Visibility = Visibility.Visible;
+
+            // Affichage du boutton annuler
+            btAnnuler.Visibility = Visibility.Visible;
         }
 
         private void btAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            //
+            // Réinitialise et cache les champs
+            Reset();
+
+            // Réinitialisation de la sélection
+            lvMateriel.SelectedIndex = -1;
         }
     }
 }

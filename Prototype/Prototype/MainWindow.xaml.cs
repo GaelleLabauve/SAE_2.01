@@ -66,7 +66,7 @@ namespace Prototype
         private void mi_gererMateriel_Click(object sender, RoutedEventArgs e)
         {
             AnnulerTousLesFiltre();
-            gererMateriel gererMate= new gererMateriel();
+            gererMateriel gererMate = new gererMateriel();
             gererMate.DataContext = this.DataContext;
             gererMate.ShowDialog();
         }

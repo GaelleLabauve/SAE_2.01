@@ -112,6 +112,7 @@ namespace Prototype.Metier
                 {
                     ((Enseignant)obj).IdPersonnel = (int.Parse(row["idPersonnel"].ToString()));
                 }
+
                 this.LesEnseignants.Add((Enseignant)obj);
             }
             else if (obj is Materiel)

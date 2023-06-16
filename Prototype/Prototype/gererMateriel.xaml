@@ -70,10 +70,13 @@
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>
-        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+        <StackPanel
+            x:Name="spNom"
+            Margin="0,20,0,0"
+            Orientation="Horizontal">
             <Label Content="Nom du materiél :" FontSize="14" />
             <TextBox
-                x:Name="tb_materiel"
+                x:Name="tbMateriel"
                 Width="178"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding NomMateriel}"
@@ -84,13 +87,16 @@
                 Width="185"
                 Foreground="Red" />
         </StackPanel>
-        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+        <StackPanel
+            x:Name="spRefConstructeur"
+            Margin="0,5,0,0"
+            Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Référence du constructeur :"
                 FontSize="14" />
             <TextBox
-                x:Name="tb_refCons"
+                x:Name="tbRefCons"
                 Width="307"
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
@@ -104,13 +110,16 @@
 
 
         </StackPanel>
-        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+        <StackPanel
+            x:Name="spCodeBarre"
+            Margin="0,5,0,0"
+            Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Code barre :"
                 FontSize="14" />
             <TextBox
-                x:Name="tb_codeBarre"
+                x:Name="tbCodeBarre"
                 Width="264"
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
@@ -123,13 +132,16 @@
                 Height="28"
                 Foreground="Red" />
         </StackPanel>
-        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+        <StackPanel
+            x:Name="spCategorie"
+            Margin="0,5,0,0"
+            Orientation="Horizontal">
             <Label
                 Margin="0,10,0,0"
                 Content="Catégorie :"
                 FontSize="14" />
             <ComboBox
-                x:Name="cb_categorie"
+                x:Name="cbCategorie"
                 MinWidth="70"
                 Margin="0,10,0,0"
                 DisplayMemberPath="NomCategorie"

@@ -30,13 +30,13 @@ namespace Prototype
 
         private void bt_ajouter_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(tb_materiel.Text) || string.IsNullOrEmpty(tb_codeBarre.Text) || string.IsNullOrEmpty(tb_refCons.Text) || cb_categorie.SelectedItem is null)
+            if (string.IsNullOrEmpty(tbMateriel.Text) || string.IsNullOrEmpty(tbCodeBarre.Text) || string.IsNullOrEmpty(tbRefCons.Text) || cbCategorie.SelectedItem is null)
             {
                 MessageBox.Show("Remplir tous les champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
+                Materiel m = new Materiel(((Categorie)cbCategorie.SelectedItem).IdCategorie, tbMateriel.Text, tbCodeBarre.Text, tbRefCons.Text);
                 ((ApplicationData)DataContext).Add(m);
                 lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
                 MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -48,10 +48,10 @@ namespace Prototype
             if(lv_materiel.SelectedItem != null)
             {
 
-                foreach (Categorie i in cb_categorie.Items)
+                foreach (Categorie i in cbCategorie.Items)
                 {
                     if (i.NomCategorie == ((Materiel)lv_materiel.SelectedItem).UneCategorie.NomCategorie)
-                        cb_categorie.SelectedItem = i;
+                        cbCategorie.SelectedItem = i;
                 }
             }
         }
@@ -98,7 +98,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_codeBarre)
+                if (tb == tbCodeBarre)
                 {
                     lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -109,7 +109,7 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_codeBarre)
+                if (tb == tbCodeBarre)
                 {
                     lb_CodeBarreError.Content = "";
                 }
@@ -127,7 +127,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_refCons)
+                if (tb == tbRefCons)
                 {
                     lbRefError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -138,7 +138,7 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_refCons)
+                if (tb == tbRefCons)
                 {
                     lbRefError.Content = "";
                 }
@@ -155,7 +155,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_materiel)
+                if (tb == tbMateriel)
                 {
                     lbNomError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -166,7 +166,7 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_materiel)
+                if (tb == tbMateriel)
                 {
                     lbNomError.Content = "";
                 }

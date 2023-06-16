@@ -34,6 +34,7 @@ namespace Prototype
         {
             Attribution a = new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text);
             ((ApplicationData)DataContext).Add(a);
+            lv_Attribution.ItemsSource = ((ApplicationData)this.DataContext).LesAttributions;
         }
 
         private void lv_Attribution_SelectionChanged(object sender, SelectionChangedEventArgs e)

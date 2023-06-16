@@ -38,7 +38,7 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData($"UPDATE EST_ATTRIBUE SET commentaireAttribution='{this.CommentaireAttribution}' WHERE idMateriel='{this.FK_IdMateriel}' AND idPersonnel='{this.FK_IdPersonnel}';");
+            DataTable datas = accesBD.GetData($"UPDATE EST_ATTRIBUE SET commentaireAttribution='{this.CommentaireAttribution}' WHERE idMateriel='{this.FK_IdMateriel}' AND idPersonnel='{this.FK_IdPersonnel}' AND dateAttribution='{this.DateAttribution}';");
         }
 
         public void Delete()

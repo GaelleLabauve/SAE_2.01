@@ -239,7 +239,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise toutes les TextBox, les styles de celles-ci, ainsi que les labels des messages d'erreur.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur.
         /// </summary>
         private void Reset()
         {

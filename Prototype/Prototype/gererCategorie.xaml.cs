@@ -32,14 +32,22 @@ namespace Prototype
         private void BtSupprimer_Click(object sender, RoutedEventArgs e)
         {
             // Suppression de la catégorie dans la base de données et dans la liste LesCatégories
-            Categorie categorie = (Categorie)lv_categorie.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {categorie.NomCategorie} de la liste des categories ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            if(lv_categorie.SelectedItem is null)
             {
-                ((Categorie)lv_categorie.SelectedItem).Delete();            
-                ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);            
-                lv_categorie.SelectedIndex = 0;
-                MessageBox.Show("Suppression réaliser avec succés !", "Suppression Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                Categorie categorie = (Categorie)lv_categorie.SelectedItem;
+                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {categorie.NomCategorie} de la liste des categories ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ((Categorie)lv_categorie.SelectedItem).Delete();            
+                    ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);            
+                    lv_categorie.SelectedIndex = 0;
+                    MessageBox.Show("Suppression réaliser avec succés !", "Suppression Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             
         }
@@ -50,10 +58,18 @@ namespace Prototype
         private void BtAjouter_Click(object sender, RoutedEventArgs e)
         {
             // Ajoute la catégorie dans la base de données et dans la liste LesCatégories
+            if(string.IsNullOrEmpty(tbCategorie.Text))
+            {
+                MessageBox.Show("Remplir le champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
             ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie(tbCategorie.Text));
             lv_categorie.SelectedIndex = 0;
             ((Categorie)lv_categorie.SelectedItem).Create();
             MessageBox.Show("Ajout réaliser avec succés !", "Ajout Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         /// <summary>
@@ -61,9 +77,17 @@ namespace Prototype
         /// </summary>
         private void btModdifier_Click(object sender, RoutedEventArgs e)
         {
-            // Modification de la catégorie dans la base de données et dans la liste LesCatégories
-            ((Categorie)lv_categorie.SelectedItem).Update();
-            MessageBox.Show("Modification réaliser avec succés !", "Modification Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (lv_categorie.SelectedItem is null)
+            {
+                MessageBox.Show("Séléctionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                // Modification de la catégorie dans la base de données et dans la liste LesCatégories
+                ((Categorie)lv_categorie.SelectedItem).Update();
+                MessageBox.Show("Modification réaliser avec succés !", "Modification Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void tbCategorie_TextChanged(object sender, TextChangedEventArgs e)

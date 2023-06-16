@@ -30,10 +30,17 @@ namespace Prototype
 
         private void bt_ajouter_Click(object sender, RoutedEventArgs e)
         {
-            Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
-            ((ApplicationData)DataContext).Add(m);
-            lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
-            MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrEmpty(tb_materiel.Text) || string.IsNullOrEmpty(tb_codeBarre.Text) || string.IsNullOrEmpty(tb_refCons.Text) || cb_categorie.SelectedItem is null)
+            {
+                MessageBox.Show("Remplir tous les champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
+                ((ApplicationData)DataContext).Add(m);
+                lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+                MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,20 +58,35 @@ namespace Prototype
 
         private void btSupp_Click(object sender, RoutedEventArgs e)
         {
-            Materiel materiel = (Materiel)lv_materiel.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            if (lv_materiel.SelectedItem is null)
             {
-                ((Materiel)lv_materiel.SelectedItem).Delete();
-                ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
-                MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Materiel materiel = (Materiel)lv_materiel.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ((Materiel)lv_materiel.SelectedItem).Delete();
+                    ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+                    MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
-            ((Materiel)lv_materiel.SelectedItem).Update();
-            MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (lv_materiel.SelectedItem is null)
+            {
+                MessageBox.Show("Séléctionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                ((Materiel)lv_materiel.SelectedItem).Update();
+                MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)

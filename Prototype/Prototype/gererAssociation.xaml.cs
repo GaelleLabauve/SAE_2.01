@@ -32,9 +32,13 @@ namespace Prototype
 
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
-            ((ApplicationData)DataContext).LesAttributions.Insert(0, new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text));
-            lv_Attribution.SelectedIndex = 0;
-            ((Attribution)lv_Attribution.SelectedItem).Create();
+            Attribution a = new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text);
+
+            //Mise en place de UnEnseignant et UnMateriel
+            a.UnEnseignant = ((ApplicationData)this.DataContext).LesEnseignants.ToList<Enseignant>().Find(e => e.IdPersonnel == a.FK_IdPersonnel);
+            a.UnMateriel = ((ApplicationData)this.DataContext).LesMateriels.ToList<Materiel>().Find(m => m.IdMateriel == a.FK_IdMateriel);
+
+            ((ApplicationData)DataContext).Add(a);
         }
 
         private void lv_Attribution_SelectionChanged(object sender, SelectionChangedEventArgs e)

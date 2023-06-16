@@ -99,7 +99,7 @@ namespace Prototype.Metier
             }
             else if (obj is Attribution)
             {
-                ((Attribution)obj).Create(); 
+                ((Attribution)obj).Create();
                 this.LesAttributions.Add((Attribution)obj);
             }
             else if (obj is Enseignant)

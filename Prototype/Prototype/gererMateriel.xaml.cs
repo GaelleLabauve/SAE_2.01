@@ -27,14 +27,8 @@ namespace Prototype
 
         private void bt_ajouter_Click(object sender, RoutedEventArgs e)
         {
-            ((ApplicationData)DataContext).LesMateriels.Insert(0, new Materiel());
-            lv_materiel.SelectedIndex = 0;
-        }
-
-        private void bt_valideajout_Click(object sender, RoutedEventArgs e)
-        {
             Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
-            ((Materiel)lv_materiel.SelectedItem).Create();
+            ((ApplicationData)DataContext).Add(m);
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)

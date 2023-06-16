@@ -123,6 +123,8 @@ namespace Prototype.Metier
                 {
                     ((Materiel)obj).IdMateriel= (int.Parse(row["idMateriel"].ToString()));
                 }
+
+                ((Materiel)obj).UneCategorie = LesCategories.ToList<Categorie>().Find(c => c.IdCategorie == ((Materiel)obj).FK_IdCategorie);
                 this.LesMateriels.Add((Materiel)obj);
             }
         }

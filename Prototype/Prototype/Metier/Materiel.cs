@@ -6,6 +6,8 @@ namespace Prototype.Metier
 {
     public class Materiel : Crud<Materiel>
     {
+        public const int LIMITE_CARACTERE = 100;
+
         /// <summary>
         /// Obtient ou definit l'IdMateriel de ce materiel.
         /// </summary>

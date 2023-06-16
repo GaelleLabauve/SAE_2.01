@@ -41,7 +41,7 @@ namespace Prototype
         {
             if(lv_Attribution.SelectedItem == null)
             {
-                sp_lesReseignement.DataContext = null;
+                //sp_lesReseignement.DataContext = null;
                 sp_materiel.IsEnabled = true;
                 sp_nomEns.IsEnabled = true;
             }

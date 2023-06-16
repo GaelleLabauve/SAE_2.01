@@ -81,11 +81,11 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-               
+               /*
                 if (tb == tb_refCons)
                 {
                     lb_RefError.Content = "Trop long ( > 100 caractères)";
-                }
+                }*/
             }
         }
     }

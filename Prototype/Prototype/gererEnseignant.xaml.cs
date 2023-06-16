@@ -2,6 +2,7 @@
 using Prototype.Metier;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,8 +63,8 @@ namespace Prototype
                 if (!(Verif_TextBoxVide() || Verif_Style()))
                 {
                     Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
-                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} {enseignant.IdPersonnel}?", "Modification enseignant", MessageBoxButton.OKCancel,MessageBoxImage.Warning,MessageBoxResult.Cancel);
-                    
+                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+
                     if (result == MessageBoxResult.OK)
                     {
                         // Modification des informations
@@ -264,6 +265,8 @@ namespace Prototype
         /// </summary>
         private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
             if (lvEnseignant.SelectedIndex != -1)
             {
                 Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
@@ -271,7 +274,8 @@ namespace Prototype
                 tbNom.Text = enseignant.NomPersonnel;
                 tbPrenom.Text = enseignant.PrenomPersonnel;
                 tbMail.Text = enseignant.EmailPersonnel;
-            } else
+            }
+            else
             {
                 Reset();
             }

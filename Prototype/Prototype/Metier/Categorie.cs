@@ -65,7 +65,7 @@ namespace Prototype.Metier
             accesBD.GetData($"INSERT INTO CATEGORIE_MATERIEL(nomCategorie) VALUES('{this.NomCategorie}');");
         }
 
-        public void Read()
+        public bool Read()
         {
             throw new NotImplementedException();
         }

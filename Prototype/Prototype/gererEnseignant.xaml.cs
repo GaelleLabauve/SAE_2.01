@@ -49,9 +49,6 @@ namespace Prototype
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
 
-                // Sélection de l'enseignant ajouté
-                lvEnseignant.SelectedIndex = lvEnseignant.Items.Count - 1;
-
                 // Reset des champs de saisie
                 Reset();
             }
@@ -178,31 +175,50 @@ namespace Prototype
         /// </summary>
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
-            if (tbMail.Text.Length > 100)
-            {
-                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content = "Trop long";
+            // récupération de l'email renseigné
+            String email = tbMail.Text;
 
-            }
-            // Si le mail ne contient pas de @ alors il n'est pas valide
-            if (!tbMail.Text.Contains('@'))
-            {
-                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                String content = lbMailError.Content.ToString();
-
-                // Ajout du message s'il n'est pas déjà affiché
-                if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
-                {
-                    lbMailError.Content += "\tInvalide (manque @)";
-                }
-            }
-
-            // Si tout est en ordre l'email est valide
-            if (tbMail.Text.Length <= 100 && tbMail.Text.Contains('@'))
+            // Création d'un enseignant avec l'email rentré
+            Enseignant enseignant = new Enseignant();
+            enseignant.EmailPersonnel = email;
+            if (email.Length <= 100 && email.Contains('@') && enseignant.Read())
             {
                 tbMail.Style = new Style();
                 lbMailError.Content = " ";
+            } else
+            {
+                // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
+                if (email.Length > 100)
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    lbMailError.Content = "Trop long";
+
+                }
+                // Si le mail ne contient pas de @ alors il n'est pas valide
+                if (!email.Contains('@'))
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    String content = lbMailError.Content.ToString();
+
+                    // Ajout du message s'il n'est pas déjà affiché
+                    if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
+                    {
+                        lbMailError.Content += "\tInvalide (manque @)";
+                    }
+                }
+
+                // Vérification de l'unicité de l'email rentré
+                if (!enseignant.Read())
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    String content = lbMailError.Content.ToString();
+
+                    // Ajout du message s'il n'est pas déjà affiché
+                    if (String.IsNullOrWhiteSpace(content) || !content.Contains("Cet email extiste déjà"))
+                    {
+                        lbMailError.Content += "\tCet email extiste déjà";
+                    }
+                }
             }
         }
 

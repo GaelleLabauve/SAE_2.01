@@ -89,7 +89,7 @@ namespace Prototype.Metier
             accesBD.GetData($"INSERT INTO MATERIEL(idCategorie, nomMateriel, codeBarreInventaire, referenceConstructeurMateriel) VALUES('{this.FK_IdCategorie}','{this.NomMateriel}','{this.CodeBarreInventaire}','{this.ReferenceConstructeurMateriel}');");
         }
 
-        public void Read()
+        public bool Read()
         {
             throw new NotImplementedException();
         }

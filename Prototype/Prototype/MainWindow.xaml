@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
-            <DataGrid
+            <DataGrid x:Name="dg_attributions"
                 Margin="5,15,5,5"
                 VerticalAlignment="Top"
                 AutoGenerateColumns="False"
@@ -82,7 +82,7 @@
                     FontSize="14" />
                 <ListView
                     x:Name="lv_cateChoix"
-                    ItemsSource="{Binding Path=LesCategories}">
+                    ItemsSource="{Binding Path=LesCategories}" SelectionChanged="lv_cateChoix_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom catégorie" />
@@ -101,7 +101,7 @@
                     x:Name="lv_MaterielChoix"
                     Height="100"
                     DataContext="{Binding SelectedItem, ElementName=lv_cateChoix}"
-                    ItemsSource="{Binding Path=LesMateriels}">
+                    ItemsSource="{Binding Path=LesMateriels}" SelectionChanged="lv_MaterielChoix_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace Prototype
         public MainWindow()
         {
             InitializeComponent();
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource);
+            view.Filter = FiltrerAttributions;
         }
 
         private void MenuItem_ClickQuitter(object sender, RoutedEventArgs e)
@@ -62,6 +66,35 @@ namespace Prototype
         private void bt_tousMateriel_Click(object sender, RoutedEventArgs e)
         {
             lv_MaterielChoix.SelectedItem = null;
+            CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
+        }
+
+        private bool FiltrerAttributions(object item)
+        {
+            Attribution a = item as Attribution;
+            if (lv_cateChoix.SelectedItem == null)
+                return false;
+            else
+            {
+                if(lv_MaterielChoix.SelectedItem != null)
+                {
+                    return a.UnMateriel == ((Materiel)lv_MaterielChoix.SelectedItem);
+                }
+                else
+                    return a.UnMateriel.UneCategorie == ((Categorie)lv_cateChoix.SelectedItem);
+            }
+        }
+
+        private void lv_cateChoix_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
+        }
+
+        private void lv_MaterielChoix_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
         }
     }
 }

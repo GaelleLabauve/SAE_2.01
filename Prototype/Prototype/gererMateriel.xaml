@@ -52,13 +52,15 @@
                 Click="bt_ajouter_Click"
                 Content="Ajouter"
                 FontSize="14" />
-            <Button x:Name="btModif"
+            <Button
+                x:Name="btModif"
                 Grid.Column="1"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="btModif_Click"
                 Content="Modifier"
-                FontSize="14" Click="btModif_Click" />
+                FontSize="14" />
             <Button
                 x:Name="btSupp"
                 Grid.Column="0"
@@ -89,6 +91,13 @@
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding ReferenceConstructeurMateriel}"
                 TextWrapping="Wrap" />
+
+            <Label
+                x:Name="lbNomError"
+                Width="185"
+                Foreground="Red" />
+
+
         </StackPanel>
         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
@@ -101,7 +110,13 @@
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding CodeBarreInventaire}"
+                TextChanged="tb_codeBarre_TextChanged"
                 TextWrapping="Wrap" />
+            <Label
+                x:Name="lb_CodeBarreError"
+                Width="195"
+                Height="28"
+                Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label

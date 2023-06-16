@@ -31,12 +31,16 @@ namespace Prototype
         /// <summary>
         /// Ajoute (après vérification) un enseignant à la base de données et à la liste LesEnseignants.
         /// </summary>
-        private void Ajouter_Click(object sender, RoutedEventArgs e)
+        private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
-            if (!(Verif_TextBoxVide() || Verif_Style()))
+            if (spNom.Visibility == Visibility.Hidden)
+            {
+                AfficheForm();
+            }
+            else if (!(Verif_TextBoxVide() || Verif_Style()))
             {
                 // Initialisation du nouvel enseignant et ajout des informations
-                Enseignant enseignant = new Enseignant(tbMail.Text, tbNom.Text, tbPrenom.Text);
+                Enseignant enseignant = new Enseignant(tbMail.Text, tbNom.Text.Substring(0,1).ToUpper() + tbNom.Text.Substring(1).ToLower(), tbPrenom.Text.Substring(0, 1).ToUpper() + tbPrenom.Text.Substring(1).ToLower());
 
                 // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);
@@ -51,6 +55,9 @@ namespace Prototype
                 // Reset des champs de saisie
                 Reset();
             }
+
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -60,9 +67,16 @@ namespace Prototype
         {
             if (lvEnseignant.SelectedIndex != -1)
             {
-                if (!(Verif_TextBoxVide() || Verif_Style()))
+                Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
+                if (spNom.Visibility == Visibility.Hidden)
                 {
-                    Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
+                    AfficheForm();
+                    tbNom.Text = enseignant.NomPersonnel;
+                    tbPrenom.Text = enseignant.PrenomPersonnel;
+                    tbMail.Text = enseignant.EmailPersonnel;
+                }
+                else if (!(Verif_TextBoxVide() || Verif_Style()))
+                {
                     MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
 
                     if (result == MessageBoxResult.OK)
@@ -79,10 +93,13 @@ namespace Prototype
 
                         // Message de confirmation
                         MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
-
-                        // Reset des champs de saisie
-                        Reset();
                     }
+
+                    // Réinitialisation de la sélection
+                    lvEnseignant.SelectedIndex = -1;
+
+                    // Reset des champs de saisie
+                    Reset();
                 }
                 else
                 {
@@ -240,7 +257,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur. Puis les cache.
         /// </summary>
         private void Reset()
         {
@@ -258,27 +275,34 @@ namespace Prototype
             lbNomError.Content = " ";
             lbPrenomError.Content = " ";
             lbMailError.Content = " ";
+
+            // Cache les StackPanel
+            spNom.Visibility = Visibility.Hidden;
+            spPrenom.Visibility = Visibility.Hidden;
+            spMail.Visibility = Visibility.Hidden;
+
+            // Cache le boutton annuler
+            btAnnuler.Visibility = Visibility.Hidden;
         }
 
-        /// <summary>
-        /// Met à jour les champs si un enseignant est sélectionné. Reset les champs s'il est désélectionné.
-        /// </summary>
-        private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AfficheForm()
         {
+            // Affiche les StackPanel
+            spNom.Visibility = Visibility.Visible;
+            spPrenom.Visibility = Visibility.Visible;
+            spMail.Visibility = Visibility.Visible;
 
+            // Affichage du boutton annuler
+            btAnnuler.Visibility = Visibility.Visible;
+        }
 
-            if (lvEnseignant.SelectedIndex != -1)
-            {
-                Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialise et cache les champs
+            Reset();
 
-                tbNom.Text = enseignant.NomPersonnel;
-                tbPrenom.Text = enseignant.PrenomPersonnel;
-                tbMail.Text = enseignant.EmailPersonnel;
-            }
-            else
-            {
-                Reset();
-            }
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
     }
 }

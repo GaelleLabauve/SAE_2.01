@@ -220,7 +220,7 @@ namespace Prototype
         /// <summary>
         /// Vérifie les styles des TextBox.
         /// </summary>
-        /// <returns>True si une des TextBox a le style "Obligatoire" (aux bordures rouges).</returns>
+        /// <returns>True si une des TextBox a le style "Obligatoire" (aux bordures rouges). False sinon.</returns>
         private bool Verif_Style()
         {
             if (tbNom.Style == (Style)Application.Current.FindResource("Obligatoire"))
@@ -239,7 +239,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise toutes les TextBox, les styles de celles-ci, ainsi que les labels des messages d'erreur.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur.
         /// </summary>
         private void Reset()
         {
@@ -259,6 +259,9 @@ namespace Prototype
             lbMailError.Content = " ";
         }
 
+        /// <summary>
+        /// Met à jour les champs si un enseignant est sélectionné. Reset les champs s'il est désélectionné.
+        /// </summary>
         private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvEnseignant.SelectedIndex != -1)

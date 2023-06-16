@@ -126,7 +126,7 @@
                     Height="24"
                     MinWidth="100"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
-                    Text="{Binding Commentaire}" />
+                    Text="{Binding CommentaireAttribution}" />
             </StackPanel>
         </StackPanel>
 

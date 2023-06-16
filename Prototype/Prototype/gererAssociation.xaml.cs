@@ -33,11 +33,6 @@ namespace Prototype
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
             Attribution a = new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text);
-
-            //Mise en place de UnEnseignant et UnMateriel
-            a.UnEnseignant = ((ApplicationData)this.DataContext).LesEnseignants.ToList<Enseignant>().Find(e => e.IdPersonnel == a.FK_IdPersonnel);
-            a.UnMateriel = ((ApplicationData)this.DataContext).LesMateriels.ToList<Materiel>().Find(m => m.IdMateriel == a.FK_IdMateriel);
-
             ((ApplicationData)DataContext).Add(a);
         }
 

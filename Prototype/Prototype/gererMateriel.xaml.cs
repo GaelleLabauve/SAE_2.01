@@ -33,6 +33,7 @@ namespace Prototype
             Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
             ((ApplicationData)DataContext).Add(m);
             lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+            MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -56,13 +57,14 @@ namespace Prototype
             {
                 ((Materiel)lv_materiel.SelectedItem).Delete();
                 ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
-                MessageBox.Show("Suppression réaliser avec succés !", "Super !", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
             ((Materiel)lv_materiel.SelectedItem).Update();
+            MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)

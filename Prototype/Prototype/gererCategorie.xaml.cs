@@ -39,7 +39,7 @@ namespace Prototype
                 ((Categorie)lv_categorie.SelectedItem).Delete();            
                 ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);            
                 lv_categorie.SelectedIndex = 0;
-                MessageBox.Show("Suppression réaliser avec succés !", "Super !", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Suppression réaliser avec succés !", "Suppression Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             
         }
@@ -53,6 +53,7 @@ namespace Prototype
             ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie(tbCategorie.Text));
             lv_categorie.SelectedIndex = 0;
             ((Categorie)lv_categorie.SelectedItem).Create();
+            MessageBox.Show("Ajout réaliser avec succés !", "Ajout Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -62,6 +63,7 @@ namespace Prototype
         {
             // Modification de la catégorie dans la base de données et dans la liste LesCatégories
             ((Categorie)lv_categorie.SelectedItem).Update();
+            MessageBox.Show("Modification réaliser avec succés !", "Modification Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void tbCategorie_TextChanged(object sender, TextChangedEventArgs e)

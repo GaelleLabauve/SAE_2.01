@@ -8,5 +8,5 @@ var searchData=
   ['ajoutmateriel_5',['AjoutMateriel',['../class_prototype_1_1_ajout_materiel.html',1,'Prototype']]],
   ['app_6',['App',['../class_prototype_1_1_app.html',1,'Prototype']]],
   ['applicationdata_7',['ApplicationData',['../class_prototype_1_1_metier_1_1_application_data.html#ab2429a85c2257619f8c876937b52b9c1',1,'Prototype.Metier.ApplicationData.ApplicationData()'],['../class_prototype_1_1_metier_1_1_application_data.html',1,'Prototype.Metier.ApplicationData']]],
-  ['attribution_8',['Attribution',['../class_prototype_1_1_metier_1_1_attribution.html',1,'Prototype::Metier']]]
+  ['attribution_8',['Attribution',['../class_prototype_1_1_metier_1_1_attribution.html#a6f734592e1a761da20da496fb34c5f12',1,'Prototype.Metier.Attribution.Attribution()'],['../class_prototype_1_1_metier_1_1_attribution.html#ae6c0a447041541ee3749b5715d37354b',1,'Prototype.Metier.Attribution.Attribution(int fK_IdMateriel, int fK_IdPersonnel, DateTime dateAttribution, string commentaireAttribution)'],['../class_prototype_1_1_metier_1_1_attribution.html',1,'Prototype.Metier.Attribution']]]
 ];

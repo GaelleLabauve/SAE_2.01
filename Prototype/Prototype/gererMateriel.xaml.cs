@@ -60,7 +60,7 @@ namespace Prototype
         {
             if (lv_materiel.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Séléctionner un materiel pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -79,7 +79,7 @@ namespace Prototype
         {
             if (lv_materiel.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Séléctionner un materiel pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

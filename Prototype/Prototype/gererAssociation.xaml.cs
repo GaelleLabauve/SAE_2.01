@@ -32,7 +32,7 @@ namespace Prototype
         {
             if (lv_Attribution.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Séléctionner une attribution pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -91,7 +91,7 @@ namespace Prototype
         {
             if (lv_Attribution.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Séléctionner une attribution pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

@@ -91,7 +91,8 @@ namespace Prototype.Metier
 
         public bool Read()
         {
-            throw new NotImplementedException();
+            DataAccess accesDB = new DataAccess();
+            return accesDB.GetData($"SELECT 'X' FROM MATERIEL WHERE idMateriel='{this.IdMateriel}'").Rows.Count == 0;
         }
 
         /// <summary>

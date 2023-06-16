@@ -73,9 +73,22 @@ namespace Prototype
                     lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
                 }
             }
-        }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
 
-        private void lb_RefError_TextInput(object sender, TextCompositionEventArgs e)
+                // Réinitialisation du label
+                if (tb == tb_codeBarre)
+                {
+                    lb_CodeBarreError.Content = "";
+                }
+               
+            }
+        }
+       
+
+        private void tb_refCons_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.Text.Length > 100)
@@ -84,11 +97,50 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-               /*
                 if (tb == tb_refCons)
                 {
-                    lb_RefError.Content = "Trop long ( > 100 caractères)";
-                }*/
+                    lbRefError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_refCons)
+                {
+                    lbRefError.Content = "";
+                }
+
+            }
+        }
+
+        private void tb_materiel_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_materiel)
+                {
+                    lbNomError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_materiel)
+                {
+                    lbNomError.Content = "";
+                }
+
             }
         }
     }

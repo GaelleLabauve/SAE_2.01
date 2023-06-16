@@ -52,17 +52,19 @@
                 Click="bt_ajouter_Click"
                 Content="Ajouter"
                 FontSize="14" />
-            <Button
+            <Button x:Name="btModif"
                 Grid.Column="1"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Content="Modifier"
-                FontSize="14" />
+                FontSize="14" Click="btModif_Click" />
             <Button
+                x:Name="btSupp"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="btSupp_Click"
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>

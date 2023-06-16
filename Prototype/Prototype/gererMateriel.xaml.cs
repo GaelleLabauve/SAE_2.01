@@ -29,6 +29,7 @@ namespace Prototype
         {
             Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
             ((ApplicationData)DataContext).Add(m);
+            lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,6 +43,17 @@ namespace Prototype
                         cb_categorie.SelectedItem = i;
                 }
             }
+        }
+
+        private void btSupp_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Delete();
+            ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+        }
+
+        private void btModif_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Update();
         }
     }
 }

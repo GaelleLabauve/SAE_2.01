@@ -1,0 +1,131 @@
+\hypertarget{class_prototype_1_1_metier_1_1_categorie}{}\doxysection{RÃ©fÃ©rence de la classe Prototype.\+Metier.\+Categorie}
+\label{class_prototype_1_1_metier_1_1_categorie}\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+
+
+Stocke 3 informations \+: 1 chaines \+: le nom de la categorie 1 entier \+: l\textquotesingle{}id\+Categorie entrer dans la base de donnee 1 Observable\+Collection$<$\+Materiel$>$ \+: la liste des materiel de cette categorie  
+
+
+Graphe d\textquotesingle{}hÃ©ritage de Prototype.\+Metier.\+Categorie\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_prototype_1_1_metier_1_1_categorie}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_a6c65481b9a2dba3e590e1b5af4c2ed16}\label{class_prototype_1_1_metier_1_1_categorie_a6c65481b9a2dba3e590e1b5af4c2ed16}} 
+{\bfseries Categorie} (int id\+Categorie, string nom\+Categorie)
+\item 
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_a28528ac5ea4ae5e79755fb7a7c1eb786}\label{class_prototype_1_1_metier_1_1_categorie_a28528ac5ea4ae5e79755fb7a7c1eb786}} 
+{\bfseries Categorie} (string nom\+Categorie)
+\item 
+void \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_aa6376d9ce514c55f6c5ae980703b15e7}{Create}} ()
+\begin{DoxyCompactList}\small\item\em Crée dans la base de donnée cette catégorie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_a3d0877b01ae9d45434a0eec801239d05}\label{class_prototype_1_1_metier_1_1_categorie_a3d0877b01ae9d45434a0eec801239d05}} 
+void {\bfseries Read} ()
+\item 
+void \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_a5ae8def6a402499c64d927e95c75ffb1}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Modifie dans la base de donnée le nom de cette catégorie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_aa70d7585eea0b2e6d6026efdfda06e7f}{Delete}} ()
+\begin{DoxyCompactList}\small\item\em Supprime dans la base de donnée cette catégorie \end{DoxyCompactList}\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie}{Categorie}} $>$ \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_acee48b88d6f8c6047bb9fdcf0a371f57}{Find\+All}} ()
+\begin{DoxyCompactList}\small\item\em Cherche dans la base de donnée toute les catgories enregistrées \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{PropriÃ©tÃ©s}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_aa6aadc99a6f514e5cb1981acef4baf59}{Id\+Categorie}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Obtient ou definit l\textquotesingle{}id\+Categorie de cette catégorie – \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_ae4e2674f6d3ca951f46a6347861c2f36}{Nom\+Categorie}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Obtient ou definit le nom de cette catégorie – \end{DoxyCompactList}\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_prototype_1_1_metier_1_1_materiel}{Materiel}} $>$ \mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie_af5904d664a1f1f04c0bcd73b15649f34}{Les\+Materiels}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Obtient ou definit la liste des materiels de cette catégorie – \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description dÃ©taillÃ©e}
+Stocke 3 informations \+: 1 chaines \+: le nom de la categorie 1 entier \+: l\textquotesingle{}id\+Categorie entrer dans la base de donnee 1 Observable\+Collection$<$\+Materiel$>$ \+: la liste des materiel de cette categorie 
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_aa6376d9ce514c55f6c5ae980703b15e7}\label{class_prototype_1_1_metier_1_1_categorie_aa6376d9ce514c55f6c5ae980703b15e7}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!Create@{Create}}
+\index{Create@{Create}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily void Prototype.\+Metier.\+Categorie.\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Crée dans la base de donnée cette catégorie 
+
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_aa70d7585eea0b2e6d6026efdfda06e7f}\label{class_prototype_1_1_metier_1_1_categorie_aa70d7585eea0b2e6d6026efdfda06e7f}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!Delete@{Delete}}
+\index{Delete@{Delete}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Prototype.\+Metier.\+Categorie.\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Supprime dans la base de donnée cette catégorie 
+
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_acee48b88d6f8c6047bb9fdcf0a371f57}\label{class_prototype_1_1_metier_1_1_categorie_acee48b88d6f8c6047bb9fdcf0a371f57}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!FindAll@{FindAll}}
+\index{FindAll@{FindAll}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{FindAll()}{FindAll()}}
+{\footnotesize\ttfamily Observable\+Collection$<$\mbox{\hyperlink{class_prototype_1_1_metier_1_1_categorie}{Categorie}}$>$ Prototype.\+Metier.\+Categorie.\+Find\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cherche dans la base de donnée toute les catgories enregistrées 
+
+/// \begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}Observable\+Collection regroupant toutes les catégories entrées dans la base de donnée
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_a5ae8def6a402499c64d927e95c75ffb1}\label{class_prototype_1_1_metier_1_1_categorie_a5ae8def6a402499c64d927e95c75ffb1}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!Update@{Update}}
+\index{Update@{Update}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Prototype.\+Metier.\+Categorie.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modifie dans la base de donnée le nom de cette catégorie 
+
+
+
+\doxysubsection{Documentation des propriÃ©tÃ©s}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_aa6aadc99a6f514e5cb1981acef4baf59}\label{class_prototype_1_1_metier_1_1_categorie_aa6aadc99a6f514e5cb1981acef4baf59}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!IdCategorie@{IdCategorie}}
+\index{IdCategorie@{IdCategorie}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{IdCategorie}{IdCategorie}}
+{\footnotesize\ttfamily int Prototype.\+Metier.\+Categorie.\+Id\+Categorie\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Obtient ou definit l\textquotesingle{}id\+Categorie de cette catégorie – 
+
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_af5904d664a1f1f04c0bcd73b15649f34}\label{class_prototype_1_1_metier_1_1_categorie_af5904d664a1f1f04c0bcd73b15649f34}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!LesMateriels@{LesMateriels}}
+\index{LesMateriels@{LesMateriels}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{LesMateriels}{LesMateriels}}
+{\footnotesize\ttfamily Observable\+Collection$<$\mbox{\hyperlink{class_prototype_1_1_metier_1_1_materiel}{Materiel}}$>$ Prototype.\+Metier.\+Categorie.\+Les\+Materiels\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Obtient ou definit la liste des materiels de cette catégorie – 
+
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_categorie_ae4e2674f6d3ca951f46a6347861c2f36}\label{class_prototype_1_1_metier_1_1_categorie_ae4e2674f6d3ca951f46a6347861c2f36}} 
+\index{Prototype.Metier.Categorie@{Prototype.Metier.Categorie}!NomCategorie@{NomCategorie}}
+\index{NomCategorie@{NomCategorie}!Prototype.Metier.Categorie@{Prototype.Metier.Categorie}}
+\doxysubsubsection{\texorpdfstring{NomCategorie}{NomCategorie}}
+{\footnotesize\ttfamily string Prototype.\+Metier.\+Categorie.\+Nom\+Categorie\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Obtient ou definit le nom de cette catégorie – 
+
+
+
+La documentation de cette classe a Ã©tÃ© gÃ©nÃ©rÃ©e Ã  partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/labauveg/\+Desktop/\+SAE\+\_\+201/\+Prototype/\+Prototype/\+Metier/Categorie.\+cs\end{DoxyCompactItemize}

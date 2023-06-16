@@ -20,6 +20,9 @@ namespace Prototype
     /// </summary>
     public partial class gererMateriel : Window
     {
+        /// <summary>
+        /// Creation de la fenetre modal servant a la gestion des materiels.
+        /// </summary>
         public gererMateriel()
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace Prototype
         {
             Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
             ((ApplicationData)DataContext).Add(m);
+            lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,6 +45,102 @@ namespace Prototype
                     if (i.NomCategorie == ((Materiel)lv_materiel.SelectedItem).UneCategorie.NomCategorie)
                         cb_categorie.SelectedItem = i;
                 }
+            }
+        }
+
+        private void btSupp_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Delete();
+            ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+        }
+
+        private void btModif_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Update();
+        }
+
+        private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_codeBarre)
+                {
+                    lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_codeBarre)
+                {
+                    lb_CodeBarreError.Content = "";
+                }
+               
+            }
+        }
+       
+
+        private void tb_refCons_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_refCons)
+                {
+                    lbRefError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_refCons)
+                {
+                    lbRefError.Content = "";
+                }
+
+            }
+        }
+
+        private void tb_materiel_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_materiel)
+                {
+                    lbNomError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_materiel)
+                {
+                    lbNomError.Content = "";
+                }
+
             }
         }
     }

@@ -8,24 +8,24 @@ namespace Prototype.Metier
 {
     /// <summary>
     /// Stocke 3 informations :
-    /// 1 chaines : le nom de la catégorie
-    /// 1 entier : l'idCategorie entrer dans la base de donnée
-    /// 1 ObservableCollection<Materiel> : la liste des materiel de cette catégorie
+    /// 1 chaines : le nom de la categorie
+    /// 1 entier : l'idCategorie entrer dans la base de donnee
+    /// 1 ObservableCollection<Materiel> : la liste des materiel de cette categorie
     /// </summary>
     public class Categorie : Crud<Categorie>
     {
         /// <summary>
-        /// Obtient ou définit l'idCategorie de cette catégorie –
+        /// Obtient ou definit l'idCategorie de cette catégorie –
         /// </summary>
         public int IdCategorie { get; set; }
 
         /// <summary>
-        /// Obtient ou définit le nom de cette catégorie –
+        /// Obtient ou definit le nom de cette catégorie –
         /// </summary>
         public string NomCategorie { get; set; }
 
         /// <summary>
-        /// Obtient ou définit la liste des materiels de cette catégorie –
+        /// Obtient ou definit la liste des materiels de cette catégorie –
         /// </summary>
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 

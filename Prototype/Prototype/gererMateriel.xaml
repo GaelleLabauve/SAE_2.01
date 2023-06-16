@@ -53,16 +53,20 @@
                 Content="Ajouter"
                 FontSize="14" />
             <Button
+                x:Name="btModif"
                 Grid.Column="1"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="btModif_Click"
                 Content="Modifier"
                 FontSize="14" />
             <Button
+                x:Name="btSupp"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="btSupp_Click"
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>
@@ -70,10 +74,15 @@
             <Label Content="Nom du materiél :" FontSize="14" />
             <TextBox
                 x:Name="tb_materiel"
-                MinWidth="120"
+                Width="178"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding NomMateriel}"
+                TextChanged="tb_materiel_TextChanged"
                 TextWrapping="Wrap" />
+            <Label
+                x:Name="lbNomError"
+                Width="185"
+                Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
@@ -82,11 +91,18 @@
                 FontSize="14" />
             <TextBox
                 x:Name="tb_refCons"
-                Width="116"
+                Width="307"
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding ReferenceConstructeurMateriel}"
+                TextChanged="tb_refCons_TextChanged"
                 TextWrapping="Wrap" />
+            <Label
+                x:Name="lbRefError"
+                Width="185"
+                Foreground="Red" />
+
+
         </StackPanel>
         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label
@@ -95,11 +111,27 @@
                 FontSize="14" />
             <TextBox
                 x:Name="tb_codeBarre"
-                Width="120"
+                Width="264"
                 Margin="0,10,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
+                RenderTransformOrigin="0.5,0.5"
                 Text="{Binding CodeBarreInventaire}"
-                TextWrapping="Wrap" />
+                TextChanged="tb_codeBarre_TextChanged"
+                TextWrapping="Wrap">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="0.66" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label
+                x:Name="lb_CodeBarreError"
+                Width="195"
+                Height="28"
+                Foreground="Red" />
         </StackPanel>
         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
             <Label

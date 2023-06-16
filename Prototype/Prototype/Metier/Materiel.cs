@@ -46,7 +46,8 @@ namespace Prototype.Metier
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            accesBD.GetData($"UPDATE MATERIEL SET idCategorie='{this.FK_IdCategorie}', nomMateriel='{this.NomMateriel}', codeBarreInventaire='{this.CodeBarreInventaire}', referenceConstructeurMateriel='{this.ReferenceConstructeurMateriel}' WHERE idMateriel='{this.IdMateriel}';");
         }
 
         public void Delete()

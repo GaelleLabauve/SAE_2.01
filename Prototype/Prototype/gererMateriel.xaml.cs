@@ -173,5 +173,10 @@ namespace Prototype
 
             }
         }
+
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
     }
 }

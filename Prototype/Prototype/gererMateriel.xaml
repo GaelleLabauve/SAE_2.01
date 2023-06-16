@@ -147,8 +147,13 @@
                 DisplayMemberPath="NomCategorie"
                 ItemsSource="{Binding Path=LesCategories}" />
         </StackPanel>
-
-
-
+        <Button
+            x:Name="btAnnuler"
+            Height="30"
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Click="btAnnuler_Click"
+            Content="Annuler"
+            Visibility="Hidden" />
     </StackPanel>
 </Window>

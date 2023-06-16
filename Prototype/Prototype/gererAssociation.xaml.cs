@@ -75,5 +75,33 @@ namespace Prototype
             ((Attribution)lv_Attribution.SelectedItem).Delete();
             ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
         }
+
+        private void tb_commentaire_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 1000)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_commentaire)
+                {
+                    lbCommentaireError.Content = "Trop long ( > 1000 caractères)";
+                }
+            }
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tb_commentaire)
+                {
+                    lbCommentaireError.Content = "";
+                }
+
+            }
+        }
     }
 }

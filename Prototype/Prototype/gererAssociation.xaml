@@ -123,10 +123,16 @@
                 <Label Content="Commentaire :" FontSize="14" />
                 <TextBox
                     x:Name="tb_commentaire"
-                    Height="24"
-                    MinWidth="100"
+                    Width="180"
+                    MaxWidth="180"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
-                    Text="{Binding CommentaireAttribution}" />
+                    Text="{Binding CommentaireAttribution}"
+                    TextChanged="tb_commentaire_TextChanged"
+                    TextWrapping="Wrap" />
+                <Label
+                    x:Name="lbCommentaireError"
+                    Width="220"
+                    Foreground="Red" />
             </StackPanel>
         </StackPanel>
 

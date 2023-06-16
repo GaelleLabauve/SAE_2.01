@@ -118,6 +118,5 @@
                 Content=" "
                 Foreground="Red" />
         </StackPanel>
-
     </StackPanel>
 </Window>

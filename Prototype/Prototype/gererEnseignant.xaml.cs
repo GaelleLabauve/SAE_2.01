@@ -90,10 +90,10 @@ namespace Prototype
 
                         // Message de confirmation
                         MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
-
-                        // Reset des champs de saisie
-                        Reset();
                     }
+
+                    // Reset des champs de saisie
+                    Reset();
                 }
                 else
                 {
@@ -274,43 +274,7 @@ namespace Prototype
             spNom.Visibility = Visibility.Hidden;
             spPrenom.Visibility = Visibility.Hidden;
             spMail.Visibility = Visibility.Hidden;
-
-            //// Cache les labels
-            //lbNom.Visibility = Visibility.Collapsed;
-            //lbPrenom.Visibility = Visibility.Collapsed;
-            //lbMail.Visibility = Visibility.Collapsed;
-
-            //// Cache les TextBox
-            //tbNom.Visibility = Visibility.Collapsed;
-            //tbPrenom.Visibility = Visibility.Collapsed;
-            //tbMail.Visibility = Visibility.Collapsed;
-
-            //// Cache les labels d'erreur
-            //lbNomError.Visibility = Visibility.Collapsed;
-            //lbPrenomError.Visibility = Visibility.Collapsed;
-            //lbMailError.Visibility = Visibility.Collapsed;
         }
-
-        /// <summary>
-        /// Met à jour les champs si un enseignant est sélectionné. Reset les champs s'il est désélectionné.
-        /// </summary>
-        //private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-
-        //    if (lvEnseignant.SelectedIndex != -1)
-        //    {
-        //        Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
-
-        //        tbNom.Text = enseignant.NomPersonnel;
-        //        tbPrenom.Text = enseignant.PrenomPersonnel;
-        //        tbMail.Text = enseignant.EmailPersonnel;
-        //    }
-        //    else
-        //    {
-        //        Reset();
-        //    }
-        //}
 
         private void AfficheForm()
         {
@@ -318,21 +282,6 @@ namespace Prototype
             spNom.Visibility = Visibility.Visible;
             spPrenom.Visibility = Visibility.Visible;
             spMail.Visibility = Visibility.Visible;
-
-            //// Affiche les labels
-            //lbNom.Visibility = Visibility.Visible;
-            //lbPrenom.Visibility = Visibility.Visible;
-            //lbMail.Visibility = Visibility.Visible;
-
-            //// Affiche les TextBox
-            //tbNom.Visibility = Visibility.Visible;
-            //tbPrenom.Visibility = Visibility.Visible;
-            //tbMail.Visibility = Visibility.Visible;
-
-            //// Affiche les labels d'erreur
-            //lbNomError.Visibility = Visibility.Visible;
-            //lbPrenomError.Visibility = Visibility.Visible;
-            //lbMailError.Visibility = Visibility.Visible;
         }
     }
 }

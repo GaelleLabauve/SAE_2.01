@@ -30,7 +30,7 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Nom" />
                     <GridViewColumn DisplayMemberBinding="{Binding PrenomPersonnel}" Header="Prénom" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="email" />
+                    <GridViewColumn DisplayMemberBinding="{Binding EmailPersonnel}" Header="email" />
                 </GridView>
             </ListView.View>
         </ListView>

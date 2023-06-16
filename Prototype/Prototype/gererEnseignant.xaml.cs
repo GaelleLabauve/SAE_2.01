@@ -55,6 +55,9 @@ namespace Prototype
                 // Reset des champs de saisie
                 Reset();
             }
+
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -91,6 +94,9 @@ namespace Prototype
                         // Message de confirmation
                         MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
                     }
+
+                    // Réinitialisation de la sélection
+                    lvEnseignant.SelectedIndex = -1;
 
                     // Reset des champs de saisie
                     Reset();
@@ -251,7 +257,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur. Puis les cache.
         /// </summary>
         private void Reset()
         {
@@ -274,6 +280,9 @@ namespace Prototype
             spNom.Visibility = Visibility.Hidden;
             spPrenom.Visibility = Visibility.Hidden;
             spMail.Visibility = Visibility.Hidden;
+
+            // Cache le boutton annuler
+            btAnnuler.Visibility = Visibility.Hidden;
         }
 
         private void AfficheForm()
@@ -282,6 +291,18 @@ namespace Prototype
             spNom.Visibility = Visibility.Visible;
             spPrenom.Visibility = Visibility.Visible;
             spMail.Visibility = Visibility.Visible;
+
+            // Affichage du boutton annuler
+            btAnnuler.Visibility = Visibility.Visible;
+        }
+
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialise et cache les champs
+            Reset();
+
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
     }
 }

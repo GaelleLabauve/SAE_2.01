@@ -61,7 +61,7 @@ namespace Prototype
         private void tbCategorie_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 100)
+            if (tb.Text.Length > 50)
             {
                 // Application du style avec bordures rouges
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
@@ -69,7 +69,7 @@ namespace Prototype
                 // Ajout du message 
                 if (tb == tbCategorie)
                 {
-                    lbNomCateError.Content = "Trop long ( > 100 caractères)";
+                    lbNomCateError.Content = "Trop long ( > 50 caractères)";
                 }
             }
 

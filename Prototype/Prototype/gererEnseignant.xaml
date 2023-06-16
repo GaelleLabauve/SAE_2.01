@@ -45,7 +45,6 @@
                 Grid.Column="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="Ajouter_Click"
                 Content="Ajouter"
                 FontSize="14" />
             <Button
@@ -53,7 +52,6 @@
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Click="btModif_Click"
                 Content="Modifier"
                 FontSize="14" />
             <Button
@@ -61,7 +59,6 @@
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="btSuppr_Click"
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>

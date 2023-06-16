@@ -14,6 +14,7 @@ namespace Prototype.Metier
     /// </summary>
     public class Categorie : Crud<Categorie>
     {
+        public const int LIMITE_TAILLE_CARACTERE_NOM = 50;
         /// <summary>
         /// Obtient ou definit l'idCategorie de cette catégorie –
         /// </summary>
@@ -65,7 +66,7 @@ namespace Prototype.Metier
             accesBD.GetData($"INSERT INTO CATEGORIE_MATERIEL(nomCategorie) VALUES('{this.NomCategorie}');");
         }
 
-        public void Read()
+        public bool Read()
         {
             throw new NotImplementedException();
         }

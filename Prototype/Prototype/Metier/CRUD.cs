@@ -10,7 +10,7 @@ namespace Prototype.Metier
     {
         void Create();
 
-        void Read();
+        bool Read();
 
         void Update();
 

@@ -49,12 +49,12 @@ namespace Prototype
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
 
-                // Sélection de l'enseignant ajouté
-                lvEnseignant.SelectedIndex = lvEnseignant.Items.Count - 1;
-
                 // Reset des champs de saisie
                 Reset();
             }
+
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -90,10 +90,13 @@ namespace Prototype
 
                         // Message de confirmation
                         MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
-
-                        // Reset des champs de saisie
-                        Reset();
                     }
+
+                    // Réinitialisation de la sélection
+                    lvEnseignant.SelectedIndex = -1;
+
+                    // Reset des champs de saisie
+                    Reset();
                 }
                 else
                 {
@@ -172,31 +175,50 @@ namespace Prototype
         /// </summary>
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
-            if (tbMail.Text.Length > 100)
-            {
-                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                lbMailError.Content = "Trop long";
+            // récupération de l'email renseigné
+            String email = tbMail.Text;
 
-            }
-            // Si le mail ne contient pas de @ alors il n'est pas valide
-            if (!tbMail.Text.Contains('@'))
-            {
-                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
-                String content = lbMailError.Content.ToString();
-
-                // Ajout du message s'il n'est pas déjà affiché
-                if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
-                {
-                    lbMailError.Content += "\tInvalide (manque @)";
-                }
-            }
-
-            // Si tout est en ordre l'email est valide
-            if (tbMail.Text.Length <= 100 && tbMail.Text.Contains('@'))
+            // Création d'un enseignant avec l'email rentré
+            Enseignant enseignant = new Enseignant();
+            enseignant.EmailPersonnel = email;
+            if (email.Length <= 100 && email.Contains('@') && enseignant.Read())
             {
                 tbMail.Style = new Style();
                 lbMailError.Content = " ";
+            } else
+            {
+                // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
+                if (email.Length > 100)
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    lbMailError.Content = "Trop long";
+
+                }
+                // Si le mail ne contient pas de @ alors il n'est pas valide
+                if (!email.Contains('@'))
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    String content = lbMailError.Content.ToString();
+
+                    // Ajout du message s'il n'est pas déjà affiché
+                    if (String.IsNullOrWhiteSpace(content) || !content.Contains("Invalide (manque @)"))
+                    {
+                        lbMailError.Content += "\tInvalide (manque @)";
+                    }
+                }
+
+                // Vérification de l'unicité de l'email rentré
+                if (!enseignant.Read())
+                {
+                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+                    String content = lbMailError.Content.ToString();
+
+                    // Ajout du message s'il n'est pas déjà affiché
+                    if (String.IsNullOrWhiteSpace(content) || !content.Contains("Cet email extiste déjà"))
+                    {
+                        lbMailError.Content += "\tCet email extiste déjà";
+                    }
+                }
             }
         }
 
@@ -251,7 +273,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur. Puis les cache.
         /// </summary>
         private void Reset()
         {
@@ -275,42 +297,9 @@ namespace Prototype
             spPrenom.Visibility = Visibility.Hidden;
             spMail.Visibility = Visibility.Hidden;
 
-            //// Cache les labels
-            //lbNom.Visibility = Visibility.Collapsed;
-            //lbPrenom.Visibility = Visibility.Collapsed;
-            //lbMail.Visibility = Visibility.Collapsed;
-
-            //// Cache les TextBox
-            //tbNom.Visibility = Visibility.Collapsed;
-            //tbPrenom.Visibility = Visibility.Collapsed;
-            //tbMail.Visibility = Visibility.Collapsed;
-
-            //// Cache les labels d'erreur
-            //lbNomError.Visibility = Visibility.Collapsed;
-            //lbPrenomError.Visibility = Visibility.Collapsed;
-            //lbMailError.Visibility = Visibility.Collapsed;
+            // Cache le boutton annuler
+            btAnnuler.Visibility = Visibility.Hidden;
         }
-
-        /// <summary>
-        /// Met à jour les champs si un enseignant est sélectionné. Reset les champs s'il est désélectionné.
-        /// </summary>
-        //private void lvEnseignant_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-
-        //    if (lvEnseignant.SelectedIndex != -1)
-        //    {
-        //        Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
-
-        //        tbNom.Text = enseignant.NomPersonnel;
-        //        tbPrenom.Text = enseignant.PrenomPersonnel;
-        //        tbMail.Text = enseignant.EmailPersonnel;
-        //    }
-        //    else
-        //    {
-        //        Reset();
-        //    }
-        //}
 
         private void AfficheForm()
         {
@@ -319,20 +308,17 @@ namespace Prototype
             spPrenom.Visibility = Visibility.Visible;
             spMail.Visibility = Visibility.Visible;
 
-            //// Affiche les labels
-            //lbNom.Visibility = Visibility.Visible;
-            //lbPrenom.Visibility = Visibility.Visible;
-            //lbMail.Visibility = Visibility.Visible;
+            // Affichage du boutton annuler
+            btAnnuler.Visibility = Visibility.Visible;
+        }
 
-            //// Affiche les TextBox
-            //tbNom.Visibility = Visibility.Visible;
-            //tbPrenom.Visibility = Visibility.Visible;
-            //tbMail.Visibility = Visibility.Visible;
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialise et cache les champs
+            Reset();
 
-            //// Affiche les labels d'erreur
-            //lbNomError.Visibility = Visibility.Visible;
-            //lbPrenomError.Visibility = Visibility.Visible;
-            //lbMailError.Visibility = Visibility.Visible;
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
         }
     }
 }

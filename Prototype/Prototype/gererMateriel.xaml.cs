@@ -20,6 +20,9 @@ namespace Prototype
     /// </summary>
     public partial class gererMateriel : Window
     {
+        /// <summary>
+        /// Creation de la fenetre modal servant a la gestion des materiels.
+        /// </summary>
         public gererMateriel()
         {
             InitializeComponent();

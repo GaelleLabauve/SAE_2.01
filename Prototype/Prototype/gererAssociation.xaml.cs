@@ -20,6 +20,9 @@ namespace Prototype
     /// </summary>
     public partial class gererAssociation : Window
     {
+        /// <summary>
+        /// Creation de la fenetre modal servant a la gestion des attributions.
+        /// </summary>
         public gererAssociation()
         {
             InitializeComponent();

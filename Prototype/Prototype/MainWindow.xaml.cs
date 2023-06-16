@@ -23,6 +23,10 @@ namespace Prototype
     public partial class MainWindow : Window
     {
         private bool tout;
+
+        /// <summary>
+        /// Genere la fenetre principale.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

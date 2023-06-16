@@ -34,7 +34,7 @@
                         Header="Date" />
                     <GridViewColumn
                         Width="200"
-                        DisplayMemberBinding="{Binding Path=Commentaire}"
+                        DisplayMemberBinding="{Binding Path=CommentaireAttribution}"
                         Header="Commentaire" />
                     <GridViewColumn
                         Width="100"

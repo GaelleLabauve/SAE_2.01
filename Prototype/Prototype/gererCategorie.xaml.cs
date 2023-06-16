@@ -57,5 +57,34 @@ namespace Prototype
             // Modification de la catégorie dans la base de données et dans la liste LesCatégories
             ((Categorie)lv_categorie.SelectedItem).Update();
         }
+
+        private void tbCategorie_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tbCategorie)
+                {
+                    lbNomCateError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+
+            else
+            {
+                // Suppression du style (remplacement par un style par défaut)
+                tb.Style = new Style();
+
+                // Réinitialisation du label
+                if (tb == tbCategorie)
+                {
+                    lbNomCateError.Content = "";
+                }
+
+            }
+        }
     }
 }

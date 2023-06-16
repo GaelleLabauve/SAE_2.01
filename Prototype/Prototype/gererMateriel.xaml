@@ -74,7 +74,7 @@
             <Label Content="Nom du materiél :" FontSize="14" />
             <TextBox
                 x:Name="tb_materiel"
-                MinWidth="120"
+                Width="178"
                 DataContext="{Binding SelectedItem, ElementName=lv_materiel}"
                 Text="{Binding NomMateriel}"
                 TextChanged="tb_materiel_TextChanged"

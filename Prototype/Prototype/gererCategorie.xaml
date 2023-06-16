@@ -71,12 +71,17 @@
                 FontSize="14" />
             <TextBox
                 x:Name="tbCategorie"
-                Width="139"
-                Height="25"
+                Width="229"
+                MaxWidth="230"
                 Margin="0,15,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
                 Text="{Binding NomCategorie}"
+                TextChanged="tbCategorie_TextChanged"
                 TextWrapping="Wrap" />
+            <Label
+                x:Name="lbNomCateError"
+                Width="220"
+                Foreground="Red" />
         </StackPanel>
     </StackPanel>
 </Window>

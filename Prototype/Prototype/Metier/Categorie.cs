@@ -20,23 +20,37 @@ namespace Prototype.Metier
         public int IdCategorie { get; set; }
 
         /// <summary>
-        /// Obtient ou definit le nom de cette catégorie –
+        /// Obtient ou definit le nom de cette categorie –
         /// </summary>
         public string NomCategorie { get; set; }
 
         /// <summary>
-        /// Obtient ou definit la liste des materiels de cette catégorie –
+        /// Obtient ou definit la liste des materiels de cette categorie –
         /// </summary>
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 
 
+        /// <summary>
+        /// Cree une categorie.
+        /// </summary>
         public Categorie()
         { }
+
+        /// <summary>
+        /// Cree une categorie.
+        /// </summary>
+        /// <param name="idCategorie"> un entier unique a cette categorie</param>
+        /// <param name="nomCategorie"> une chaine de caractere unique a cette categorie</param>
         public Categorie(int idCategorie, string nomCategorie)
         {
             this.IdCategorie = idCategorie;
             this.NomCategorie = nomCategorie;
         }
+
+        /// <summary>
+        /// Cree une categorie.
+        /// </summary>
+        /// <param name="nomCategorie"> une chaine de caractere unique a cette categorie</param>
         public Categorie( string nomCategorie)
         {
             this.NomCategorie = nomCategorie;

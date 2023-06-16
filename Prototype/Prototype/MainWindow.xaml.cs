@@ -30,7 +30,6 @@ namespace Prototype
         public MainWindow()
         {
             InitializeComponent();
-
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource);
             view.Filter = FiltrerAttributions;
         }

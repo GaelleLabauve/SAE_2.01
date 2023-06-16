@@ -8,7 +8,7 @@ namespace Prototype.Metier
     public class Enseignant : Crud<Enseignant>
     {
         /// <summary>
-        /// Obtient le NomPrenom de cet(te) enseignant(e). Il s'agit de la concaténation de NomPersonnel et PrenomPersonnel –
+        /// Obtient le NomPrenom de cet(te) enseignant(e). Il s'agit de la concatenation de NomPersonnel et PrenomPersonnel –
         /// </summary>
         public string NomPrenom { get; }
 
@@ -48,8 +48,8 @@ namespace Prototype.Metier
         /// <summary>
         /// Cree un(e) enseignant(e).
         /// </summary>
-        /// <param name="idPersonnel"> un entier unique à ce(tte) enseignant(e)</param>
-        /// <param name="emailPersonnel"> une chaine de caractère unique à ce(tte) enseignant(e), contenant forcément un symbole @</param>
+        /// <param name="idPersonnel"> un entier unique a ce(tte) enseignant(e)</param>
+        /// <param name="emailPersonnel"> une chaine de caractère unique a ce(tte) enseignant(e), contenant forcément un symbole @</param>
         /// <param name="nomPersonnel"> une chaine de caractère indiquant le nom de ce(tte) enseignant(e)</param>
         /// <param name="prenomPersonnel"> une chaine de caractère indiquant le prenom de ce(tte) enseignant(e)</param>
         public Enseignant(int idPersonnel, string emailPersonnel, string nomPersonnel, string prenomPersonnel)
@@ -64,7 +64,7 @@ namespace Prototype.Metier
         /// <summary>
         /// Cree un(e) enseignant(e).
         /// </summary>
-        /// <param name="emailPersonnel"> une chaine de caractere unique à ce(tte) enseignant(e), contenant forcement un symbole @</param>
+        /// <param name="emailPersonnel"> une chaine de caractere unique a ce(tte) enseignant(e), contenant forcement un symbole @</param>
         /// <param name="nomPersonnel"> une chaine de caractere indiquant le nom de ce(tte) enseignant(e)</param>
         /// <param name="prenomPersonnel"> une chaine de caractere indiquant le prenom de ce(tte) enseignant(e)</param>
         public Enseignant(string emailPersonnel, string nomPersonnel, string prenomPersonnel)
@@ -92,7 +92,7 @@ namespace Prototype.Metier
 
 
         /// <summary>
-        /// Mets à jour dans la base de donnee ce/cette enseignat(e).
+        /// Mets a jour dans la base de donnee ce/cette enseignat(e).
         /// </summary>
         public void Update()
         {
@@ -114,7 +114,7 @@ namespace Prototype.Metier
         /// <summary>
         /// Parcours la table PERSONNEL de la base de donnee.
         /// </summary>
-        /// <returns> ObservableCollection<Enseignant> regroupant tous les enseignants mis dans la base de donnee</Enseignant></returns>
+        /// <returns> ObservableCollection<Enseignant> regroupant tous les enseignants mis dans la base de donnee</returns>
         public ObservableCollection<Enseignant> FindAll()
         {
             ObservableCollection<Enseignant> lesEnseignants = new ObservableCollection<Enseignant>();

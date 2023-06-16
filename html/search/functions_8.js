@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remove_97',['Remove',['../class_prototype_1_1_metier_1_1_application_data.html#aaf20dbbe9784cf89594551fe65c3ac65',1,'Prototype::Metier::ApplicationData']]]
+  ['openconnection_105',['OpenConnection',['../class_prototype_1_1_metier_1_1_data_access.html#ade2b19ce7ee59d378cdff277183acffd',1,'Prototype::Metier::DataAccess']]]
 ];

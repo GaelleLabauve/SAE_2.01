@@ -69,7 +69,7 @@ namespace Prototype.Metier
             DataTable datas = accesBD.GetData($"INSERT INTO EST_ATTRIBUE(idMateriel, idPersonnel, dateAttribution, commentaireAttribution) VALUES('{this.FK_IdMateriel}','{this.FK_IdPersonnel}','{this.DateAttribution}','{this.CommentaireAttribution}');");
         }
 
-        public void Read()
+        public bool Read()
         {
             throw new NotImplementedException();
         }

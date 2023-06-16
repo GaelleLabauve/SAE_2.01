@@ -87,9 +87,10 @@ namespace Prototype.Metier
             accessDB.SetData($"INSERT INTO PERSONNEL(nomPersonnel,prenomPersonnel,emailPersonnel) VALUES ('{this.NomPersonnel}','{this.PrenomPersonnel}','{this.EmailPersonnel}');");
         }
 
-        public void Read()
+        public bool Read()
         {
-            throw new NotImplementedException();
+            DataAccess accesDB = new DataAccess();
+            return accesDB.GetData($"SELECT 'x' FROM PERSONNEL WHERE emailPersonnel='{this.EmailPersonnel}'").Rows.Count == 0;
         }
 
 

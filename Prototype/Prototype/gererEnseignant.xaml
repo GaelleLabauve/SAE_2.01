@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="gérer les enseignants"
     Width="800"
-    Height="550"
+    Height="560"
     mc:Ignorable="d">
     <StackPanel Margin="10,20,10,10">
         <Label

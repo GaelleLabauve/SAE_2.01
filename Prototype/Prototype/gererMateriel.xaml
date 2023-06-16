@@ -60,9 +60,11 @@
                 Content="Modifier"
                 FontSize="14" />
             <Button
+                x:Name="btSupp"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Click="btSupp_Click"
                 Content="Supprimer"
                 FontSize="14" />
         </Grid>

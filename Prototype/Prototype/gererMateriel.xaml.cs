@@ -30,10 +30,17 @@ namespace Prototype
 
         private void bt_ajouter_Click(object sender, RoutedEventArgs e)
         {
-            Materiel m = new Materiel(((Categorie)cb_categorie.SelectedItem).IdCategorie, tb_materiel.Text, tb_codeBarre.Text, tb_refCons.Text);
-            ((ApplicationData)DataContext).Add(m);
-            lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
-            MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrEmpty(tbMateriel.Text) || string.IsNullOrEmpty(tbCodeBarre.Text) || string.IsNullOrEmpty(tbRefCons.Text) || cbCategorie.SelectedItem is null)
+            {
+                MessageBox.Show("Remplir tous les champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Materiel m = new Materiel(((Categorie)cbCategorie.SelectedItem).IdCategorie, tbMateriel.Text, tbCodeBarre.Text, tbRefCons.Text);
+                ((ApplicationData)DataContext).Add(m);
+                lv_materiel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+                MessageBox.Show("Ajout réaliser avec succés !", "Ajouter Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,30 +48,45 @@ namespace Prototype
             if(lv_materiel.SelectedItem != null)
             {
 
-                foreach (Categorie i in cb_categorie.Items)
+                foreach (Categorie i in cbCategorie.Items)
                 {
                     if (i.NomCategorie == ((Materiel)lv_materiel.SelectedItem).UneCategorie.NomCategorie)
-                        cb_categorie.SelectedItem = i;
+                        cbCategorie.SelectedItem = i;
                 }
             }
         }
 
         private void btSupp_Click(object sender, RoutedEventArgs e)
         {
-            Materiel materiel = (Materiel)lv_materiel.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            if (lv_materiel.SelectedItem is null)
             {
-                ((Materiel)lv_materiel.SelectedItem).Delete();
-                ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
-                MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Séléctionner un materiel pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Materiel materiel = (Materiel)lv_materiel.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {materiel.NomMateriel} de la liste des materiels ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ((Materiel)lv_materiel.SelectedItem).Delete();
+                    ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
+                    MessageBox.Show("Suppression réaliser avec succés !", "Suppression Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
-            ((Materiel)lv_materiel.SelectedItem).Update();
-            MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (lv_materiel.SelectedItem is null)
+            {
+                MessageBox.Show("Séléctionner un materiel pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                ((Materiel)lv_materiel.SelectedItem).Update();
+                MessageBox.Show("Modification réaliser avec succés !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,7 +98,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_codeBarre)
+                if (tb == tbCodeBarre)
                 {
                     lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -87,7 +109,7 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_codeBarre)
+                if (tb == tbCodeBarre)
                 {
                     lb_CodeBarreError.Content = "";
                 }
@@ -105,7 +127,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_refCons)
+                if (tb == tbRefCons)
                 {
                     lbRefError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -116,7 +138,7 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_refCons)
+                if (tb == tbRefCons)
                 {
                     lbRefError.Content = "";
                 }
@@ -133,7 +155,7 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tb_materiel)
+                if (tb == tbMateriel)
                 {
                     lbNomError.Content = "Trop long ( > 100 caractères)";
                 }
@@ -144,12 +166,17 @@ namespace Prototype
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tb_materiel)
+                if (tb == tbMateriel)
                 {
                     lbNomError.Content = "";
                 }
 
             }
+        }
+
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            //
         }
     }
 }

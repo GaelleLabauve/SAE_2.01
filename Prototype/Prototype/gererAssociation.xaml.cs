@@ -30,16 +30,31 @@ namespace Prototype
 
         private void bt_modif_Click(object sender, RoutedEventArgs e)
         {
-            ((Attribution)lv_Attribution.SelectedItem).Update();
-            MessageBox.Show("Modification réaliser avec succés !", "Suppression Attribution", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (lv_Attribution.SelectedItem is null)
+            {
+                MessageBox.Show("Séléctionner une attribution pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                ((Attribution)lv_Attribution.SelectedItem).Update();
+                MessageBox.Show("Modification réaliser avec succés !", "Suppression Attribution", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void bt_ajout_Click(object sender, RoutedEventArgs e)
         {
-            Attribution a = new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text);
+            if (cb_materiel.SelectedItem is null || cb_nomPrenomEns.SelectedItem is null || string.IsNullOrEmpty(tb_commentaire.Text) || datePicker_date.SelectedDate is null)
+            {
+                MessageBox.Show("Remplir tous les champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Attribution a = new Attribution(((Materiel)cb_materiel.SelectedItem).IdMateriel, ((Enseignant)cb_nomPrenomEns.SelectedItem).IdPersonnel, DateTime.Parse(datePicker_date.Text), tb_commentaire.Text);
             ((ApplicationData)DataContext).Add(a);
             lv_Attribution.ItemsSource = ((ApplicationData)this.DataContext).LesAttributions;
             MessageBox.Show("Ajout réaliser avec succés !", "Ajout Attribution", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void lv_Attribution_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,13 +89,20 @@ namespace Prototype
 
         private void bt_supp_Click(object sender, RoutedEventArgs e)
         {
-            Attribution attribution = (Attribution)lv_Attribution.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer l'attribution :  \n Materiel : {attribution.UnMateriel.NomMateriel} \n Enseignant : {attribution.UnEnseignant.NomPrenom} \n Date : {attribution.DateAttribution} \n Commentaire :{attribution.CommentaireAttribution}", "Suppression Attribution", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            if (lv_Attribution.SelectedItem is null)
             {
-                ((Attribution)lv_Attribution.SelectedItem).Delete();
-                ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
-                MessageBox.Show("Suppression réaliser avec succés !", "Modification attribution", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Séléctionner une attribution pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Attribution attribution = (Attribution)lv_Attribution.SelectedItem;
+            MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer l'attribution :  \n Materiel : {attribution.UnMateriel.NomMateriel} \n Enseignant : {attribution.UnEnseignant.NomPrenom} \n Date : {attribution.DateAttribution} \n Commentaire :{attribution.CommentaireAttribution}", "Suppression Attribution", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ((Attribution)lv_Attribution.SelectedItem).Delete();
+                    ((ApplicationData)this.DataContext).Remove((Attribution)lv_Attribution.SelectedItem);
+                    MessageBox.Show("Suppression réaliser avec succés !", "Modification attribution", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 

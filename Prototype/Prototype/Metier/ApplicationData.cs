@@ -39,6 +39,15 @@ namespace Prototype.Metier
         /// </summary>
         public ApplicationData()
         {
+            this.RecupData();
+            this.AssociationFK();
+        }
+
+        /// <summary>
+        /// Récupère les données de la base de données et les insère dans les ObservableCollection
+        /// </summary>
+        private void RecupData()
+        {
             Enseignant e = new Enseignant();
             LesEnseignants = e.FindAll();
 
@@ -50,7 +59,13 @@ namespace Prototype.Metier
 
             Attribution a = new Attribution();
             LesAttributions = a.FindAll();
+        }
 
+        /// <summary>
+        /// Associe les FK aux objets concernés
+        /// </summary>
+        private void AssociationFK()
+        {
             // Catégorie et attributions d'un matériel
             foreach (Materiel unMateriel in LesMateriels.ToList<Materiel>())
             {
@@ -75,9 +90,8 @@ namespace Prototype.Metier
             {
                 uneAttribution.UnEnseignant = LesEnseignants.ToList<Enseignant>().Find(e => e.IdPersonnel == uneAttribution.FK_IdPersonnel);
                 uneAttribution.UnMateriel = LesMateriels.ToList<Materiel>().Find(m => m.IdMateriel == uneAttribution.FK_IdMateriel);
-                
-            }
 
+            }
         }
 
         /// <summary>
@@ -88,43 +102,21 @@ namespace Prototype.Metier
             if (obj is Categorie)
             {
                 ((Categorie)obj).Create();
-                //Le nom étant unique, on recherche dans la base de données l'idCategorie de la categorie ayant le nom venant d'être ajouter. On peut alors renseigner l'idCategorie dans l'obj
-                DataAccess accesBD = new DataAccess();
-                DataTable datas = accesBD.GetData("SELECT idCategorie FROM CATEGORIE_MATERIEL WHERE nomCategorie ='" + ((Categorie)obj).NomCategorie + "';");
-                foreach (DataRow row in datas.Rows)
-                {
-                    ((Categorie)obj).IdCategorie = (int.Parse(row["idCategorie"].ToString()));
-                }
-                this.LesCategories.Add((Categorie)obj);
             }
             else if (obj is Attribution)
             {
                 ((Attribution)obj).Create();
-                this.LesAttributions.Add((Attribution)obj);
             }
             else if (obj is Enseignant)
             {
-                ((Enseignant)obj).Create(); 
-                //L'email étant unique, on recherche dans la base de données l'idPersonnel du personnel ayant l'email venant d'être ajouter. On peut alors renseigner l'idPersonnel dans l'obj
-                DataAccess accesBD = new DataAccess();
-                DataTable datas = accesBD.GetData("SELECT idPersonnel FROM PERSONNEL WHERE emailPersonnel ='" + ((Enseignant)obj).EmailPersonnel + "';");
-                foreach (DataRow row in datas.Rows)
-                {
-                    ((Enseignant)obj).IdPersonnel = (int.Parse(row["idPersonnel"].ToString()));
-                }
-                this.LesEnseignants.Add((Enseignant)obj);
+                ((Enseignant)obj).Create();
             }
             else if (obj is Materiel)
             {
                 ((Materiel)obj).Create();
-                DataAccess accesBD = new DataAccess();
-                DataTable datas = accesBD.GetData("SELECT idmateriel FROM materiel WHERE codeBarreInventaire ='"+((Materiel)obj).CodeBarreInventaire+"';");
-                foreach (DataRow row in datas.Rows)
-                {
-                    ((Materiel)obj).IdMateriel= (int.Parse(row["idMateriel"].ToString()));
-                }
-                this.LesMateriels.Add((Materiel)obj);
             }
+            this.RecupData();
+            this.AssociationFK();
         }
 
         /// <summary>

@@ -55,5 +55,38 @@ namespace Prototype
         {
             ((Materiel)lv_materiel.SelectedItem).Update();
         }
+
+        private void tb_codeBarre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+                if (tb == tb_codeBarre)
+                {
+                    lb_CodeBarreError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+        }
+
+        private void lb_RefError_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text.Length > 100)
+            {
+                // Application du style avec bordures rouges
+                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+
+                // Ajout du message 
+               
+                if (tb == tb_refCons)
+                {
+                    lb_RefError.Content = "Trop long ( > 100 caractères)";
+                }
+            }
+        }
     }
 }

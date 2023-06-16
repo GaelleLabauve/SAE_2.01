@@ -50,5 +50,10 @@ namespace Prototype
             ((Materiel)lv_materiel.SelectedItem).Delete();
             ((ApplicationData)this.DataContext).Remove((Materiel)lv_materiel.SelectedItem);
         }
+
+        private void btModif_Click(object sender, RoutedEventArgs e)
+        {
+            ((Materiel)lv_materiel.SelectedItem).Update();
+        }
     }
 }

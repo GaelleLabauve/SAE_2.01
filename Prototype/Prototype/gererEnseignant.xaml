@@ -24,7 +24,8 @@
         <ListView
             x:Name="lvEnseignant"
             Height="200"
-            ItemsSource="{Binding Path=LesEnseignants}" SelectionChanged="lvEnseignant_SelectionChanged">
+            ItemsSource="{Binding Path=LesEnseignants}"
+            SelectionChanged="lvEnseignant_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Nom" />

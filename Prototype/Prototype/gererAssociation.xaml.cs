@@ -89,7 +89,7 @@ namespace Prototype
 
         private void bt_supp_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_categorie.SelectedItem is null)
+            if (lv_Attribution.SelectedItem is null)
             {
                 MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }

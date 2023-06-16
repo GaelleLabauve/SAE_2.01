@@ -22,6 +22,7 @@ namespace Prototype
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool tout;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Prototype
 
         private void mi_gererAsso_Click(object sender, RoutedEventArgs e)
         {
+            AnnulerTousLesFiltre();
             gererAssociation gererAsso = new gererAssociation();
             gererAsso.DataContext= this.DataContext;
             gererAsso.ShowDialog();
@@ -44,6 +46,7 @@ namespace Prototype
 
         private void mi_gererCate_Click(object sender, RoutedEventArgs e)
         {
+            AnnulerTousLesFiltre();
             gererCategorie gererCate = new gererCategorie();
             gererCate.DataContext = this.DataContext;
             gererCate.ShowDialog();
@@ -51,6 +54,7 @@ namespace Prototype
 
         private void mi_gererEnseinant_Click(object sender, RoutedEventArgs e)
         {
+            AnnulerTousLesFiltre();
             gererEnseignant gererEns = new gererEnseignant();
             gererEns.DataContext = this.DataContext;
             gererEns.ShowDialog();
@@ -58,6 +62,7 @@ namespace Prototype
 
         private void mi_gererMateriel_Click(object sender, RoutedEventArgs e)
         {
+            AnnulerTousLesFiltre();
             gererMateriel gererMate= new gererMateriel();
             gererMate.DataContext = this.DataContext;
             gererMate.ShowDialog();
@@ -72,7 +77,9 @@ namespace Prototype
         private bool FiltrerAttributions(object item)
         {
             Attribution a = item as Attribution;
-            if (lv_cateChoix.SelectedItem == null)
+            if (tout)
+                return true;
+            else if (lv_cateChoix.SelectedItem == null)
                 return false;
             else
             {
@@ -87,13 +94,24 @@ namespace Prototype
 
         private void lv_cateChoix_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            tout = false;
             CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
         }
 
         private void lv_MaterielChoix_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
+        }
 
+        private void bt_tousCategorie_Click(object sender, RoutedEventArgs e)
+        {
+            AnnulerTousLesFiltre();
+        }
+
+        private void AnnulerTousLesFiltre()
+        {
+            lv_cateChoix.SelectedItem = null;
+            tout = true;
             CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource).Refresh();
         }
     }

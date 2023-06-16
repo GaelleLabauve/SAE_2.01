@@ -90,6 +90,12 @@
                     </ListView.View>
                 </ListView>
 
+                <Button
+                    x:Name="bt_tousCategorie"
+                    BorderBrush="Black"
+                    Content="Voir tous les matériels"
+                    FontSize="14" Margin="30,15,30,0" Click="bt_tousCategorie_Click" />
+
                 <Label
                     x:Name="lb_selectMateriel"
                     Grid.Column="1"

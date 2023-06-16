@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 namespace Prototype.Metier
 {
     /// <summary>
-    /// Interface servant initialisant les methodes Create(), Read(), Update(), Delete() et FindAll().
+    /// Interface initialisant les methodes Create(), Read(), Update(), Delete() et FindAll().
     /// </summary>
     public interface Crud<T>
     {

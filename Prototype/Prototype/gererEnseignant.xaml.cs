@@ -39,8 +39,7 @@ namespace Prototype
 
                 // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
                 ((ApplicationData)this.DataContext).Add(enseignant);
-                // Rafraîchissement de la ListeView
-                lvEnseignant.Items.Refresh();
+                lvEnseignant.ItemsSource = ((ApplicationData)this.DataContext).LesEnseignants;
 
                 // Message de confirmation
                 MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);

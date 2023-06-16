@@ -7,6 +7,8 @@ namespace Prototype.Metier
 {
     public class Enseignant : Crud<Enseignant>
     {
+
+        public const int LIMITE_TAILLE_CARACTERE_NOMPRENOM = 50;
         /// <summary>
         /// Obtient le NomPrenom de cet(te) enseignant(e). Il s'agit de la concatenation de NomPersonnel et PrenomPersonnel –
         /// </summary>

@@ -28,7 +28,7 @@
             x:Name="lvMateriel"
             Height="100"
             ItemsSource="{Binding Path=LesMateriels}"
-            SelectionChanged="lv_materiel_SelectionChanged">
+            SelectionChanged="lvMateriel_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=UneCategorie.NomCategorie}" Header="Catégorie" />

@@ -43,7 +43,7 @@ namespace Prototype
             }
         }
 
-        private void lv_materiel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lvMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(lvMateriel.SelectedItem != null)
             {
@@ -97,22 +97,16 @@ namespace Prototype
                 // Application du style avec bordures rouges
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
-                // Ajout du message 
-                if (tb == tbCodeBarre)
-                {
-                    lbCodeBarreError.Content = "Trop long ( > 100 caractères)";
-                }
+                // Message d'erreur
+                lbCodeBarreError.Content = "Trop long ( > 100 caractères)";
             }
             else
             {
                 // Suppression du style (remplacement par un style par défaut)
                 tb.Style = new Style();
 
-                // Réinitialisation du label
-                if (tb == tbCodeBarre)
-                {
-                    lbCodeBarreError.Content = "";
-                }
+                // Suppression du message d'erreur
+                lbCodeBarreError.Content = "";
                
             }
         }
@@ -132,7 +126,7 @@ namespace Prototype
                 // Suppression du style (remplacement par un style par défaut)
                 tbRefCons.Style = new Style();
 
-                // Réinitialisation du label
+                // Suppression du message d'erreur
                 lbRefError.Content = "";
             }
         }
@@ -152,7 +146,7 @@ namespace Prototype
                 // Suppression du style (remplacement par un style par défaut)
                 tbMateriel.Style = new Style();
 
-                // Réinitialisation du label
+                // Suppression du message d'erreur
                 lbNomError.Content = "";
             }
         }
@@ -171,7 +165,7 @@ namespace Prototype
             tbCodeBarre.Style = new Style();
             cbCategorie.Style = new Style();
 
-            // Réinitialisation du texte des Label
+            // Suppression des messages d'erreur
             lbNomError.Content = " ";
             lbRefError.Content = " ";
             lbCodeBarreError.Content = " ";

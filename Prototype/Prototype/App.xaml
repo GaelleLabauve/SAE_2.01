@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <Style x:Key="Obligatoire" TargetType="TextBox">
                 <Setter Property="BorderBrush" Value="Red" />
-                <Setter Property="BorderThickness" Value="1px" />
+                <Setter Property="BorderThickness" Value="1" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

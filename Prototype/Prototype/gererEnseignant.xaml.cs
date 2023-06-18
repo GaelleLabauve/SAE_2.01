@@ -37,7 +37,7 @@ namespace Prototype
             {
                 AfficheForm();
             }
-            else if (!(Verif_TextBoxVide() || Verif_Style()))
+            else if (!(Verif_TextBoxVides() || VerifStyle()))
             {
                 // Initialisation du nouvel enseignant et ajout des informations
                 Enseignant enseignant = new Enseignant(tbMail.Text, tbNom.Text.Substring(0,1).ToUpper() + tbNom.Text.Substring(1).ToLower(), tbPrenom.Text.Substring(0, 1).ToUpper() + tbPrenom.Text.Substring(1).ToLower());
@@ -72,7 +72,7 @@ namespace Prototype
                     tbPrenom.Text = enseignant.PrenomPersonnel;
                     tbMail.Text = enseignant.EmailPersonnel;
                 }
-                else if (!(Verif_TextBoxVide() || Verif_Style()))
+                else if (!(Verif_TextBoxVides() || VerifStyle()))
                 {
                     MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
 
@@ -187,17 +187,18 @@ namespace Prototype
                 lbMailError.Content = " ";
             } else
             {
+                tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
+
                 // Si la taille du mail dépasse 100 caractères alors il n'est pas valide
                 if (email.Length > 100)
                 {
-                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                     lbMailError.Content = "Trop long";
 
                 }
+
                 // Si le mail ne contient pas de @ alors il n'est pas valide
                 if (!email.Contains('@'))
                 {
-                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                     String content = lbMailError.Content.ToString();
 
                     // Ajout du message s'il n'est pas déjà affiché
@@ -207,14 +208,13 @@ namespace Prototype
                     }
                 }
 
-                // Vérification de l'unicité de l'email rentré
+                // Vérification de l'unicité de l'email
                 if (!enseignant.Read())
                 {
-                    tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                     String content = lbMailError.Content.ToString();
 
                     // Ajout du message s'il n'est pas déjà affiché
-                    if (String.IsNullOrWhiteSpace(content) || !content.Contains("Cet email extiste déjà"))
+                    if (!content.Contains("Cet email extiste déjà"))
                     {
                         lbMailError.Content += "\tCet email extiste déjà";
                     }
@@ -226,7 +226,7 @@ namespace Prototype
         /// Vérifie les TextBox vide. Applique un style (au bordure rouge) pour chaque TextBox vide.
         /// </summary>
         /// <returns>True si une des TextBox est vide. False si toutes les TextBox contient du texte.</returns>
-        private bool Verif_TextBoxVide()
+        private bool Verif_TextBoxVides()
         {
             bool result = false;
             if (String.IsNullOrWhiteSpace(tbNom.Text))
@@ -255,7 +255,7 @@ namespace Prototype
         /// Vérifie les styles des TextBox.
         /// </summary>
         /// <returns>True si une des TextBox a le style "Obligatoire" (aux bordures rouges). False sinon.</returns>
-        private bool Verif_Style()
+        private bool VerifStyle()
         {
             if (tbNom.Style == (Style)Application.Current.FindResource("Obligatoire"))
             {

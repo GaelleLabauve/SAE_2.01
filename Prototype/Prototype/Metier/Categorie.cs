@@ -69,7 +69,7 @@ namespace Prototype.Metier
         public bool Read()
         {
             DataAccess accesDB = new DataAccess();
-            return accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE idCategorie='{this.IdCategorie}'").Rows.Count == 0;
+            return accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE nomCategorie='{this.NomCategorie}'").Rows.Count == 0;
         }
 
         /// <summary>

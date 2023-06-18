@@ -2,6 +2,8 @@
 using Prototype.Metier;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,7 @@ namespace Prototype.Metier.Tests
             }
             Categorie c= new Categorie(nom);
         }
+
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CategorieIdNegatifTest()
@@ -40,25 +43,71 @@ namespace Prototype.Metier.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            Assert.Fail();
+            Categorie c = new Categorie("CreateTest");
+            c.Create();
+
+            Assert.AreEqual(1, new DataAccess().GetData($"SELECT * FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c.NomCategorie}'").Rows.Count, "La catégorie a été insérée dans la base de données.");
+
+            new DataAccess().SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c.NomCategorie}'");
+        }
+
+        [TestMethod()]
+        public void ReadTest()
+        {
+            Categorie c1 = new Categorie("ReadTest");
+            Assert.IsTrue(c1.Read(), "Le nom de cette catégorie est unique.");
+            c1.Create();
+
+            Categorie c2 = new Categorie("ReadTest");
+            Assert.IsFalse(c2.Read(), "Le nom de cette catégorie n'est pas unique.");
+
+            new DataAccess().SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c1.NomCategorie}'");
         }
 
         [TestMethod()]
         public void UpdateTest()
         {
-            Assert.Fail();
+
+            Categorie c1 = new Categorie("UpdateTest");
+            c1.Create();
+
+            Categorie c2 = c1.FindAll().ToList().Find(x => x.NomCategorie == c1.NomCategorie);
+            c2.NomCategorie = "TestUpdate";
+            c2.Update();
+
+            DataAccess accesDB = new DataAccess();
+            
+            int nb1 = accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c1.NomCategorie}'").Rows.Count;
+            int nb2 = accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c2.NomCategorie}'").Rows.Count;
+
+            Assert.AreEqual(0, nb1, "Aucune catégorie n'a le nom de UpdateTest.");
+            Assert.AreEqual(1, nb2, "Une catégorie a le nom de TestUpdate.");
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
-            Assert.Fail();
+            Categorie c = new Categorie("DeleteTest");
+            c.Create();
+
+            DataAccess accesDB = new DataAccess();
+            int nb1 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
+
+            accesDB.SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c.NomCategorie}'");
+
+            int nb2 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
+
+            Assert.AreEqual(nb1 - 1, nb2, "La catégorie a été supprimée de la base de données.");
         }
 
         [TestMethod()]
         public void FindAllTest()
         {
-            Assert.Fail();
+            DataAccess accesDB = new DataAccess();
+            DataTable datas = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL");
+            ObservableCollection<Categorie> lesCategories = new Categorie().FindAll();
+
+            Assert.AreEqual(datas.Rows.Count, lesCategories.Count, "Toutes les données de la base de données sont dans la liste lesCategories.");
         }
     }
 }

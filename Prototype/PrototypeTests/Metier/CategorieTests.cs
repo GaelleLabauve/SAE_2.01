@@ -54,6 +54,8 @@ namespace Prototype.Metier.Tests
         [TestMethod()]
         public void ReadTest()
         {
+            DataAccess accesDB = new DataAccess();
+
             Categorie c1 = new Categorie("ReadTest");
             Assert.IsTrue(c1.Read(), "Le nom de cette catégorie est unique.");
             c1.Create();
@@ -61,12 +63,13 @@ namespace Prototype.Metier.Tests
             Categorie c2 = new Categorie("ReadTest");
             Assert.IsFalse(c2.Read(), "Le nom de cette catégorie n'est pas unique.");
 
-            new DataAccess().SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c1.NomCategorie}'");
+            accesDB.SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c1.NomCategorie}'");
         }
 
         [TestMethod()]
         public void UpdateTest()
         {
+            DataAccess accesDB = new DataAccess();
 
             Categorie c1 = new Categorie("UpdateTest");
             c1.Create();
@@ -74,26 +77,28 @@ namespace Prototype.Metier.Tests
             Categorie c2 = c1.FindAll().ToList().Find(x => x.NomCategorie == c1.NomCategorie);
             c2.NomCategorie = "TestUpdate";
             c2.Update();
-
-            DataAccess accesDB = new DataAccess();
             
             int nb1 = accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c1.NomCategorie}'").Rows.Count;
             int nb2 = accesDB.GetData($"SELECT 'X' FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c2.NomCategorie}'").Rows.Count;
 
             Assert.AreEqual(0, nb1, "Aucune catégorie n'a le nom de UpdateTest.");
             Assert.AreEqual(1, nb2, "Une catégorie a le nom de TestUpdate.");
+
+            accesDB.SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE idCategorie='{c2.IdCategorie}'");
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
-            Categorie c = new Categorie("DeleteTest");
-            c.Create();
-
             DataAccess accesDB = new DataAccess();
+
+            Categorie c1 = new Categorie("DeleteTest");
+            c1.Create();
+
             int nb1 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
 
-            accesDB.SetData($"DELETE FROM CATEGORIE_MATERIEL WHERE nomCategorie='{c.NomCategorie}'");
+            Categorie c2 = c1.FindAll().ToList().Find(x => x.NomCategorie == c1.NomCategorie);
+            c2.Delete();
 
             int nb2 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
 
@@ -104,6 +109,7 @@ namespace Prototype.Metier.Tests
         public void FindAllTest()
         {
             DataAccess accesDB = new DataAccess();
+
             DataTable datas = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL");
             ObservableCollection<Categorie> lesCategories = new Categorie().FindAll();
 

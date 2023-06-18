@@ -50,6 +50,7 @@ namespace Prototype
         {
             if (lvMateriel.SelectedItem is null)
             {
+                // Message d'erreur
                 MessageBox.Show("Veuillez sélectionner un matériel", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
@@ -60,7 +61,13 @@ namespace Prototype
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    ((ApplicationData)this.DataContext).Remove((Materiel)lvMateriel.SelectedItem);
+                    // Suppression du matériel
+                    ((ApplicationData)this.DataContext).Remove(materiel);
+
+                    // Réinitialisation de la sélection
+                    lvMateriel.SelectedIndex = -1;
+
+                    // Message de confirmation
                     MessageBox.Show("Matériel supprimé !", "Suppression matériel", MessageBoxButton.OK);
                 }
             }
@@ -70,13 +77,50 @@ namespace Prototype
         {
             if (lvMateriel.SelectedItem is null)
             {
-                MessageBox.Show("Sélectionner un materiel pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Veuillez sélectionner un matériel", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                Materiel m = (Materiel)lvMateriel.SelectedItem;
 
-                ((Materiel)lvMateriel.SelectedItem).Update();
-                MessageBox.Show("Modification réalisée avec succès !", "Modification Materiel", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (spNom.Visibility == Visibility.Hidden)
+                {
+                    // Affichage des champs de saisie
+                    AfficheForm();
+
+                    // Renseignement des champs en fonction du matériel sélectionné
+                    tbMateriel.Text = m.NomMateriel;
+                    tbCodeBarre.Text = m.CodeBarreInventaire;
+                    tbRefCons.Text = m.ReferenceConstructeurMateriel;
+                    cbCategorie.SelectedItem = m.UneCategorie;
+                }
+                else if (!(VerifChampsVides() || VerifStyle()))
+                {
+                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier le matériel ?", "Modification matériel", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        // Modification des informations
+                        m.NomMateriel = tbMateriel.Text;
+                        m.CodeBarreInventaire = tbCodeBarre.Text;
+                        m.ReferenceConstructeurMateriel = tbRefCons.Text;
+                        m.FK_IdCategorie = ((Categorie)cbCategorie.SelectedItem).IdCategorie;
+
+                        // Modification du matériel
+                        ((ApplicationData)this.DataContext).Update(m);
+                        // Rafraîchissement de la ListeView
+                        lvMateriel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+
+                        // Message de confirmation
+                        MessageBox.Show("Matériel modifié !", "Modification matériel", MessageBoxButton.OK);
+                    }
+
+                    // Réinitialisation de la sélection
+                    lvMateriel.SelectedIndex = -1;
+
+                    // Reset des champs de saisie
+                    Reset();
+                }
             }
         }
 
@@ -104,10 +148,12 @@ namespace Prototype
 
         private void tbCodeBarre_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Materiel materiel = new Materiel();
-            materiel.CodeBarreInventaire = tbCodeBarre.Text;
+            String codeBarre = tbCodeBarre.Text;
 
-            if (tbCodeBarre.Text.Length <= 100 && materiel.Read())
+            Materiel materiel = new Materiel();
+            materiel.CodeBarreInventaire = codeBarre;
+
+            if ((lvMateriel.SelectedItem != null && ((Materiel)lvMateriel.SelectedItem).CodeBarreInventaire == codeBarre) || (codeBarre.Length <= 100 && materiel.Read()))
             {
                 // Suppression du style (remplacement par un style par défaut)
                 tbCodeBarre.Style = new Style();
@@ -120,7 +166,7 @@ namespace Prototype
                 // Application du style avec bordures rouges
                 tbCodeBarre.Style = (Style)Application.Current.FindResource("Obligatoire");
 
-                if (tbCodeBarre.Text.Length > 100)
+                if (codeBarre.Length > 100)
                 {
                     // Message d'erreur
                     lbCodeBarreError.Content = "Trop long ( > 100 caractères)";

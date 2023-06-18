@@ -71,6 +71,9 @@ namespace Prototype
                     tbNom.Text = enseignant.NomPersonnel;
                     tbPrenom.Text = enseignant.PrenomPersonnel;
                     tbMail.Text = enseignant.EmailPersonnel;
+
+                    tbMail.Style = new Style();
+                    lbMailError.Content = "";
                 }
                 else if (!(Verif_TextBoxVides() || VerifStyle()))
                 {
@@ -83,10 +86,10 @@ namespace Prototype
                         enseignant.NomPersonnel = tbNom.Text;
                         enseignant.PrenomPersonnel = tbPrenom.Text;
 
-                        // Modificaiton de l'enseignant dans la base de données
-                        enseignant.Update();
+                        // Modification de l'enseignant
+                        ((ApplicationData)this.DataContext).Update(enseignant);
                         // Rafraîchissement de la ListeView
-                        lvEnseignant.Items.Refresh();
+                        lvEnseignant.ItemsSource = ((ApplicationData)this.DataContext).LesEnseignants;
 
                         // Message de confirmation
                         MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
@@ -181,10 +184,12 @@ namespace Prototype
             // Création d'un enseignant avec l'email rentré
             Enseignant enseignant = new Enseignant();
             enseignant.EmailPersonnel = email;
-            if (email.Length <= 100 && email.Contains('@') && enseignant.Read())
+
+            // Si un enseignant est sélectionné (donc modification de l'enseignant) et que l'email n'a pas été modifié OU que l'email est conforme
+            if ((lvEnseignant.SelectedItem != null && ((Enseignant)lvEnseignant.SelectedItem).EmailPersonnel == email) || (email.Length <= 100 && email.Contains('@') && enseignant.Read()))
             {
                 tbMail.Style = new Style();
-                lbMailError.Content = " ";
+                lbMailError.Content = "";
             } else
             {
                 tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");

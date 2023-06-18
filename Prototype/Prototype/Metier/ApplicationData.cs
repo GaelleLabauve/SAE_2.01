@@ -90,12 +90,11 @@ namespace Prototype.Metier
             {
                 uneAttribution.UnEnseignant = LesEnseignants.ToList<Enseignant>().Find(e => e.IdPersonnel == uneAttribution.FK_IdPersonnel);
                 uneAttribution.UnMateriel = LesMateriels.ToList<Materiel>().Find(m => m.IdMateriel == uneAttribution.FK_IdMateriel);
-
             }
         }
 
         /// <summary>
-        /// Ajoute l'obj entré en parametre dans la l'ObservableCollection concerné et dans la base de donnée –
+        /// Ajoute l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
         /// </summary>
         public void Add(object obj)
         {
@@ -120,7 +119,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Supprime l'obj entré en parametre dans la l'ObservableCollection concerné et dans la base de donnée –
+        /// Supprime l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
         /// </summary>
         public void Remove(object obj)
         {
@@ -144,6 +143,31 @@ namespace Prototype.Metier
                 ((Materiel)obj).Delete();
                 this.LesMateriels.Remove((Materiel)obj);
             }
+        }
+
+        /// <summary>
+        /// Modifie l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
+        /// </summary>
+        public void Update(object obj)
+        {
+            if (obj is Categorie)
+            {
+                ((Categorie)obj).Update();
+            }
+            else if (obj is Attribution)
+            {
+                ((Attribution)obj).Update();
+            }
+            else if (obj is Enseignant)
+            {
+                ((Enseignant)obj).Update();
+            }
+            else if (obj is Materiel)
+            {
+                ((Materiel)obj).Update();
+            }
+            this.RecupData();
+            this.AssociationFK();
         }
     }
 }

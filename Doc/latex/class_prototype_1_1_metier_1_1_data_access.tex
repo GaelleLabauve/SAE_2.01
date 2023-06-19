@@ -1,0 +1,74 @@
+\hypertarget{class_prototype_1_1_metier_1_1_data_access}{}\doxysection{Référence de la classe Prototype.\+Metier.\+Data\+Access}
+\label{class_prototype_1_1_metier_1_1_data_access}\index{Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_prototype_1_1_metier_1_1_data_access_ade2b19ce7ee59d378cdff277183acffd}{Open\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em Connexion a la base de donnees \end{DoxyCompactList}\item 
+Data\+Table \mbox{\hyperlink{class_prototype_1_1_metier_1_1_data_access_a12bd7e9b56deda30db16de478adf0550}{Get\+Data}} (string get\+Query)
+\begin{DoxyCompactList}\small\item\em Acces a des donnees en lecture \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_prototype_1_1_metier_1_1_data_access_a9672d1d98550460de10d1f0c5b406ac7}{Set\+Data}} (string set\+Query)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}inserer, supprimer ou modifier des donnees \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Propriétés}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_data_access_a1bd92af59dcd605649a614d1544ec70a}\label{class_prototype_1_1_metier_1_1_data_access_a1bd92af59dcd605649a614d1544ec70a}} 
+Npgsql\+Connection? {\bfseries Npg\+SQLConnect}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_data_access_a12bd7e9b56deda30db16de478adf0550}\label{class_prototype_1_1_metier_1_1_data_access_a12bd7e9b56deda30db16de478adf0550}} 
+\index{Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}!GetData@{GetData}}
+\index{GetData@{GetData}!Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}}
+\doxysubsubsection{\texorpdfstring{GetData()}{GetData()}}
+{\footnotesize\ttfamily Data\+Table Prototype.\+Metier.\+Data\+Access.\+Get\+Data (\begin{DoxyParamCaption}\item[{string}]{get\+Query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Acces a des donnees en lecture 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne un Data\+Table contenant les lignes renvoyees par le SELECT
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em get\+Query} & Requete SELECT de selection de donnees\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_data_access_ade2b19ce7ee59d378cdff277183acffd}\label{class_prototype_1_1_metier_1_1_data_access_ade2b19ce7ee59d378cdff277183acffd}} 
+\index{Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}!OpenConnection@{OpenConnection}}
+\index{OpenConnection@{OpenConnection}!Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}}
+\doxysubsubsection{\texorpdfstring{OpenConnection()}{OpenConnection()}}
+{\footnotesize\ttfamily bool Prototype.\+Metier.\+Data\+Access.\+Open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Connexion a la base de donnees 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne un booleen indiquant si la connexion est ouverte ou fermee
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prototype_1_1_metier_1_1_data_access_a9672d1d98550460de10d1f0c5b406ac7}\label{class_prototype_1_1_metier_1_1_data_access_a9672d1d98550460de10d1f0c5b406ac7}} 
+\index{Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}!SetData@{SetData}}
+\index{SetData@{SetData}!Prototype.Metier.DataAccess@{Prototype.Metier.DataAccess}}
+\doxysubsubsection{\texorpdfstring{SetData()}{SetData()}}
+{\footnotesize\ttfamily int Prototype.\+Metier.\+Data\+Access.\+Set\+Data (\begin{DoxyParamCaption}\item[{string}]{set\+Query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Permet d\textquotesingle{}inserer, supprimer ou modifier des donnees 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne un entier contenant le nombre de lignes ajoutees/supprimees/modifiees
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em set\+Query} & Requ�te SQL permettant d\textquotesingle{}inserer (INSERT), supprimer (DELETE) ou modifier des donnees (UPDATE)\\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bozonlem/\+Desktop/\+SAE/\+Prototype/\+Prototype/\+Metier/Data\+Access.\+cs\end{DoxyCompactItemize}

@@ -38,15 +38,8 @@ namespace Prototype
             {
                 AfficheForm();
             }
-            else if (!(VerifChampsVides() || VerifStyle()))
-            {
-                Materiel m = new Materiel(((Categorie)cbCategorie.SelectedItem).IdCategorie, tbMateriel.Text, tbCodeBarre.Text, tbRefCons.Text);
-                ((ApplicationData)DataContext).Add(m);
-                lvMateriel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
 
-                MessageBox.Show("Matériel ajouté !", "Ajout matériel", MessageBoxButton.OK);
-                Reset();
-            }
+            lvMateriel.SelectedIndex = -1;
         }
 
         private void btSupp_Click(object sender, RoutedEventArgs e)
@@ -97,33 +90,6 @@ namespace Prototype
                     tbRefCons.Text = m.ReferenceConstructeurMateriel;
                     cbCategorie.SelectedItem = m.UneCategorie;
                 }
-                else if (!(VerifChampsVides() || VerifStyle()))
-                {
-                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier le matériel ?", "Modification matériel", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
-
-                    if (result == MessageBoxResult.OK)
-                    {
-                        // Modification des informations
-                        m.NomMateriel = tbMateriel.Text;
-                        m.CodeBarreInventaire = tbCodeBarre.Text;
-                        m.ReferenceConstructeurMateriel = tbRefCons.Text;
-                        m.FK_IdCategorie = ((Categorie)cbCategorie.SelectedItem).IdCategorie;
-
-                        // Modification du matériel
-                        ((ApplicationData)this.DataContext).Update(m);
-                        // Rafraîchissement de la ListeView
-                        lvMateriel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
-
-                        // Message de confirmation
-                        MessageBox.Show("Matériel modifié !", "Modification matériel", MessageBoxButton.OK);
-                    }
-
-                    // Réinitialisation de la sélection
-                    lvMateriel.SelectedIndex = -1;
-
-                    // Reset des champs de saisie
-                    Reset();
-                }
             }
         }
 
@@ -134,6 +100,63 @@ namespace Prototype
 
             // Réinitialisation de la sélection
             lvMateriel.SelectedIndex = -1;
+        }
+
+        private void btValider_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(VerifChampsVides() || VerifStyle()))
+            {
+                Materiel m = new Materiel();
+                String message, titre;
+
+                if (lvMateriel.SelectedIndex != -1)
+                {
+                    m = (Materiel)lvMateriel.SelectedItem;
+                    message = $"Voulez-vous vraiment modifier le matériel {m.NomMateriel} ({m.UneCategorie.NomCategorie}) ?";
+                    titre = "Modification matériel";
+                } else
+                {
+                    message = $"Voulez-vous vraiment ajouter le matériel {tbMateriel} ({((Categorie)cbCategorie.SelectedItem).NomCategorie}) ?";
+                    titre = "Ajout matériel";
+                }
+
+                MessageBoxResult result = MessageBox.Show(message, titre, MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    // Modification des informations
+                    m.NomMateriel = tbMateriel.Text;
+                    m.CodeBarreInventaire = tbCodeBarre.Text;
+                    m.ReferenceConstructeurMateriel = tbRefCons.Text;
+                    m.FK_IdCategorie = ((Categorie)cbCategorie.SelectedItem).IdCategorie;
+
+                    if (lvMateriel.SelectedIndex != -1)
+                    {
+                        // Modification de l'enseignant
+                        ((ApplicationData)this.DataContext).Update(m);
+
+                        // Message de confirmation
+                        MessageBox.Show("Matériel modifié !", "Modification matériel", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
+                        ((ApplicationData)this.DataContext).Add(m);
+
+                        // Message de confirmation
+                        MessageBox.Show("Matériel ajouté !", "Ajout matériel", MessageBoxButton.OK);
+                    }
+
+                    // Rafraîchissement de la ListeView
+                    lvMateriel.ItemsSource = ((ApplicationData)this.DataContext).LesMateriels;
+                }
+
+                // Réinitialisation de la sélection
+                lvMateriel.SelectedIndex = -1;
+
+                // Reset des champs de saisie
+                Reset();
+            }
         }
 
         private void lvMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -313,8 +336,11 @@ namespace Prototype
             spCodeBarre.Visibility = Visibility.Hidden;
             spCategorie.Visibility = Visibility.Hidden;
 
-            // Cache le boutton annuler
-            btAnnuler.Visibility = Visibility.Hidden;
+            // Affiche les boutons supprimer,modifier,ajouter
+            gridBouton.Visibility = Visibility.Visible;
+
+            // Cache les boutons annuler,valider
+            spBouton.Visibility = Visibility.Hidden;
         }
 
         private void AfficheForm()
@@ -325,8 +351,11 @@ namespace Prototype
             spCodeBarre.Visibility = Visibility.Visible;
             spCategorie.Visibility = Visibility.Visible;
 
-            // Affichage du boutton annuler
-            btAnnuler.Visibility = Visibility.Visible;
+            // Cache les boutons supprimer,modifier,ajouter
+            gridBouton.Visibility = Visibility.Hidden;
+
+            // Affiche les boutons annuler,valider
+            spBouton.Visibility = Visibility.Visible;
         }
     }
 }

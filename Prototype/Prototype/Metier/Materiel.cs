@@ -11,13 +11,14 @@ namespace Prototype.Metier
         /// <summary>
         /// Obtient ou definit l'IdMateriel de ce materiel.
         /// </summary>
-        public int IdMateriel { get { return this.IdMateriel; } set 
-            {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException("L'Id ne peut pas être négatif.");
-                this.IdMateriel = value;
-            } 
-        }
+        public int IdMateriel { get; set; }
+        //public int IdMateriel { get { return this.IdMateriel; } set 
+        //    {
+        //        if (value < 0)
+        //            throw new ArgumentOutOfRangeException("L'Id ne peut pas être négatif.");
+        //        this.IdMateriel = value;
+        //    } 
+        //}
 
         /// <summary>
         /// Obtient ou definit l'idCategorie de ce materiel.
@@ -27,43 +28,46 @@ namespace Prototype.Metier
         /// <summary>
         /// Obtient ou definit le nom de ce materiel.
         /// </summary>
-        public string NomMateriel { get { return this.NomMateriel; } set
-            {
-                if (value.Length >= LIMITE_CARACTERE)
-                    throw new ArgumentOutOfRangeException("Le nom ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
-                else if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Le nom ne peut pas être null");
-                this.NomMateriel = value;
-            }
-        }
+        public string NomMateriel { get; set; }
+        //public string NomMateriel { get { return this.NomMateriel; } set
+        //    {
+        //        if (value.Length >= LIMITE_CARACTERE)
+        //            throw new ArgumentOutOfRangeException("Le nom ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
+        //        else if (string.IsNullOrEmpty(value))
+        //            throw new ArgumentNullException("Le nom ne peut pas être null");
+        //        this.NomMateriel = value;
+        //    }
+        //}
 
         /// <summary>
         /// Obtient ou definit le code barre d'inventaire de ce materiel.
         /// </summary>
-        public string CodeBarreInventaire { get { return this.CodeBarreInventaire; }
-            set
-            {
-                if (value.Length >= LIMITE_CARACTERE)
-                    throw new ArgumentOutOfRangeException("Le code barre ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
-                else if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Le code barre ne peut pas être null");
-                this.CodeBarreInventaire = value;
-            }
-        }
+        public string CodeBarreInventaire { get; set; }
+        //public string CodeBarreInventaire { get { return this.CodeBarreInventaire; }
+        //    set
+        //    {
+        //        if (value.Length >= LIMITE_CARACTERE)
+        //            throw new ArgumentOutOfRangeException("Le code barre ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
+        //        else if (string.IsNullOrEmpty(value))
+        //            throw new ArgumentNullException("Le code barre ne peut pas être null");
+        //        this.CodeBarreInventaire = value;
+        //    }
+        //}
 
         /// <summary>
         /// Obtient ou definit la reference constructeur de ce materiel.
         /// </summary>
-        public string ReferenceConstructeurMateriel { get { return this.ReferenceConstructeurMateriel; }
-            set
-            {
-                if (value.Length >= LIMITE_CARACTERE)
-                    throw new ArgumentOutOfRangeException("La reference ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
-                else if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("La reference ne peut pas être null");
-                this.ReferenceConstructeurMateriel = value;
-            }
-        }
+        public string ReferenceConstructeurMateriel { get; set; }
+        //public string ReferenceConstructeurMateriel { get { return this.ReferenceConstructeurMateriel; }
+        //    set
+        //    {
+        //        if (value.Length >= LIMITE_CARACTERE)
+        //            throw new ArgumentOutOfRangeException("La reference ne peut pas dépasser " + LIMITE_CARACTERE + " caractères.");
+        //        else if (string.IsNullOrEmpty(value))
+        //            throw new ArgumentNullException("La reference ne peut pas être null");
+        //        this.ReferenceConstructeurMateriel = value;
+        //    }
+        //}
 
         /// <summary>
         /// Obtient ou definit la categorie de ce materiel.

@@ -118,8 +118,8 @@ namespace Prototype.Metier.Tests
 
             int nb1 = accesDB.GetData("SELECT 'X' FROM PERSONNEL").Rows.Count;
 
-            Enseignant e2 = e1.FindAll().ToList().Find(x => x.EmailPersonnel == e1.EmailPersonnel);
-            e2.Delete();
+            e1 = e1.FindAll().ToList().Find(x => x.EmailPersonnel == e1.EmailPersonnel);
+            e1.Delete();
 
             int nb2 = accesDB.GetData("SELECT 'X' FROM PERSONNEL").Rows.Count;
 

@@ -31,7 +31,6 @@ namespace Prototype
         {
             InitializeComponent();
 
-            MessageBox.Show("GAELLE MET EN PLACE LES TESTS DANS LES CLASSES !!!!!!!!!!", "GAELLE TU DOIS", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(dg_attributions.ItemsSource);
             view.Filter = FiltrerAttributions;
         }

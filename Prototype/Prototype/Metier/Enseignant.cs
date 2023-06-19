@@ -17,7 +17,7 @@ namespace Prototype.Metier
         /// <summary>
         /// Obtient ou definit l'IdPersonnel de cet(te) enseignant(e).
         /// </summary>
-        public int IdPersonnel { get { return this.IdPersonnel; } set 
+        public int IdPersonnel { get { return this.IdPersonnel; } set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("L'Id ne peut pas être négatif.");

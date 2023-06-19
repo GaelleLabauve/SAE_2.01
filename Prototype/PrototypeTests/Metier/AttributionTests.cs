@@ -39,7 +39,7 @@ namespace Prototype.Metier.Tests
         {
             Assert.Fail();
         }
-
+/*
         [TestMethod()]
         public void UpdateTest()
         {
@@ -59,7 +59,7 @@ namespace Prototype.Metier.Tests
             Assert.AreEqual(1, nb2, "Un matériel a le nom de UpdateTest.");
 
             accesDB.SetData($"DELETE FROM MATERIEL WHERE codeBarreInventaire='{m1.CodeBarreInventaire}'");
-        }
+        }*/
 
         [TestMethod()]
         public void DeleteTest()

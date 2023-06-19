@@ -66,7 +66,7 @@ namespace Prototype.Metier
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData($"INSERT INTO EST_ATTRIBUE(idMateriel, idPersonnel, dateAttribution, commentaireAttribution) VALUES('{this.FK_IdMateriel}','{this.FK_IdPersonnel}','{this.DateAttribution}','{this.CommentaireAttribution}');");
+            DataTable datas = accesBD.GetData($"INSERT INTO EST_ATTRIBUE(idMateriel, idPersonnel, dateAttribution, commentaireAttribution) VALUES('{this.FK_IdMateriel}','{this.FK_IdPersonnel}','{this.DateAttribution.ToString("yyyy-MM-dd")}','{this.CommentaireAttribution}');");
         }
 
         public bool Read()
@@ -80,7 +80,7 @@ namespace Prototype.Metier
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            DataTable datas = accesBD.GetData($"UPDATE EST_ATTRIBUE SET commentaireAttribution='{this.CommentaireAttribution}' WHERE idMateriel='{this.FK_IdMateriel}' AND idPersonnel='{this.FK_IdPersonnel}' AND dateAttribution='{this.DateAttribution}';");
+            DataTable datas = accesBD.GetData($"UPDATE EST_ATTRIBUE SET commentaireAttribution='{this.CommentaireAttribution}' WHERE idMateriel='{this.FK_IdMateriel}' AND idPersonnel='{this.FK_IdPersonnel}' AND dateAttribution='{this.DateAttribution.ToString("yyyy-MM-dd")}';");
         }
 
         /// <summary>

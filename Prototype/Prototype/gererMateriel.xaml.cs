@@ -29,6 +29,9 @@ namespace Prototype
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Ajouter 
+        /// </summary>
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
             if (spNom.Visibility == Visibility.Hidden)

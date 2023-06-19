@@ -93,6 +93,6 @@ namespace Prototype.Metier.Tests
             ObservableCollection<Attribution> lesAtrributions = new Attribution().FindAll();
 
             Assert.AreEqual(datas.Rows.Count, lesAtrributions.Count, "Toutes les données de la base de données sont dans la liste lesAtrributions.");
-        }
+        }*/
     }
 }

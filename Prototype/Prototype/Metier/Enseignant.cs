@@ -22,7 +22,6 @@ namespace Prototype.Metier
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("L'Id ne peut pas être négatif.");
                 this.IdPersonnel= value;
-
             } 
         }
 

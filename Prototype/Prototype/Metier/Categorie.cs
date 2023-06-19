@@ -61,7 +61,7 @@ namespace Prototype.Metier
         /// Crée dans la base de donnée cette catégorie
         /// </summary>
         public void Create()
-        {   
+        {
             DataAccess accesBD = new DataAccess();
             accesBD.GetData($"INSERT INTO CATEGORIE_MATERIEL(nomCategorie) VALUES('{this.NomCategorie}');");
         }

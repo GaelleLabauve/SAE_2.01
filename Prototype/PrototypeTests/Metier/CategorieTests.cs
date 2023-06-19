@@ -97,8 +97,8 @@ namespace Prototype.Metier.Tests
 
             int nb1 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
 
-            Categorie c2 = c1.FindAll().ToList().Find(x => x.NomCategorie == c1.NomCategorie);
-            c2.Delete();
+            c1 = c1.FindAll().ToList().Find(x => x.NomCategorie == c1.NomCategorie);
+            c1.Delete();
 
             int nb2 = accesDB.GetData("SELECT 'X' FROM CATEGORIE_MATERIEL").Rows.Count;
 

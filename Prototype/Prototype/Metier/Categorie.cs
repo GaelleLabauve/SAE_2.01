@@ -9,14 +9,14 @@ namespace Prototype.Metier
     /// <summary>
     /// Stocke 3 informations :
     /// 1 chaines : le nom de la categorie
-    /// 1 entier : l'idCategorie entrer dans la base de donnee
+    /// 1 entier : l'idCategorie entrer dans la base de donnees
     /// 1 ObservableCollection<Materiel> : la liste des materiel de cette categorie
     /// </summary>
     public class Categorie : Crud<Categorie>
     {
         public const int LIMITE_TAILLE_CARACTERE_NOM = 50;
         /// <summary>
-        /// Obtient ou definit l'idCategorie de cette catégorie –
+        /// Obtient ou definit l'idCategorie de cette categorie –
         /// </summary>
         public int IdCategorie { get; set; }
 
@@ -58,7 +58,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Crée dans la base de donnée cette catégorie
+        /// Crée dans la base de donnees cette catégorie
         /// </summary>
         public void Create()
         {
@@ -73,7 +73,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Modifie dans la base de donnée le nom de cette catégorie
+        /// Modifie dans la base de donnees le nom de cette categorie
         /// </summary>
         public void Update()
         {   
@@ -82,7 +82,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Supprime dans la base de donnée cette catégorie
+        /// Supprime dans la base de donnees cette catégorie
         /// </summary>
         public void Delete()
         {   
@@ -91,7 +91,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Cherche dans la base de donnée toute les catgories enregistrées
+        /// Cherche dans la base de donnees toute les categories enregistrees
         /// </summary>
         /// /// <returns>L'ObservableCollection regroupant toutes les catégories entrées dans la base de donnée</returns>
         public ObservableCollection<Categorie> FindAll()

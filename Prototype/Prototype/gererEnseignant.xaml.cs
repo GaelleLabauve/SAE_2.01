@@ -29,7 +29,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Ajoute (après vérification) un enseignant à la base de données et à la liste LesEnseignants.
+        /// Ajoute (apres verification) un enseignant a la base de donnees et a la liste LesEnseignants.
         /// </summary>
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +41,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Modification (après confirmation) de l'item sélectionné dans la ListView.
+        /// Modification (apres confirmation) de l'item selectionne dans la ListView.
         /// </summary>
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +68,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Suppression (après confirmation) de l'item sélectionné dans la ListView.
+        /// Suppression (apres confirmation) de l'item selectionne dans la ListView.
         /// </summary>
         private void btSuppr_Click(object sender, RoutedEventArgs e)
         {
@@ -167,7 +167,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Applique le style "Obligatoire" (bordures rouges) à la TextBox en fonction du texte (ici de la longueur du texte)
+        /// Applique le style "Obligatoire" (bordures rouges) a la TextBox en fonction du texte (ici de la longueur du texte)
         /// </summary>
         private void NomPrenom_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -203,7 +203,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Applique le style "Obligatoire" (bordures rouges) à la TextBox en fonction du texte (ici de la longueur du texte et la présence ou non d'un @)
+        /// Applique le style "Obligatoire" (bordures rouges) a la TextBox en fonction du texte (ici de la longueur du texte et la presence ou non d'un @)
         /// </summary>
         private void Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -304,7 +304,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur et les boutons. Puis les cache.
+        /// Reinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur et les boutons. Puis les cache.
         /// </summary>
         private void Reset()
         {

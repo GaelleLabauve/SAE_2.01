@@ -16,9 +16,9 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Connexion à la base de données
+        /// Connexion a la base de donnees
         /// </summary>
-        /// <returns> Retourne un booléen indiquant si la connexion est ouverte ou fermée</returns>
+        /// <returns> Retourne un booleen indiquant si la connexion est ouverte ou fermee</returns>
         public bool OpenConnection()
         {
             try
@@ -39,7 +39,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Déconnexion de la base de données
+        /// Deconnexion de la base de donnees
         /// </summary>
         private void CloseConnection()
         {
@@ -51,10 +51,10 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Accès à des données en lecture
+        /// Acces a des donnees en lecture
         /// </summary>
-        /// <returns>Retourne un DataTable contenant les lignes renvoyées par le SELECT</returns>
-        /// <param name="getQuery">Requête SELECT de sélection de données</param>
+        /// <returns>Retourne un DataTable contenant les lignes renvoyees par le SELECT</returns>
+        /// <param name="getQuery">Requete SELECT de selection de donnees</param>
         public DataTable GetData(string getQuery)
         {
             try
@@ -93,10 +93,10 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Permet d'insérer, supprimer ou modifier des données
+        /// Permet d'inserer, supprimer ou modifier des donnees
         /// </summary>
-        /// <returns>Retourne un entier contenant le nombre de lignes ajoutées/supprimées/modifiées</returns>
-        /// <param name="setQuery">Requête SQL permettant d'insérer (INSERT), supprimer (DELETE) ou modifier des données (UPDATE)</param>
+        /// <returns>Retourne un entier contenant le nombre de lignes ajoutees/supprimees/modifiees</returns>
+        /// <param name="setQuery">Requête SQL permettant d'inserer (INSERT), supprimer (DELETE) ou modifier des donnees (UPDATE)</param>
         public int SetData(string setQuery)
         {
             try

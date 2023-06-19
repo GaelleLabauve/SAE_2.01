@@ -51,9 +51,9 @@ namespace Prototype.Metier
         /// Cree un(e) enseignant(e).
         /// </summary>
         /// <param name="idPersonnel"> un entier unique a ce(tte) enseignant(e)</param>
-        /// <param name="emailPersonnel"> une chaine de caractère unique a ce(tte) enseignant(e), contenant forcément un symbole @</param>
-        /// <param name="nomPersonnel"> une chaine de caractère indiquant le nom de ce(tte) enseignant(e)</param>
-        /// <param name="prenomPersonnel"> une chaine de caractère indiquant le prenom de ce(tte) enseignant(e)</param>
+        /// <param name="emailPersonnel"> une chaine de caractere unique a ce(tte) enseignant(e), contenant forcement un symbole @</param>
+        /// <param name="nomPersonnel"> une chaine de caractere indiquant le nom de ce(tte) enseignant(e)</param>
+        /// <param name="prenomPersonnel"> une chaine de caractere indiquant le prenom de ce(tte) enseignant(e)</param>
         public Enseignant(int idPersonnel, string emailPersonnel, string nomPersonnel, string prenomPersonnel)
         {
             this.IdPersonnel = idPersonnel;

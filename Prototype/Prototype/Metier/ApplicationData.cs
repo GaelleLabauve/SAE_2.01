@@ -9,33 +9,33 @@ using System.Windows;
 namespace Prototype.Metier
 {
     /// <summary>
-    /// Entre toutes les données de la base de donnée dans 4 ObservableCollection différentes.
+    /// Entre toutes les donnees de la base de donnees dans 4 ObservableCollection differentes.
     /// Sert lors du binding.
     /// </summary>
     public class ApplicationData
     {
         /// <summary>
-        /// Obtient ou définit l'ObservableCollection des Enseignants –
+        /// Obtient ou definit l'ObservableCollection des Enseignants –
         /// </summary>
         public ObservableCollection<Enseignant> LesEnseignants { get; set; }
 
         /// <summary>
-        /// Obtient ou définit l'ObservableCollection des Catégories –
+        /// Obtient ou definit l'ObservableCollection des Categories –
         /// </summary>
         public ObservableCollection<Categorie> LesCategories { get; set; }
 
         /// <summary>
-        /// Obtient ou définit l'ObservableCollection des Materiels –
+        /// Obtient ou definit l'ObservableCollection des Materiels –
         /// </summary>
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 
         /// <summary>
-        /// Obtient ou définit l'ObservableCollection des Attributions –
+        /// Obtient ou definit l'ObservableCollection des Attributions –
         /// </summary>
         public ObservableCollection<Attribution> LesAttributions { get; set; }
 
         /// <summary>
-        /// Définit toutes les ObservableCollection a partir des fonction des différente classes –
+        /// Définit toutes les ObservableCollection a partir des fonction des differente classes –
         /// </summary>
         public ApplicationData()
         {
@@ -44,7 +44,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Récupère les données de la base de données et les insère dans les ObservableCollection
+        /// Récupere les donnees de la base de donnees et les insere dans les ObservableCollection
         /// </summary>
         private void RecupData()
         {
@@ -62,7 +62,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Associe les FK aux objets concernés
+        /// Associe les FK aux objets concernes
         /// </summary>
         private void AssociationFK()
         {
@@ -94,7 +94,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Ajoute l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
+        /// Ajoute l'objet entre en parametre dans l'ObservableCollection concernee et dans la base de donnees
         /// </summary>
         public void Add(object obj)
         {
@@ -119,7 +119,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Supprime l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
+        /// Supprime l'objet entre en parametre dans l'ObservableCollection concernee et dans la base de donnees
         /// </summary>
         public void Remove(object obj)
         {
@@ -146,7 +146,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Modifie l'objet entré en paramètre dans l'ObservableCollection concernée et dans la base de données
+        /// Modifie l'objet entré en paramètre dans l'ObservableCollection concernee et dans la base de donnees
         /// </summary>
         public void Update(object obj)
         {

@@ -61,7 +61,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Cree dans la base de donnee cette attribution.
+        /// Cree dans la base de donnees cette attribution.
         /// </summary>
         public void Create()
         {
@@ -75,7 +75,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Mets a jour dans la base de donnee cette attribution.
+        /// Met a jour dans la base de donnees cette attribution.
         /// </summary>
         public void Update()
         {
@@ -84,7 +84,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Supprime de la base de donnee cette attribution.
+        /// Supprime de la base de donnees cette attribution.
         /// </summary>
         public void Delete()
         {

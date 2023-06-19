@@ -97,7 +97,7 @@
                     Margin="30,15,30,0"
                     BorderBrush="Black"
                     Click="bt_tousCategorie_Click"
-                    Content="Voir tous les matériels"
+                    Content="Voir toutes les catégories"
                     FontSize="14" />
 
                 <Label

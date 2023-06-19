@@ -37,21 +37,6 @@ namespace Prototype
             {
                 AfficheForm();
             }
-            else if (!(Verif_TextBoxVides() || VerifStyle()))
-            {
-                // Initialisation du nouvel enseignant et ajout des informations
-                Enseignant enseignant = new Enseignant(tbMail.Text, tbNom.Text.Substring(0,1).ToUpper() + tbNom.Text.Substring(1).ToLower(), tbPrenom.Text.Substring(0, 1).ToUpper() + tbPrenom.Text.Substring(1).ToLower());
-
-                // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
-                ((ApplicationData)this.DataContext).Add(enseignant);
-                lvEnseignant.ItemsSource = ((ApplicationData)this.DataContext).LesEnseignants;
-
-                // Message de confirmation
-                MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
-
-                // Reset des champs de saisie
-                Reset();
-            }
 
             // Réinitialisation de la sélection
             lvEnseignant.SelectedIndex = -1;
@@ -74,36 +59,6 @@ namespace Prototype
 
                     tbMail.Style = new Style();
                     lbMailError.Content = "";
-                }
-                else if (!(Verif_TextBoxVides() || VerifStyle()))
-                {
-                    MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?", "Modification enseignant", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
-
-                    if (result == MessageBoxResult.OK)
-                    {
-                        // Modification des informations
-                        enseignant.EmailPersonnel = tbMail.Text;
-                        enseignant.NomPersonnel = tbNom.Text;
-                        enseignant.PrenomPersonnel = tbPrenom.Text;
-
-                        // Modification de l'enseignant
-                        ((ApplicationData)this.DataContext).Update(enseignant);
-                        // Rafraîchissement de la ListeView
-                        lvEnseignant.ItemsSource = ((ApplicationData)this.DataContext).LesEnseignants;
-
-                        // Message de confirmation
-                        MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
-                    }
-
-                    // Réinitialisation de la sélection
-                    lvEnseignant.SelectedIndex = -1;
-
-                    // Reset des champs de saisie
-                    Reset();
-                }
-                else
-                {
-                    MessageBox.Show("Veuillez renseigner les champs de manière conforme.", "Erreur modification enseignant", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             else
@@ -134,6 +89,73 @@ namespace Prototype
                     // Message de confirmation
                     MessageBox.Show("Enseignant supprimé !", "Suppression enseignant", MessageBoxButton.OK);
                 }
+            }
+        }
+
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialise et cache les champs
+            Reset();
+
+            // Réinitialisation de la sélection
+            lvEnseignant.SelectedIndex = -1;
+        }
+
+        private void btValider_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(Verif_TextBoxVides() || VerifStyle()))
+            {
+                Enseignant enseignant = new Enseignant();
+
+                String message = $"Voulez-vous vraiment ajouter l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?";
+                String titre = "Ajout enseignant";
+
+                if (lvEnseignant.SelectedIndex != -1)
+                {
+                    enseignant = (Enseignant)lvEnseignant.SelectedItem;
+                    message = $"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?";
+                    titre = "Modification enseignant";
+                }
+                
+                MessageBoxResult result = MessageBox.Show(message, titre, MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    // Modification/Ajout des informations
+                    enseignant.EmailPersonnel = tbMail.Text;
+                    enseignant.NomPersonnel = tbNom.Text.Substring(0, 1).ToUpper() + tbNom.Text.Substring(1).ToLower();
+                    enseignant.PrenomPersonnel = tbPrenom.Text.Substring(0, 1).ToUpper() + tbPrenom.Text.Substring(1).ToLower();
+
+                    if (lvEnseignant.SelectedIndex != -1)
+                    {
+                        // Modification de l'enseignant
+                        ((ApplicationData)this.DataContext).Update(enseignant);
+
+                        // Message de confirmation
+                        MessageBox.Show("Enseignant modifié !", "Modification enseignant", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
+                        ((ApplicationData)this.DataContext).Add(enseignant);
+
+                        // Message de confirmation
+                        MessageBox.Show("Enseignant ajouté !", "Ajout enseignant", MessageBoxButton.OK);
+                    }
+
+                    // Rafraîchissement de la ListeView
+                    lvEnseignant.ItemsSource = ((ApplicationData)this.DataContext).LesEnseignants;
+                }
+
+                // Réinitialisation de la sélection
+                lvEnseignant.SelectedIndex = -1;
+
+                // Reset des champs de saisie
+                Reset();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez renseigner les champs obligatoires de manière conforme.", "Erreur modification enseignant", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -249,10 +271,7 @@ namespace Prototype
                 tbMail.Style = (Style)Application.Current.FindResource("Obligatoire");
                 result = true;
             }
-            if (result)
-            {
-                MessageBox.Show("Veuillez remplir les champs manquants.", "Champs manquants", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+
             return result;
         }
 
@@ -278,7 +297,7 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur. Puis les cache.
+        /// Réinitialise le contenu, le style de toutes les TextBox, ainsi que les labels des messages d'erreur et les boutons. Puis les cache.
         /// </summary>
         private void Reset()
         {
@@ -302,8 +321,11 @@ namespace Prototype
             spPrenom.Visibility = Visibility.Hidden;
             spMail.Visibility = Visibility.Hidden;
 
-            // Cache le boutton annuler
-            btAnnuler.Visibility = Visibility.Hidden;
+            // Affichage des boutons supprimer,modifier,ajouter
+            gridButton.Visibility = Visibility.Visible;
+
+            // Cache les boutons valider et annuler
+            spButton.Visibility = Visibility.Hidden;
         }
 
         private void AfficheForm()
@@ -313,17 +335,11 @@ namespace Prototype
             spPrenom.Visibility = Visibility.Visible;
             spMail.Visibility = Visibility.Visible;
 
-            // Affichage du boutton annuler
-            btAnnuler.Visibility = Visibility.Visible;
-        }
+            // Cache les boutons supprimer,modifier,ajouter
+            gridButton.Visibility = Visibility.Hidden;
 
-        private void btAnnuler_Click(object sender, RoutedEventArgs e)
-        {
-            // Réinitialise et cache les champs
-            Reset();
-
-            // Réinitialisation de la sélection
-            lvEnseignant.SelectedIndex = -1;
+            // Affichage des boutons valider et annuler
+            spButton.Visibility = Visibility.Visible;
         }
     }
 }

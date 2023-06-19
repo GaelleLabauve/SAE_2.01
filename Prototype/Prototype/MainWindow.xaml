@@ -22,22 +22,23 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Rectangle
-                Grid.Row="1"
-                Fill="#FFFF1D1D"
-                Stroke="Black" />
+            Grid.Row="1"
+            Fill="#FFFF1D1D"
+            Stroke="Black" />
         <Label
-                Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Content="MATINFO - Gestion des attributions"
-                FontSize="20" />
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="MATINFO - Gestion des attributions"
+            FontSize="20" />
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dg_attributions"
+            <DataGrid
+                x:Name="dg_attributions"
                 Margin="5,15,5,5"
                 VerticalAlignment="Top"
                 AutoGenerateColumns="False"
@@ -62,7 +63,7 @@
                         Header="Prénom enseignant" />
                     <DataGridTextColumn
                         Width="0.7*"
-                        Binding="{Binding DateAttribution}"
+                        Binding="{Binding DateAttribution, StringFormat=d}"
                         Header="Date" />
                     <DataGridTextColumn
                         Width="*"
@@ -82,7 +83,8 @@
                     FontSize="14" />
                 <ListView
                     x:Name="lv_cateChoix"
-                    ItemsSource="{Binding Path=LesCategories}" SelectionChanged="lv_cateChoix_SelectionChanged">
+                    ItemsSource="{Binding Path=LesCategories}"
+                    SelectionChanged="lv_cateChoix_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom catégorie" />
@@ -92,9 +94,11 @@
 
                 <Button
                     x:Name="bt_tousCategorie"
+                    Margin="30,15,30,0"
                     BorderBrush="Black"
+                    Click="bt_tousCategorie_Click"
                     Content="Voir tous les matériels"
-                    FontSize="14" Margin="30,15,30,0" Click="bt_tousCategorie_Click" />
+                    FontSize="14" />
 
                 <Label
                     x:Name="lb_selectMateriel"
@@ -107,7 +111,8 @@
                     x:Name="lv_MaterielChoix"
                     Height="100"
                     DataContext="{Binding SelectedItem, ElementName=lv_cateChoix}"
-                    ItemsSource="{Binding Path=LesMateriels}" SelectionChanged="lv_MaterielChoix_SelectionChanged">
+                    ItemsSource="{Binding Path=LesMateriels}"
+                    SelectionChanged="lv_MaterielChoix_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
@@ -119,12 +124,13 @@
                 </ListView>
                 <Button
                     x:Name="bt_tousMateriel"
+                    Margin="30,15,30,0"
                     BorderBrush="Black"
                     Click="bt_tousMateriel_Click"
                     Content="Voir tous les matériels"
-                    FontSize="14" Margin="30,15,30,0" />
+                    FontSize="14" />
             </StackPanel>
-            
+
         </Grid>
         <Menu>
             <MenuItem FontSize="14" Header="Gérer">

@@ -204,6 +204,12 @@ namespace Prototype
             tbCategorie.Text = "";
             spCategorie.Visibility = Visibility.Hidden;
 
+            // Réinitialisation des styles
+            tbCategorie.Style = new Style();
+
+            // Suppression des messages d'erreur
+            lbNomCateError.Content = "";
+
             // Cache les boutons supprimer,modifier,ajouter
             gridBouton.Visibility = Visibility.Visible;
 
@@ -213,6 +219,9 @@ namespace Prototype
 
         private void AfficheForm()
         {
+            // Réinitalise les champs et labels d'erreur
+            Reset();
+
             // Affiche le champs de saisie
             spCategorie.Visibility = Visibility.Visible;
 

@@ -340,6 +340,9 @@ namespace Prototype
 
         private void AfficheForm()
         {
+            // Réinitalise les champs et labels d'erreur
+            Reset();
+
             // Affiche les StackPanel
             spNom.Visibility = Visibility.Visible;
             spRefConstructeur.Visibility = Visibility.Visible;

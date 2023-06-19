@@ -22,37 +22,32 @@
             Content="Sélectionner une attribution :"
             FontSize="14" />
         <ListView
-            x:Name="lv_Attribution"
+            x:Name="lvAttribution"
             Height="100"
-            ItemsSource="{Binding Path=LesAttributions}"
-            SelectionChanged="lv_Attribution_SelectionChanged">
+            ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
+                        Width="110"
+                        DisplayMemberBinding="{Binding Path=UnEnseignant.NomPrenom}"
+                        Header="Enseignant" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}"
+                        Header="Materiel" />
+                    <GridViewColumn
                         Width="68"
-                        DisplayMemberBinding="{Binding Path=DateAttribution}"
+                        DisplayMemberBinding="{Binding Path=DateAttribution, StringFormat=d}"
                         Header="Date" />
                     <GridViewColumn
                         Width="200"
                         DisplayMemberBinding="{Binding Path=CommentaireAttribution}"
                         Header="Commentaire" />
-                    <GridViewColumn
-                        Width="100"
-                        DisplayMemberBinding="{Binding Path=UnEnseignant.NomPersonnel}"
-                        Header="Enseignant nom" />
-                    <GridViewColumn
-                        Width="110"
-                        DisplayMemberBinding="{Binding Path=UnEnseignant.PrenomPersonnel}"
-                        Header="Enseignant prenom" />
-                    <GridViewColumn
-                        Width="100"
-                        DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}"
-                        Header="Materiel" />
                 </GridView>
             </ListView.View>
         </ListView>
         <Grid
-            x:Name="grid_bouton"
+            x:Name="gridBouton"
             Margin="0,20,0,0"
             VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
@@ -61,78 +56,101 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Button
-                x:Name="bt_ajout"
+                x:Name="btAjouter"
                 Grid.Column="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="bt_ajout_Click"
+                Click="btAjouter_Click"
                 Content="Ajouter" />
             <Button
-                x:Name="bt_modif"
+                x:Name="btModif"
                 Grid.Column="1"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="bt_modif_Click"
+                Click="btModifier_Click"
                 Content="Modifier" />
             <Button
-                x:Name="bt_supp"
+                x:Name="btSuppr"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="bt_supp_Click"
+                Click="btSuppr_Click"
                 Content="Supprimer" />
         </Grid>
-        <StackPanel x:Name="sp_lesReseignement">
+        <StackPanel x:Name="spForm" Visibility="Hidden">
             <StackPanel
-                x:Name="sp_materiel"
+                x:Name="spMateriel"
                 Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Matériel :" FontSize="14" />
                 <ComboBox
-                    x:Name="cb_materiel"
+                    x:Name="cbMateriel"
                     Width="108"
                     DisplayMemberPath="NomMateriel"
                     ItemsSource="{Binding Path=LesMateriels}" />
+                <Label Name="lbMaterielError" Foreground="Red" />
             </StackPanel>
             <StackPanel
-                x:Name="sp_nomEns"
+                x:Name="spNomEns"
                 Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Enseignant :" FontSize="14" />
                 <ComboBox
-                    x:Name="cb_nomPrenomEns"
+                    x:Name="cbNomPrenomEns"
                     Width="99"
                     DisplayMemberPath="NomPrenom"
                     ItemsSource="{Binding Path=LesEnseignants}" />
+                <Label Name="lbEnseignantError" Foreground="Red" />
             </StackPanel>
             <StackPanel
-                x:Name="sp_date"
+                x:Name="spDate"
                 Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Date :" FontSize="14" />
                 <DatePicker
-                    x:Name="datePicker_date"
+                    x:Name="datePickerDate"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
-                    SelectedDate="{Binding DateAttribution, Mode=TwoWay}" />
+                    SelectedDate="{Binding DateAttribution, Mode=TwoWay}"
+                    SelectedDateChanged="datePickerDate_SelectedDateChanged" />
+                <Label Name="lbDateError" Foreground="Red" />
             </StackPanel>
             <StackPanel
-                x:Name="sp_commentaire"
+                x:Name="spCommentaire"
                 Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Label Content="Commentaire :" FontSize="14" />
                 <TextBox
-                    x:Name="tb_commentaire"
+                    x:Name="tbCommentaire"
                     Width="180"
                     MaxWidth="180"
                     DataContext="{Binding SelectedItem, ElementName=lv_Attribution}"
                     Text="{Binding CommentaireAttribution}"
-                    TextChanged="tb_commentaire_TextChanged"
+                    TextChanged="tbCommentaire_TextChanged"
                     TextWrapping="Wrap" />
                 <Label
                     x:Name="lbCommentaireError"
                     Width="220"
                     Foreground="Red" />
+            </StackPanel>
+
+            <StackPanel
+                x:Name="spBouton"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btAnnuler"
+                    Height="30"
+                    Margin="0,0,10,0"
+                    Click="btAnnuler_Click"
+                    Content="Annuler" />
+                <Button
+                    x:Name="btValider"
+                    Height="30"
+                    Margin="10,0,0,0"
+                    Click="btValider_Click"
+                    Content="Valider" />
             </StackPanel>
         </StackPanel>
 

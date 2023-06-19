@@ -93,7 +93,7 @@ namespace Prototype.Metier
         }
 
         /// <summary>
-        /// Parcours la table EST_ATTRIBUE de la base de donnee.
+        /// Parcours la table EST_ATTRIBUE de la base de donnees.
         /// </summary>
         /// <returns> ObservableCollection<Attribution> regroupant toutes les attributions mise dans la base de donnee</returns>
         public ObservableCollection<Attribution> FindAll()

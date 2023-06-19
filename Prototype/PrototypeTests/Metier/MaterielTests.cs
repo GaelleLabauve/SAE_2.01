@@ -160,9 +160,9 @@ namespace Prototype.Metier.Tests
             DataAccess accesDB = new DataAccess();
 
             DataTable datas = accesDB.GetData("SELECT 'X' FROM MATERIEL");
-            ObservableCollection<Categorie> lesCategories = new Categorie().FindAll();
+            ObservableCollection<Materiel> lesMateriels = new Materiel().FindAll();
 
-            Assert.AreEqual(datas.Rows.Count, lesCategories.Count, "Toutes les données de la base de données sont dans la liste lesMateriels.");
+            Assert.AreEqual(datas.Rows.Count, lesMateriels.Count, "Toutes les données de la base de données sont dans la liste lesMateriels.");
         }
     }
 }

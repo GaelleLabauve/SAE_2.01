@@ -17,7 +17,14 @@ namespace Prototype.Metier
         /// <summary>
         /// Obtient ou definit l'IdPersonnel de cet(te) enseignant(e).
         /// </summary>
-        public int IdPersonnel { get; set; }
+        public int IdPersonnel { get { return this.IdPersonnel; } set 
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("L'Id ne peut pas être négatif.");
+                this.IdPersonnel= value;
+
+            } 
+        }
 
         /// <summary>
         /// Obtient ou definit l'EmailPersonnel de cet(te) enseignant(e).
@@ -27,12 +34,28 @@ namespace Prototype.Metier
         /// <summary>
         /// Obtient ou definit le nom de cet(te) enseignant(e).
         /// </summary>
-        public string NomPersonnel { get; set; }
+        public string NomPersonnel { get { return this.NomPersonnel; } set
+            {
+                if (value.Length >= LIMITE_TAILLE_CARACTERE_NOMPRENOM)
+                    throw new ArgumentOutOfRangeException("Le nom ne peut pas dépasser "+LIMITE_TAILLE_CARACTERE_NOMPRENOM+" caractères.");
+                else if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Le nom ne peut pas être null"); 
+                this.NomPersonnel= value;
+            }
+        }
 
         /// <summary>
         /// Obtient ou definit le prenom de cet(te) enseignant(e).
         /// </summary>
-        public string PrenomPersonnel { get; set; }
+        public string PrenomPersonnel { get { return this.PrenomPersonnel; } set 
+            {
+                if (value.Length >= LIMITE_TAILLE_CARACTERE_NOMPRENOM)
+                    throw new ArgumentOutOfRangeException("Le prenom ne peut pas dépasser \"+LIMITE_TAILLE_CARACTERE_NOMPRENOM+\" caractères.");
+                else if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Le prenom ne peut pas être null");
+                this.PrenomPersonnel= value;
+            } 
+        }
 
 
         /// <summary>

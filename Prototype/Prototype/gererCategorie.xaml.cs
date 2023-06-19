@@ -26,67 +26,129 @@ namespace Prototype
         }
 
         /// <summary>
-        /// Supprime (après vérification) une catégorie de la base de données et de la liste LesCategories.
+        /// Supprime (apres vérification) une categorie de la base de donnees et de la liste LesCategories.
         /// </summary>
 
         private void BtSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            // Suppression de la catégorie dans la base de données et dans la liste LesCatégories
-            if(lv_categorie.SelectedItem is null)
+            // Suppression de la categorie dans la base de données et dans la liste LesCategories
+            if(lvCategorie.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Sélectionner une catégorie pour supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                Categorie categorie = (Categorie)lvCategorie.SelectedItem;
 
-                Categorie categorie = (Categorie)lv_categorie.SelectedItem;
-                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {categorie.NomCategorie} de la liste des categories ?", "Suppression Categorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show($"Voulez-vous vraiment supprimer {categorie.NomCategorie} de la liste des categories ?", "Suppression catégorie", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
                 if (result == MessageBoxResult.Yes)
                 {
-                    ((Categorie)lv_categorie.SelectedItem).Delete();            
-                    ((ApplicationData)this.DataContext).Remove((Categorie)lv_categorie.SelectedItem);            
-                    lv_categorie.SelectedIndex = 0;
-                    MessageBox.Show("Suppression réaliser avec succés !", "Suppression Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ((ApplicationData)this.DataContext).Remove((Categorie)lvCategorie.SelectedItem);
+                    
+                    lvCategorie.SelectedIndex = -1;
+
+                    MessageBox.Show("Suppression réaliser avec succès !", "Suppression catégorie", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            
         }
 
         /// <summary>
-        /// Ajoute (après vérification) une catégorie à la base de données et de la liste LesCategories.
+        /// Ajoute (apres verification) une categorie a la base de donnees et de la liste LesCategories.
         /// </summary>
         private void BtAjouter_Click(object sender, RoutedEventArgs e)
         {
-            // Ajoute la catégorie dans la base de données et dans la liste LesCatégories
-            if(string.IsNullOrEmpty(tbCategorie.Text))
-            {
-                MessageBox.Show("Remplir le champs !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
+            // Affiche le formulaire de saisie
+            AfficheForm();
 
-            ((ApplicationData)DataContext).LesCategories.Insert(0, new Categorie(tbCategorie.Text));
-            lv_categorie.SelectedIndex = 0;
-            ((Categorie)lv_categorie.SelectedItem).Create();
-            MessageBox.Show("Ajout réaliser avec succés !", "Ajout Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            // Réinitialise la sélection
+            lvCategorie.SelectedIndex = -1;
         }
 
         /// <summary>
-        /// Modifie (après vérification) une catégorie de la base de données et de la liste LesCategories.
+        /// Modifie (apres verification) une categorie de la base de donnees et de la liste LesCategories.
         /// </summary>
-        private void btModdifier_Click(object sender, RoutedEventArgs e)
+        private void btModifier_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_categorie.SelectedItem is null)
+            if (lvCategorie.SelectedItem is null)
             {
-                MessageBox.Show("Séléctionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Sélectionner une catégorie pour modifier", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-
                 // Modification de la catégorie dans la base de données et dans la liste LesCatégories
-                ((Categorie)lv_categorie.SelectedItem).Update();
-                MessageBox.Show("Modification réaliser avec succés !", "Modification Categorie", MessageBoxButton.OK, MessageBoxImage.Information);
+                ((Categorie)lvCategorie.SelectedItem).Update();
+
+                MessageBox.Show("Modification réaliser avec succès !", "Modification catégorie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void btAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialise et cache les champs
+            Reset();
+
+            // Réinitialisation de la sélection
+            lvCategorie.SelectedIndex = -1;
+        }
+
+        private void btValider_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(Verif_TextBoxVides() || VerifStyle()))
+            {
+                Categorie c = new Categorie();
+                String message, titre;
+
+                if (lvCategorie.SelectedIndex != -1)
+                {
+                    c = (Categorie)lvCategorie.SelectedItem;
+                    message = $"Voulez-vous vraiment modifier la catégorie {c.NomCategorie} ?";
+                    titre = "Modification catégorie";
+                }
+                else
+                {
+
+                    message = $"Voulez-vous vraiment ajouter la catégorie {tbCategorie} ?";
+                    titre = "Ajout catégorie";
+                }
+
+                MessageBoxResult result = MessageBox.Show(message, titre, MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    // Modification/Ajout des informations
+                    c.NomCategorie = tbCategorie.Text;
+
+                    if (lvCategorie.SelectedIndex != -1)
+                    {
+                        // Modification de l'enseignant
+                        ((ApplicationData)this.DataContext).Update(c);
+
+                        // Message de confirmation
+                        MessageBox.Show("Catégorie modifié !", "Modification catégorie", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        // Création de l'enseignant dans la base de données et ajout à la liste LesEnseignants
+                        ((ApplicationData)this.DataContext).Add(c);
+
+                        // Message de confirmation
+                        MessageBox.Show("Catégorie ajouté !", "Ajout catégorie", MessageBoxButton.OK);
+                    }
+
+                    // Rafraîchissement de la ListeView
+                    lvCategorie.ItemsSource = ((ApplicationData)this.DataContext).LesCategories;
+                }
+
+                // Réinitialisation de la sélection
+                lvCategorie.SelectedIndex = -1;
+
+                // Reset des champs de saisie
+                Reset();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez renseigner les champs obligatoires de manière conforme.", "Erreur modification catégorie", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -99,24 +161,59 @@ namespace Prototype
                 tb.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
-                if (tb == tbCategorie)
-                {
-                    lbNomCateError.Content = "Trop long ( > 50 caractères)";
-                }
+                lbNomCateError.Content = "Trop long ( > 50 caractères)";
             }
-
             else
             {
                 // Suppression du style (remplacement par un style par défaut)
                 tb.Style = new Style();
 
                 // Réinitialisation du label
-                if (tb == tbCategorie)
-                {
-                    lbNomCateError.Content = "";
-                }
-
+                lbNomCateError.Content = "";
             }
+        }
+
+        private bool Verif_TextBoxVides()
+        {
+            if (String.IsNullOrWhiteSpace(tbCategorie.Text))
+            {
+                tbCategorie.Style = (Style)Application.Current.FindResource("Obligatoire");
+                return true;
+            }
+            return false;
+        }
+
+        private bool VerifStyle()
+        {
+            if (tbCategorie.Style == (Style)Application.Current.FindResource("Obligatoire"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void AfficheForm()
+        {
+            // Cache le champs de saisie
+            spCategorie.Visibility = Visibility.Hidden;
+
+            // Cache les boutons supprimer,modifier,ajouter
+            gridBouton.Visibility = Visibility.Hidden;
+
+            // Affichage des boutons valider et annuler
+            spBouton.Visibility = Visibility.Visible;
+        }
+
+        private void Reset()
+        {
+            // Affiche le champs de saisie
+            spCategorie.Visibility = Visibility.Visible;
+
+            // Affichage des boutons supprimer,modifier,ajouter
+            gridBouton.Visibility = Visibility.Visible;
+
+            // Cache les boutons valider et annuler
+            spBouton.Visibility = Visibility.Hidden;
         }
     }
 }

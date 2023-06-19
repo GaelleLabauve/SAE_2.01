@@ -33,10 +33,8 @@ namespace Prototype
         /// </summary>
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
-            if (spNom.Visibility == Visibility.Hidden)
-            {
-                AfficheForm();
-            }
+            // Affiche le formulaire de saisie
+            AfficheForm();
 
             // Réinitialisation de la sélection
             lvEnseignant.SelectedIndex = -1;
@@ -52,11 +50,15 @@ namespace Prototype
                 Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
                 if (spNom.Visibility == Visibility.Hidden)
                 {
+                    // Affiche le formulaire de saisie
                     AfficheForm();
+
+                    // Renseigne les champs avec les infos de l'enseignant sélectionné
                     tbNom.Text = enseignant.NomPersonnel;
                     tbPrenom.Text = enseignant.PrenomPersonnel;
                     tbMail.Text = enseignant.EmailPersonnel;
 
+                    // Réinitialise le style et le message d'erreur
                     tbMail.Style = new Style();
                     lbMailError.Content = "";
                 }

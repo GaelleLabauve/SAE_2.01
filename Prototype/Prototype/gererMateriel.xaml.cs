@@ -154,6 +154,10 @@ namespace Prototype
                 // Reset des champs de saisie
                 Reset();
             }
+            else
+            {
+                MessageBox.Show("Veuillez renseigner les champs obligatoires de manière conforme.", "Erreur modification matériel", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void lvMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -279,11 +283,6 @@ namespace Prototype
             {
                 lbCategorieError.Content = "Catégorie manquante";
                 result = true;
-            }
-
-            if (result)
-            {
-                MessageBox.Show("Veuillez renseigner tous les champs !", "Champs manquants", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return result;

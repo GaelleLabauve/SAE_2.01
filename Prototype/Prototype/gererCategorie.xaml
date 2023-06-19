@@ -67,7 +67,8 @@
         <StackPanel
             x:Name="spCategorie"
             Margin="0,15,0,0"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="Hidden">
 
             <Label
                 Margin="0,15,0,0"
@@ -81,7 +82,6 @@
                 MaxWidth="230"
                 Margin="0,15,0,0"
                 DataContext="{Binding SelectedItem, ElementName=lv_categorie}"
-                Text="{Binding NomCategorie}"
                 TextChanged="tbCategorie_TextChanged"
                 TextWrapping="Wrap" />
             <Label
@@ -91,6 +91,7 @@
         </StackPanel>
         <StackPanel
             x:Name="spBouton"
+            Margin="0,20,0,0"
             HorizontalAlignment="Center"
             Orientation="Horizontal"
             Visibility="Hidden">

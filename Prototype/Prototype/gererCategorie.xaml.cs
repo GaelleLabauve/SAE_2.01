@@ -76,10 +76,17 @@ namespace Prototype
             }
             else
             {
-                // Modification de la catégorie dans la base de données et dans la liste LesCatégories
-                ((Categorie)lvCategorie.SelectedItem).Update();
+                Categorie c = (Categorie)lvCategorie.SelectedItem;
 
-                MessageBox.Show("Modification réaliser avec succès !", "Modification catégorie", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Affiche le formulaire de saisie
+                AfficheForm();
+
+                // Renseigne les champs avec les infos de l'enseignant sélectionné
+                tbCategorie.Text = c.NomCategorie;
+
+                // Réinitialise le style et le message d'erreur
+                tbCategorie.Style = new Style();
+                lbNomCateError.Content = "";
             }
         }
 
@@ -108,7 +115,7 @@ namespace Prototype
                 else
                 {
 
-                    message = $"Voulez-vous vraiment ajouter la catégorie {tbCategorie} ?";
+                    message = $"Voulez-vous vraiment ajouter la catégorie {tbCategorie.Text} ?";
                     titre = "Ajout catégorie";
                 }
 
@@ -154,11 +161,10 @@ namespace Prototype
 
         private void tbCategorie_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (tb.Text.Length > 50)
+            if (tbCategorie.Text.Length > 50)
             {
                 // Application du style avec bordures rouges
-                tb.Style = (Style)Application.Current.FindResource("Obligatoire");
+                tbCategorie.Style = (Style)Application.Current.FindResource("Obligatoire");
 
                 // Ajout du message 
                 lbNomCateError.Content = "Trop long ( > 50 caractères)";
@@ -166,7 +172,7 @@ namespace Prototype
             else
             {
                 // Suppression du style (remplacement par un style par défaut)
-                tb.Style = new Style();
+                tbCategorie.Style = new Style();
 
                 // Réinitialisation du label
                 lbNomCateError.Content = "";
@@ -192,28 +198,29 @@ namespace Prototype
             return false;
         }
 
-        private void AfficheForm()
+        private void Reset()
         {
-            // Cache le champs de saisie
+            // Réinitialise et cache le champs de saisie
+            tbCategorie.Text = "";
             spCategorie.Visibility = Visibility.Hidden;
 
             // Cache les boutons supprimer,modifier,ajouter
-            gridBouton.Visibility = Visibility.Hidden;
+            gridBouton.Visibility = Visibility.Visible;
 
             // Affichage des boutons valider et annuler
-            spBouton.Visibility = Visibility.Visible;
+            spBouton.Visibility = Visibility.Hidden;
         }
 
-        private void Reset()
+        private void AfficheForm()
         {
             // Affiche le champs de saisie
             spCategorie.Visibility = Visibility.Visible;
 
             // Affichage des boutons supprimer,modifier,ajouter
-            gridBouton.Visibility = Visibility.Visible;
+            gridBouton.Visibility = Visibility.Hidden;
 
             // Cache les boutons valider et annuler
-            spBouton.Visibility = Visibility.Hidden;
+            spBouton.Visibility = Visibility.Visible;
         }
     }
 }

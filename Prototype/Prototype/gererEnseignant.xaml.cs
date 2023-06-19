@@ -48,20 +48,18 @@ namespace Prototype
             if (lvEnseignant.SelectedIndex != -1)
             {
                 Enseignant enseignant = (Enseignant)lvEnseignant.SelectedItem;
-                if (spNom.Visibility == Visibility.Hidden)
-                {
-                    // Affiche le formulaire de saisie
-                    AfficheForm();
+                
+                // Affiche le formulaire de saisie
+                AfficheForm();
 
-                    // Renseigne les champs avec les infos de l'enseignant sélectionné
-                    tbNom.Text = enseignant.NomPersonnel;
-                    tbPrenom.Text = enseignant.PrenomPersonnel;
-                    tbMail.Text = enseignant.EmailPersonnel;
+                // Renseigne les champs avec les infos de l'enseignant sélectionné
+                tbNom.Text = enseignant.NomPersonnel;
+                tbPrenom.Text = enseignant.PrenomPersonnel;
+                tbMail.Text = enseignant.EmailPersonnel;
 
-                    // Réinitialise le style et le message d'erreur
-                    tbMail.Style = new Style();
-                    lbMailError.Content = "";
-                }
+                // Réinitialise le style et le message d'erreur
+                tbMail.Style = new Style();
+                lbMailError.Content = "";
             }
             else
             {

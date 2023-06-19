@@ -34,11 +34,10 @@ namespace Prototype
         /// </summary>
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
-            if (spNom.Visibility == Visibility.Hidden)
-            {
-                AfficheForm();
-            }
+            // Affiche le formulaire de saisie
+            AfficheForm();
 
+            // Réinitialisation de la sélection
             lvMateriel.SelectedIndex = -1;
         }
 
@@ -79,17 +78,14 @@ namespace Prototype
             {
                 Materiel m = (Materiel)lvMateriel.SelectedItem;
 
-                if (spNom.Visibility == Visibility.Hidden)
-                {
-                    // Affichage des champs de saisie
-                    AfficheForm();
+                // Affichage des champs de saisie
+                AfficheForm();
 
-                    // Renseignement des champs en fonction du matériel sélectionné
-                    tbMateriel.Text = m.NomMateriel;
-                    tbCodeBarre.Text = m.CodeBarreInventaire;
-                    tbRefCons.Text = m.ReferenceConstructeurMateriel;
-                    cbCategorie.SelectedItem = m.UneCategorie;
-                }
+                // Renseignement des champs en fonction du matériel sélectionné
+                tbMateriel.Text = m.NomMateriel;
+                tbCodeBarre.Text = m.CodeBarreInventaire;
+                tbRefCons.Text = m.ReferenceConstructeurMateriel;
+                cbCategorie.SelectedItem = m.UneCategorie;
             }
         }
 

@@ -90,6 +90,10 @@ namespace Prototype
                     MessageBox.Show("Enseignant supprimé !", "Suppression enseignant", MessageBoxButton.OK);
                 }
             }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un enseignant pour le supprimer", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void btAnnuler_Click(object sender, RoutedEventArgs e)
@@ -106,15 +110,18 @@ namespace Prototype
             if (!(Verif_TextBoxVides() || VerifStyle()))
             {
                 Enseignant enseignant = new Enseignant();
-
-                String message = $"Voulez-vous vraiment ajouter l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?";
-                String titre = "Ajout enseignant";
+                String message, titre;
 
                 if (lvEnseignant.SelectedIndex != -1)
                 {
                     enseignant = (Enseignant)lvEnseignant.SelectedItem;
                     message = $"Voulez-vous vraiment modifier l'enseignant {enseignant.NomPersonnel} {enseignant.PrenomPersonnel} ?";
                     titre = "Modification enseignant";
+                } else
+                {
+
+                    message = $"Voulez-vous vraiment ajouter l'enseignant {tbNom} {tbPrenom} ?";
+                    titre = "Ajout enseignant";
                 }
                 
                 MessageBoxResult result = MessageBox.Show(message, titre, MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
@@ -322,10 +329,10 @@ namespace Prototype
             spMail.Visibility = Visibility.Hidden;
 
             // Affichage des boutons supprimer,modifier,ajouter
-            gridButton.Visibility = Visibility.Visible;
+            gridBouton.Visibility = Visibility.Visible;
 
             // Cache les boutons valider et annuler
-            spButton.Visibility = Visibility.Hidden;
+            spBouton.Visibility = Visibility.Hidden;
         }
 
         private void AfficheForm()
@@ -336,10 +343,10 @@ namespace Prototype
             spMail.Visibility = Visibility.Visible;
 
             // Cache les boutons supprimer,modifier,ajouter
-            gridButton.Visibility = Visibility.Hidden;
+            gridBouton.Visibility = Visibility.Hidden;
 
             // Affichage des boutons valider et annuler
-            spButton.Visibility = Visibility.Visible;
+            spBouton.Visibility = Visibility.Visible;
         }
     }
 }

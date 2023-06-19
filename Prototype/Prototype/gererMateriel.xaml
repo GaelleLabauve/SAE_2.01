@@ -38,7 +38,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,20,0,0" VerticalAlignment="Center">
+        <Grid
+            x:Name="gridBouton"
+            Margin="0,20,0,0"
+            VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -143,21 +146,36 @@
                 MinWidth="70"
                 Margin="0,10,0,0"
                 DisplayMemberPath="NomCategorie"
-                ItemsSource="{Binding Path=LesCategories}" SelectionChanged="cbCategorie_SelectionChanged" />
+                ItemsSource="{Binding Path=LesCategories}"
+                SelectionChanged="cbCategorie_SelectionChanged" />
             <Label
                 x:Name="lbCategorieError"
                 Width="195"
                 Height="28"
                 Foreground="Red" />
         </StackPanel>
-        <Button
-            x:Name="btAnnuler"
-            Height="30"
-            Margin="0,20,0,0"
+        <StackPanel
+            x:Name="spBouton"
             HorizontalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            Click="btAnnuler_Click"
-            Content="Annuler"
-            Visibility="Hidden" />
+            Orientation="Horizontal"
+            Visibility="Hidden">
+            <Button
+                x:Name="btAnnuler"
+                Height="30"
+                Margin="0,20,10,0"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Click="btAnnuler_Click"
+                Content="Annuler" />
+
+            <Button
+                x:Name="btValider"
+                Height="30"
+                Margin="10,20,0,0"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Click="btValider_Click"
+                Content="Valider" />
+        </StackPanel>
     </StackPanel>
 </Window>

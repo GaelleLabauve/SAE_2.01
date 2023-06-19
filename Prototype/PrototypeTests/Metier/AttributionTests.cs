@@ -26,7 +26,10 @@ namespace Prototype.Metier.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            Attribution a = new Attribution(1,1,DateTime.Today,"TestCreate");
+            DateTime today = DateTime.Today;
+            today = new DateTime(today.Year, today.Month, today.Day);
+
+            Attribution a = new Attribution(1,1,today,"TestCreate");
             a.Create();
 
             Assert.AreEqual(1, new DataAccess().GetData($"SELECT * FROM EST_ATTRIBUE WHERE idMateriel='{a.FK_IdMateriel}' AND idPersonnel='{a.FK_IdPersonnel}', AND dateAttribution='{a.DateAttribution}'").Rows.Count, "L'attribution a été inséré dans la base de données.");
@@ -45,20 +48,23 @@ namespace Prototype.Metier.Tests
         {
             DataAccess accesDB = new DataAccess();
 
-            Attribution a1 = new Attribution(1, 1, DateTime.Today, "TestUpdate");
+            DateTime today = DateTime.Today;
+            today = new DateTime(today.Year, today.Month, today.Day);
+
+            Attribution a1 = new Attribution(1, 1, today, "TestUpdate");
             a1.Create();
 
-            a1 = a1.FindAll().ToList().Find(x => x.FK_IdPersonnel == a1.FK_IdPersonnel && x.FK_IdMateriel == a1.FK_IdMateriel && x.DateAttribution == a1.DateAttribution);
-            a1.CommentaireAttribution = "UpdateTest";
-            a1.Update();
+            Attribution a2 = a1.FindAll().ToList().Find(x => x.FK_IdPersonnel == a1.FK_IdPersonnel && x.FK_IdMateriel == a1.FK_IdMateriel && x.DateAttribution == a1.DateAttribution);
+            a2.CommentaireAttribution = "UpdateTest";
+            a2.Update();
 
-            int nb1 = accesDB.GetData($"SELECT 'X' FROM MATERIEL WHERE nomMateriel='{m1.NomMateriel}'").Rows.Count;
-            int nb2 = accesDB.GetData($"SELECT 'X' FROM MATERIEL WHERE nomMateriel='{a1.NomMateriel}'").Rows.Count;
+            int nb1 = accesDB.GetData($"SELECT 'X' FROM EST_ATTRIBUE WHERE idMateriel='{a2.FK_IdMateriel} ' AND idPersonnel=' {a2.FK_IdPersonnel} ', AND dateAttribution=' {a2.DateAttribution}' AND commentaireAttribution='{a1.CommentaireAttribution}'").Rows.Count;
+            int nb2 = accesDB.GetData($"SELECT 'X' FROM EST_ATTRIBUE WHERE idMateriel='{a2.FK_IdMateriel}' AND idPersonnel='{a2.FK_IdPersonnel}', AND dateAttribution='{a2.DateAttribution}' AND commentaireAttribution='{a2.CommentaireAttribution}'").Rows.Count;
 
-            Assert.AreEqual(0, nb1, "Aucun matériel n'a le nom de TestUpdate.");
-            Assert.AreEqual(1, nb2, "Un matériel a le nom de UpdateTest.");
+            Assert.AreEqual(0, nb1, $"Aucune attribution n'a la clé primaire (1,1,'{today}') et le commentaire 'TestUpdate.");
+            Assert.AreEqual(1, nb2, $"Une attribution a la clé primaire (1,1,'{today}') et le commentaire 'UpdateTest.");
 
-            accesDB.SetData($"DELETE FROM MATERIEL WHERE codeBarreInventaire='{m1.CodeBarreInventaire}'");
+            new DataAccess().SetData($"DELETE FROM EST_ATTRIBUE WHERE idMateriel='{a2.FK_IdMateriel}' AND idPersonnel='{a2.FK_IdPersonnel}', AND dateAttribution='{a2.DateAttribution}'");
         }
 
         [TestMethod()]
